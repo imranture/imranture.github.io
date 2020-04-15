@@ -1,0 +1,9 @@
+//Rewrite to www
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^imranture.com[nc]
+RewriteRule ^(.*)$ http://www.imranture.com/$1 [r=301,nc]
+
+//301 Redirect Entire Directory
+RedirectMatch 301 imranture.com/E4-TimeStamper(.*) https://github.com/imranture/E4-TimeStamper/$1
+ 
