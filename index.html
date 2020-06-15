@@ -94,6 +94,18 @@
 			h1 {
 				font-size: 2.3em;
 			}
+			#content1::after {
+				content: "\a";
+				white-space: pre;
+			}
+			#content2::before {
+				content: "\a";
+				white-space: pre;
+			}
+			#rmv {
+				display:none;
+			}
+
 	</style>
 </head>
 
@@ -103,8 +115,8 @@
 	<p>I am a research scholar and lecturer at <a href = "https://www.rmit.edu.au/" target = "_blank">RMIT</a>, a global university of technology, design and enterprise based in Australia. Currently I am part of a research group studying the relationship between startup activities and the emotional experiences of entrepreneurs.</p>
 	<p>I received my undergraduate degree in industrial engineering with Honours, then completed a masters degree in industrial and systems engineering at <a href = "https://www.youtube.com/watch?v=_GYYzynMnRE" target = "_blank">Rutgers</a>, focusing on data analysis, optimization, and simulation modeling.</p>
 	<p>As an <a href = "https://en.wikipedia.org/wiki/Third_culture_kid" target = "_blank">adult third culture kid</a>, I had an opportunity to live in different parts of the world (on four continents and in five countries so far). I now live in <a href = "https://www.youtube.com/watch?v=959nNUNQCio" target = "_blank">Melbourne</a>, considered one of the most liveable cities in the world<a class = "asterisk" href = "https://en.wikipedia.org/wiki/Global_Liveability_Ranking#2019_results" target = "_blank">*</a>. </p>
-	<p>Connect: <a href = "https://github.com/imranture" rel = "author" target = "_blank">GitHub</a> | <a href = "https://www.linkedin.com/in/imranture/" target = "_blank">LinkedIn</a> | <a href = "https://twitter.com/imranture" target = "_blank">Twitter</a> | <a href = "https://500px.com/imranture" target = "_blank">500px</a></p>
-	<p>Email: </span>
+	<p>Connect: <span id="content2"></span><span id="content1"><a href = "https://github.com/imranture" rel = "author" target = "_blank">GitHub</a> | <a href = "https://www.linkedin.com/in/imranture/" target = "_blank">LinkedIn</a> <span id="rmv">|</span> </span><a href = "https://twitter.com/imranture" target = "_blank">Twitter</a> | <a href = "https://500px.com/imranture" target = "_blank">500px</a></p>
+	<p>Email: <span id="content2">
 	<script type="text/javascript">
 		//<![CDATA[
 		<!--
@@ -125,7 +137,7 @@
 		//-->
 		//]]>
 	</script>
-	(personal) |</span>
+	(personal) <span id="rmv">|</span> </span><span id="content1"></span>
 	<script type="text/javascript">
 		//<![CDATA[
 		<!--
