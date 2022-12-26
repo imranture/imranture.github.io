@@ -60,7 +60,7 @@ img {
   display: center;
   max-width: 100%;
   height: 45%;
-  border-radius: 50%;
+  border-radius: 0%;
 }
 
 p {
