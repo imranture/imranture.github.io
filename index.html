@@ -49,6 +49,18 @@
       gtag('config', 'UA-28280217-1');
     </script>
 
+    <!-- Change profile image for each load -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const log = console.log,
+          array = ["a", "b", "c"],
+          random = Math.floor(Math.random() * array.length),
+          target = document.getElementById("target");
+          target.src = `${array[random]}`;
+          log(target);
+        });
+    </script>
+
   </head>
 
   <body class="d-flex h-100 text-center">
@@ -66,7 +78,7 @@
   </header>
 
   <main class="px-3">
-    <img src="img/profile.png"/><br>
+    <img id="target" src="img/a.png"/><br>
     <h1>imran türe</h1><br>
     <p><script LANGUAGE="JavaScript">
       user = '&#105;&#109;&#114;&#097;&#110;';
@@ -102,15 +114,5 @@
 
   </body>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const log = console.log,
-      array = ["a", "b", "c"],
-      random = Math.floor(Math.random() * array.length),
-      target = document.getElementById("target");
-      target.src = `${array[random]}`;
-      log(target);
-    });
-  </script>
 
 </html>
