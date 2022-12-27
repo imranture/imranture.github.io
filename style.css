@@ -18,7 +18,7 @@
  */
 
 html body {
-  color: #ffffff;
+  color: #fff;
   /* background: #395555 !important; */
   font-family: 'Roboto Mono', monospace;
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
@@ -39,7 +39,7 @@ html body {
     background-color: #395555;
   }
   25% {
-    background-color: #bb5b55;
+    background-color: #974a44;
   }
   50% {
     background-color: #25274d;
@@ -54,7 +54,7 @@ html body {
 /* Chrome, Safari, Opera */
  @-webkit-keyframes bgcolorchange {
       0%   {background: #395555;}
-      25%  {background: #bb5b55;}
+      25%  {background: #974a44;}
       50%  {background: #25274d;}
       75%  {background: #644e5b;}
       100% {background: #395555;}
@@ -93,27 +93,31 @@ img {
   border-radius: 0%;
 }
 
-p {
-  color: #FBFAF9;
-}
-
 h1 {
-  color: #FBFAF9;
-  font-size: 2.5rem;
-  font-family: 'Averia Gruesa Libre', cursive;
+  font-size: 2.75rem;
+  /* font-family: 'Averia Gruesa Libre', cursive; */
+  font-family: 'Alegreya', serif;
+  text-shadow: 2px 2px rgba(34, 34, 34, 0.741);
   letter-spacing: 0.13vw;
 }
 
+
+p {
+  font-size: 1.1rem;
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 0.1vw;
+}
+
 a {
-  color: #eaedef;
+  color: #fff;
   text-decoration: none;
-  border-bottom: 1.5px solid #BC8751;
+  border-bottom: 1.5px solid rgba(28, 27, 27, 0.752);
   transition: all 1s;
   padding: 1px;
 }
 a:hover {
-  color: #eaedef;
-  background-color: #BC8751;
+  color: #fff;
+  background-color: rgba(28, 27, 27, 0.814);
   border-bottom: none;
   border-radius: 4px;
 }
