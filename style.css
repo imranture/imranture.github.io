@@ -18,8 +18,8 @@
  */
 
 html body {
-  color: #FBFAF9;
-  background: #1F2833 !important;
+  color: #ffffff;
+  /* background: #395555 !important; */
   font-family: 'Roboto Mono', monospace;
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
@@ -29,6 +29,36 @@ html body {
   max-width: 42em;
 }
 
+/* Change background colors every minute */
+.animate-me {
+  -webkit-animation: bgcolorchange 60s infinite; /* Chrome, Safari, Opera */ 
+  animation: 60s infinite bgcolorchange;
+}
+@keyframes bgcolorchange {
+  0% {
+    background-color: #395555;
+  }
+  25% {
+    background-color: #bb5b55;
+  }
+  50% {
+    background-color: #25274d;
+  }
+  75% {
+    background-color: #644e5b;
+  }
+  100% {
+    background-color: #395555;
+  }
+}
+/* Chrome, Safari, Opera */
+ @-webkit-keyframes bgcolorchange {
+      0%   {background: #395555;}
+      25%  {background: #bb5b55;}
+      50%  {background: #25274d;}
+      75%  {background: #644e5b;}
+      100% {background: #395555;}
+ }
 
 /*
  * Header
@@ -87,3 +117,5 @@ a:hover {
   border-bottom: none;
   border-radius: 4px;
 }
+
+
