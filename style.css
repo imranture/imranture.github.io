@@ -64,7 +64,7 @@ hr {
 
 /* Change background colors every minute */
 .animate-me {
-  -webkit-animation: bgcolorchange 60s infinite; /* Chrome, Safari, Opera */ 
+  -webkit-animation: bgcolorchange 60s infinite; /* Chrome, Safari, Opera */
   animation: 60s infinite bgcolorchange;
 }
 @keyframes bgcolorchange {
@@ -92,3 +92,29 @@ hr {
       75%  {background: #644e5b;}
       100% {background: #395555;}
  }
+
+ .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

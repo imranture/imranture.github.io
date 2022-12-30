@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" class="h-100">
-  
+
   <head>
 
     <title>Imran Ture</title>
@@ -48,6 +48,20 @@
         });
     </script>
 
+    <!-- Copy email address to clipboard -->
+    <script>
+    function copyURI(evt) {
+    evt.preventDefault();
+    navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
+      /* clipboard successfully set */
+    }, () => {
+      /* clipboard write failed */
+    });
+    alert("Email address copied to clipboard");
+    }
+    </script>
+
+
   </head>
 
   <body class="d-flex h-100 text-center animate-me">
@@ -65,7 +79,7 @@
       <script language = "JavaScript">
       user = '&#105;&#109;&#114;&#097;&#110;';
       site = '&#097;&#108;&#117;&#109;&#110;&#105;&period;&#114;&#117;&#116;&#103;&#101;&#114;&#115;&period;&#101;&#100;&#117;';
-      document.write('<a href=\"mailto:' + user + '@' + site + '\">');
+      document.write('<a onclick="copyURI(event)" title="Click to copy email address" href=\"' + user + '@' + site + '\">');
       document.write(user + '@' + site + '</a>');
       </script>
     </p>
@@ -93,7 +107,7 @@
   <footer class="mt-auto text-white-50">
   </footer>
 
-  </div>  
+  </div>
 
   </body>
 
