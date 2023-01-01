@@ -51,15 +51,14 @@
     <!-- Copy email address to clipboard -->
     <script>
     function copyURI(evt) {
-    evt.preventDefault();
-    navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
-      /* clipboard successfully set */
-    }, () => {
-      /* clipboard write failed */
-    });
-    alert("Email address copied to clipboard");
+        evt.preventDefault();
+        navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
+          /* clipboard successfully set */
+        }, () => {
+          /* clipboard write failed */
+        });
     }
-    </script>
+  </script>
 
 
   </head>
@@ -74,6 +73,8 @@
     <h1>imran türe</h1>
 
     <hr>
+
+<a href="' + artworkUrl + '" onclick="copyURI(event)">Copy cover URL</a>
 
     <p>
       <script language = "JavaScript">
