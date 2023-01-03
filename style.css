@@ -64,33 +64,41 @@ hr {
 
 /* Change background colors every minute */
 .animate-me {
-  -webkit-animation: bgcolorchange 25s infinite; /* Chrome, Safari, Opera */
-  animation: 25s infinite bgcolorchange;
+  -webkit-animation: bgcolorchange 60s infinite; /* Chrome, Safari, Opera */
+  animation: 60s infinite bgcolorchange;
 }
 @keyframes bgcolorchange {
   0% {
     background-color: #395555;
   }
-  25% {
+  10% {
     background-color: #395555;
   }
-  50% {
+  20% {
+    background-color: #e29d26;
+  }
+  40% {
     background-color: #974a44;
   }
-  75% {
+  60% {
+    background-color: #51416b;
+  }
+  80% {
     background-color: #25274d;
   }
   100% {
-    background-color: #644e5b;
+    background-color: #395555;
   }
 }
 /* Chrome, Safari, Opera */
  @-webkit-keyframes bgcolorchange {
       0%   {background: #395555;}
-      25%  {background: #395555;}
-      50%  {background: #974a44;}
-      75%  {background: #25274d;}
-      100% {background: #644e5b;}
+      10%  {background: #395555;}
+      20%  {background: #e29d26;}
+      40%  {background: #974a44;}
+      60%  {background: #51416b;}
+      80%  {background: #25274d;}
+      100% {background: #395555;}
  }
 
  .tooltip {
