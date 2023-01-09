@@ -35,7 +35,7 @@ p {
   letter-spacing: 0.1vw;
 }
 
-a {
+/* a {
   color: #fff;
   text-decoration: none;
   border-bottom: 1.5px solid rgba(28, 27, 27, 0.752);
@@ -47,6 +47,36 @@ a:hover {
   background-color: rgba(28, 27, 27, 0.814);
   border-bottom: none;
   border-radius: 4px;
+} */
+
+a {
+  color: #fff;
+  text-decoration: none;
+  padding-bottom: 0.2rem;
+}
+
+a {
+  background:
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 1)
+    ),
+    linear-gradient(
+      to right,
+      rgba(255, 0, 0, 1),
+      rgba(255, 0, 180, 1),
+      rgba(0, 100, 200, 1)
+  );
+  background-size: 100% 2px, 0 2px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 1500ms;
+}
+
+a:hover {
+  color: #fff;
+  background-size: 0 2px, 100% 2px;
 }
 
 hr {
