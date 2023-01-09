@@ -95,26 +95,26 @@ hr {
 
 /* Change background colors every minute */
 .animate-me {
-  -webkit-animation: bgcolorchange 60s infinite; /* Chrome, Safari, Opera */
-  animation: 60s infinite bgcolorchange;
+  -webkit-animation: bgcolorchange 20s infinite; /* Chrome, Safari, Opera */
+  animation: 20s infinite bgcolorchange;
 }
 @keyframes bgcolorchange {
   0% {
     background-color: #395555;
   }
-  10% {
+  5% {
     background-color: #395555;
   }
-  20% {
+  25% {
     background-color: #e29d26;
   }
-  40% {
+  45% {
     background-color: #974a44;
   }
-  60% {
+  65% {
     background-color: #51416b;
   }
-  80% {
+  85% {
     background-color: #25274d;
   }
   100% {
@@ -124,11 +124,11 @@ hr {
 /* Chrome, Safari, Opera */
  @-webkit-keyframes bgcolorchange {
       0%   {background: #395555;}
-      10%  {background: #395555;}
-      20%  {background: #e29d26;}
-      40%  {background: #974a44;}
-      60%  {background: #51416b;}
-      80%  {background: #25274d;}
+      5%   {background: #395555;}
+      25%  {background: #e29d26;}
+      45%  {background: #974a44;}
+      65%  {background: #51416b;}
+      85%  {background: #25274d;}
       100% {background: #395555;}
  }
 
