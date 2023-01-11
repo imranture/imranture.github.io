@@ -80,6 +80,19 @@ a:hover {
   background-size: 0 2px, 100% 2px;
 }
 
+.email:link:hover span {
+  display: none;
+}
+
+.email:hover:before {
+  content: "Click to copy";
+}
+
+.email:active {
+  content: "Copied!";
+}
+
+
 hr {
   margin: 0 auto 1rem auto;
   border: 0;
