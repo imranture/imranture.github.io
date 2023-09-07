@@ -106,7 +106,7 @@ li::before {
 
 
 a {
-  color: #356089;
+  color: #005b5b;
   text-decoration: none;
 }
 
@@ -118,7 +118,7 @@ a:focus {
 
 a.weblink:link,
 a.weblinks:visited {
-  color: #356089;
+  color: #005b5b;
   text-decoration: none;
   padding-bottom: 0.2rem;
   background:
@@ -388,8 +388,8 @@ screen and (max-width: 720px) {
     display: block;
     width: 20px;
     height: 20px;
-    border-bottom: 2px solid #000;
-    border-right: 2px solid #000;
+    border-bottom: 2px solid #005b5b;
+    border-right: 2px solid #005b5b;
     transform: rotate(45deg);
     margin: 10px;
     animation: scrollDownAnimation 1.5s infinite;
@@ -433,5 +433,12 @@ screen and (max-width: 480px) {
     padding: 0.4in;
     font-size: 12pt;
     color: #444
+  }
+}
+
+/* Arrow color for dark mode */
+@media (prefers-color-scheme: dark) {
+  .scroll-down-arrow {
+    color: #fff; /* Change to white in dark mode */
   }
 }

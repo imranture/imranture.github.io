@@ -324,7 +324,6 @@
       <div class="image-container">
         <img class="image-item" style="width: 90%;  display: block;margin-left: auto;margin-right: auto;"
           src="img/early-warning.png" />
-        <!-- <img class="image-item" src="img/flue-gas-analyzer.png" /> -->
       </div>
       </p>
       <p>
@@ -378,14 +377,31 @@
   / JavaScript code to remove 'no-scroll' class on first scroll or touch
   function enableScrolling() {
     document.body.classList.remove('no-scroll');
-    // Remove the event listeners so this only runs once
     window.removeEventListener('scroll', enableScrolling);
     window.removeEventListener('touchmove', enableScrolling);
   }
 
-  // Attach event listeners
   window.addEventListener('scroll', enableScrolling);
   window.addEventListener('touchmove', enableScrolling);
+</script>
+<script>
+  let lastScrollTop = 0; // Variable to store the last scroll position
+
+  function handleScroll() {
+    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScrollTop > lastScrollTop) {
+      // Scrolling down, hide the arrows
+      document.querySelector('.scroll-down-arrow').style.opacity = '0';
+    } else {
+      // Scrolling up, show the arrows
+      document.querySelector('.scroll-down-arrow').style.opacity = '1';
+    }
+
+    lastScrollTop = currentScrollTop;
+  }
+
+  window.addEventListener('scroll', handleScroll);
 </script>
 </body>
 
