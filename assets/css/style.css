@@ -380,11 +380,9 @@ screen and (max-width: 720px) {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    cursor: pointer;
-    animation: fade-in-out 2s infinite;
+
 
   }
-  
   
   .scroll-down-arrow span {
     display: block;
