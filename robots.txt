@@ -1,5 +1,6 @@
 User-agent: *
-Disallow: /img
+Disallow: /img/favicon.png
+Disallow: /img/favicon.ico
 
 User-agent: GPTBot
 Disallow: /
