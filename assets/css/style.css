@@ -187,7 +187,6 @@ img {
   max-width: 100%;
 }
 
-/* Container holding the images */
 .image-container {
   display: flex;
   justify-content: space-between;
@@ -195,21 +194,17 @@ img {
 
 }
 
-/* Individual image styling */
 .image-item {
   border: #c2c2c2 solid 2px;
   width: 50%;
-  /* Adjust the width as needed */
 }
 
 .image-item:first-child {
   width: 64%;
-  /* Make the first image wider */
 }
 
 .image-item:last-child {
   width: 34%;
-  /* Adjust the second image width */
 }
 
 img.profile {
