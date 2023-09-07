@@ -381,7 +381,10 @@ screen and (max-width: 720px) {
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
+    color: #000;
+    z-index: 9999; /* Ensures the arrow is above other elements */
   }
+  
   
   .scroll-down-arrow span {
     display: block;
