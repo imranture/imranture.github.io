@@ -381,8 +381,8 @@ screen and (max-width: 720px) {
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
-    color: #000;
-    z-index: 9999; /* Ensures the arrow is above other elements */
+    animation: fade-in-out 2s infinite;
+
   }
   
   
@@ -390,8 +390,8 @@ screen and (max-width: 720px) {
     display: block;
     width: 20px;
     height: 20px;
-    border-bottom: 2px solid #fff;
-    border-right: 2px solid #fff;
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
     transform: rotate(45deg);
     margin: 10px;
     animation: scrollDownAnimation 1.5s infinite;
@@ -411,16 +411,11 @@ screen and (max-width: 720px) {
   }
   
   @keyframes scrollDownAnimation {
-    0% {
+    0%, 100% {
       opacity: 0;
-      transform: rotate(45deg) translateY(0);
     }
     50% {
       opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      transform: rotate(45deg) translateY(-20px);
     }
   }
   
