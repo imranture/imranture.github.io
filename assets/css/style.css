@@ -149,6 +149,10 @@ a.weblink:hover {
   background-size: 0 3px, 100% 3px;
 }
 
+.email span.hidden {
+  display: none;
+}
+
 .email:hover span {
   display: none;
 }
@@ -157,8 +161,12 @@ a.weblink:hover {
   content: "Click once to copy the email address";
 }
 
-.email.copied::before {
-  content: none;
+.email.clicked::before {
+  content: "Copied!";
+}
+
+.email.clicked span {
+  display: none;
 }
 
 .wrapper {

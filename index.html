@@ -74,20 +74,27 @@
   <script>
     function copyURI(evt) {
       evt.preventDefault();
-      const originalText = evt.target.innerHTML; // Save the original text
-      evt.target.classList.add('copied'); // Add 'copied' class
-      navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
-        // Display "Copied!" message
-        evt.target.innerHTML = "Copied!";
-        // Revert back to original text after  second
+      const emailLink = evt.target.closest('.email');
+      const spanElement = emailLink.querySelector('span');
+
+      // Decode the HTML entities in the email address
+      const textArea = document.createElement('textarea');
+      textArea.innerHTML = emailLink.getAttribute('href').replace('mailto:', '');
+      const decodedEmail = textArea.value;
+
+      navigator.clipboard.writeText(decodedEmail).then(() => {
+        emailLink.classList.add('clicked');
+        spanElement.classList.add('hidden');
+
         setTimeout(() => {
-          evt.target.innerHTML = originalText;
-          evt.target.classList.remove('copied'); // Remove 'copied' class
-        }, 2000);
+          emailLink.classList.remove('clicked');
+          spanElement.classList.remove('hidden');
+        }, 1000);
       }, () => {
-        // clipboard write failed
+        /* clipboard write failed */
       });
-    }      
+    }
+
   </script>
 
   <script>
@@ -113,6 +120,8 @@
         <p class="links">Contact:<br>
           <a class="weblink email" id="emailLink" onclick="copyURI(event)"><span>Email</span></a>
         </p>
+
+
         <script language="JavaScript">
           const user = '&#105;&#109;&#114;&#097;&#110;';
           const site = '&#097;&#108;&#117;&#109;&#110;&#105;&period;&#114;&#117;&#116;&#103;&#101;&#114;&#115;&period;&#101;&#100;&#117;';
@@ -126,7 +135,7 @@
           <a class="sociallink weblink" href="https://500px.com/p/imranture" target="_blank">500px</a><br>
         </p>
       </div>
-      
+
     </header>
     <section>
       <h2 id="selected-projects">
