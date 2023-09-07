@@ -370,9 +370,19 @@
 
   <script src="assets/js/scale.fix.js"></script>
 
+<script>
+  / JavaScript code to remove 'no-scroll' class on first scroll or touch
+  function enableScrolling() {
+    document.body.classList.remove('no-scroll');
+    // Remove the event listeners so this only runs once
+    window.removeEventListener('scroll', enableScrolling);
+    window.removeEventListener('touchmove', enableScrolling);
+  }
 
-
-
+  // Attach event listeners
+  window.addEventListener('scroll', enableScrolling);
+  window.addEventListener('touchmove', enableScrolling);
+</script>
 </body>
 
 </html>
