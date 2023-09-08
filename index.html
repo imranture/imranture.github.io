@@ -393,7 +393,7 @@
 
     function handleScroll() {
       const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
+    
       if (currentScrollTop > lastScrollTop) {
         // Scrolling down, hide the arrows
         document.querySelector('.scroll-down-arrow').style.opacity = '0';
@@ -402,11 +402,13 @@
         if (currentScrollTop === 0) {
           document.querySelector('.scroll-down-arrow').style.opacity = '1';
         }
-
-        lastScrollTop = currentScrollTop;
       }
-
-      window.addEventListener('scroll', handleScroll);
+    
+      lastScrollTop = currentScrollTop;
+    }
+    
+    // Attach the event listener
+    window.addEventListener('scroll', handleScroll);    
   </script>
 
   <!-- Copy email address to clipboard -->
