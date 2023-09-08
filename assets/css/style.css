@@ -288,16 +288,30 @@ screen and (max-width: 960px) {
   footer {
     float: none;
     position: static;
-    width: auto
+    width: auto;
   }
 
   header {
-    padding-right: 320px
+    padding-right: 0;
+    margin: 0 auto;
+    max-width: 80%;
   }
 
   img.profile {
-    width: 50%;
-    margin-right: auto;
+    width: 20vw;
+    margin: auto;
+  }
+
+  p.links {
+    text-align: center;
+  }
+
+  a {
+    font-size: 1.1em;
+  }
+
+  header a small {
+    display: inline
   }
 
   section {
@@ -305,10 +319,6 @@ screen and (max-width: 960px) {
     border-width: 4px 0;
     padding: 20px 0;
     margin: 0 0 20px
-  }
-
-  header a small {
-    display: inline
   }
 
 }
@@ -319,6 +329,7 @@ screen and (max-width: 720px) {
     height: 100vh;
     overflow: hidden;
   }
+
   header {
     height: 100vh;
     width: 80%;
@@ -342,15 +353,15 @@ screen and (max-width: 720px) {
   }
 
   .image-size-90 {
-    max-width: 90% !important;  
+    max-width: 90% !important;
   }
 
   .image-size-80 {
-    max-width: 80% !important;  
+    max-width: 80% !important;
   }
 
   .image-size-70 {
-    max-width: 70% !important;  
+    max-width: 70% !important;
   }
 
   .wrapper p {
@@ -365,22 +376,15 @@ screen and (max-width: 720px) {
     text-align: center;
   }
 
-  h2 {
-    font-size: 1.65em;
-    margin: 30px 0 0px 0;
-  }
-
   img.profile {
-    width: 28vw;
+    width: 30vw;
     margin: auto;
   }
 
-  p.links {
-    text-align: center;
-  }
 
-  a {
-    font-size: 1.1em;
+  h2 {
+    font-size: 1.65em;
+    margin: 30px 0 0px 0;
   }
 
   code {
@@ -401,7 +405,7 @@ screen and (max-width: 720px) {
 
 
   }
-  
+
   .scroll-down-arrow span {
     display: block;
     width: 20px;
@@ -413,24 +417,27 @@ screen and (max-width: 720px) {
     animation: scrollDownAnimation 1.5s infinite;
     opacity: 0;
   }
-  
+
   .scroll-down-arrow span:nth-child(1) {
     animation-delay: 0s;
   }
-  
+
   .scroll-down-arrow span:nth-child(2) {
     animation-delay: 0.3s;
   }
-  
+
   @keyframes scrollDownAnimation {
-    0%, 100% {
+
+    0%,
+    100% {
       opacity: 0;
     }
+
     50% {
       opacity: 1;
     }
   }
-  
+
 
 }
 
@@ -453,6 +460,7 @@ screen and (max-width: 480px) {
 /* Arrow color for dark mode */
 @media (prefers-color-scheme: dark) {
   .scroll-down-arrow {
-    color: #fff; /* Change to white in dark mode */
+    color: #fff;
+    /* Change to white in dark mode */
   }
 }
