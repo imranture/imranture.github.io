@@ -32,8 +32,6 @@
   <link rel="me" href="https://deepnote.com/@imran">
   <link rel="me" href="https://www.flickr.com/photos/imranture/">
 
-
-
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
 
@@ -59,6 +57,8 @@
 <body>
   <div class="wrapper">
 
+
+    <!-- Profile Section -->
     <header id="profile-section">
       <div style="text-align: left">
         <a href="https://www.imranture.com/"><img class="profile" id="target" src="img/imranture1.png"
@@ -66,21 +66,22 @@
       </div>
 
       <h1>Imran Ture</h1>
+
       <div style="text-align: justify; text-justify: inter-word;">
-        <p>Data Scientist with over 9 years of global experience in academic and industry settings.</p>
+        <p>Data Scientist based in Melbourne, with over 9 years of global experience in academic and industry settings.</p>
+        
+        <!-- Contact Info -->
         <div id="contact-info">
           <p class="links">Contact:<br>
             <a class="weblink email" id="emailLink" onclick="copyURI(event)"><span>Email</span></a>
           </p>
-
-          <!-- Encrypt email address -->
           <script>
+            // Encrypt email address
             const user = '&#105;&#109;&#114;&#097;&#110;';
             const site = '&#097;&#108;&#117;&#109;&#110;&#105;&period;&#114;&#117;&#116;&#103;&#101;&#114;&#115;&period;&#101;&#100;&#117;';
             const emailLink = document.getElementById('emailLink');
             emailLink.href = user + '@' + site;
           </script>
-
           <p class="links">Connect:<br>
             <a class="sociallink weblink" href="https://www.linkedin.com/in/imranture/" target="_blank"
               rel="noopener noreferrer">LinkedIn</a><br>
@@ -90,14 +91,17 @@
               rel="noopener noreferrer">500px</a><br>
           </p>
         </div>
+
       </div>
+
       <div class="scroll-down-arrow">
         <span></span>
         <span></span>
-        <span></span>
       </div>
+
     </header>
 
+    <!-- Selected Projects Section -->
     <section id="selected-projects">
       <h2>
         Selected projects in <span style="white-space: nowrap ; color: #d9534f">data analytics</span>, <span
@@ -171,7 +175,7 @@
           <img class="image-item image-size-70" style="max-width:50%; width:auto; height:auto" src="img/e4-timestamper.png"
             alt="E4 Timestamper">
           <div>
-            <img class="image-item image-size-90" style="border: 0px; margin:20% 0 0 5%; max-width:95%; width:auto; height:auto"
+            <img class="image-item image-size-80" style="border: 0px; margin:20% 0 0 5%; max-width:95%; width:auto; height:auto"
               src="img/e4-wristband.jpg" alt="E4 Wristband">
             <small><a style="display:block; text-align: center" href="https://e4.empatica.com/e4-wristband"
                 target="_blank" rel="noopener noreferrer">Image source</a></small>
@@ -353,7 +357,7 @@
     </footer>
   </div>
 
-  <!-- Adjust viewport meta tag for iPhone to handle scaling during gestures -->
+  <!-- Adjust viewport meta tag for mobile to handle scaling during gestures -->
   <script src="assets/js/scale.fix.js"></script>
 
   <!-- Change profile image for each load -->
