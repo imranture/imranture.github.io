@@ -292,21 +292,21 @@
 
           An early warning system was developed that can enhance the safety and quality of drinking water in Turkiye by
           identifying hazardous contaminants such as E. coli O157:H7, anthrax, and ricin. Utilizing a hybrid approach
-          that
-          integrates various statistical methods like Z-score analysis, moving averages, control charts, and weighted
+          that integrates various statistical methods like Z-score analysis, moving averages, control charts, and
+          weighted
           voting, the system was designed to provide real-time monitoring and detect unexpected levels of multiple
           parameters, including temperature, pH, total organic carbon, conductivity, oxidation-reduction potential, free
-          chlorine, and dissolved oxygen. The multi-tiered approach allows for early intervention for minor deviations
-          and
-          immediate action for more severe anomalies. It has the potential for wide-ranging applications, not just
-          limited
-          to municipal water treatment plants but also extending to main storage and distribution lines, thereby serving
-          as a critical tool with the capability to safeguard public health and environmental integrity.</p>
+          chlorine, and dissolved oxygen. </p>
 
         <div class="image-container">
           <img class="image-item" style="width: 90%;  display: block;margin-left: auto;margin-right: auto;"
             src="img/early-warning-system.png" alt="Plots for Early Warning System">
         </div>
+        <p>The idea with employing a multi-tiered approach is to facilitate early intervention for minor deviations
+          while enabling immediate action for more severe anomalies. It has the potential for wide-ranging applications,
+          not just limited
+          to municipal water treatment plants but also extending to main storage and distribution lines, thereby serving
+          as a critical tool with the capability to safeguard public health and environmental integrity.</p>
         <p>
           <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
               src="https://img.shields.io/badge/Python-white?logo=Python" alt="Python"></a>
@@ -370,13 +370,12 @@
         random = Math.floor(Math.random() * array.length),
         target = document.getElementById("target");
       target.src = `${array[random]}`;
-      log(target);
     });
   </script>
 
   <!-- Enable scrolling by removing 'no-scroll' class from body -->
   <script>
-    / JavaScript code to remove 'no-scroll' class on first scroll or touch
+    // JavaScript code to remove 'no-scroll' class on first scroll or touch
     function enableScrolling() {
       document.body.classList.remove('no-scroll');
       window.removeEventListener('scroll', enableScrolling);
@@ -393,7 +392,7 @@
 
     function handleScroll() {
       const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
       if (currentScrollTop > lastScrollTop) {
         // Scrolling down, hide the arrows
         document.querySelector('.scroll-down-arrow').style.opacity = '0';
@@ -403,46 +402,46 @@
           document.querySelector('.scroll-down-arrow').style.opacity = '1';
         }
       }
-    
+
       lastScrollTop = currentScrollTop;
     }
-    
+
     // Attach the event listener
     window.addEventListener('scroll', handleScroll);    
   </script>
 
   <!-- Copy email address to clipboard -->
   <script>
-      function copyURI(evt) {
-        evt.preventDefault();
-        const emailLink = evt.target.closest('.email');
-        const spanElement = emailLink.querySelector('span');
+    function copyURI(evt) {
+      evt.preventDefault();
+      const emailLink = evt.target.closest('.email');
+      const spanElement = emailLink.querySelector('span');
 
-        // Decode the HTML entities in the email address
-        const textArea = document.createElement('textarea');
-        textArea.innerHTML = emailLink.getAttribute('href').replace('mailto:', '');
-        const decodedEmail = textArea.value;
+      // Decode the HTML entities in the email address
+      const textArea = document.createElement('textarea');
+      textArea.innerHTML = emailLink.getAttribute('href').replace('mailto:', '');
+      const decodedEmail = textArea.value;
 
-        navigator.clipboard.writeText(decodedEmail).then(() => {
-          emailLink.classList.add('clicked');
-          spanElement.classList.add('hidden');
+      navigator.clipboard.writeText(decodedEmail).then(() => {
+        emailLink.classList.add('clicked');
+        spanElement.classList.add('hidden');
 
-          setTimeout(() => {
-            emailLink.classList.remove('clicked');
-            spanElement.classList.remove('hidden');
-          }, 1500);
-        }, () => {
-          /* clipboard write failed */
-        });
-      }
+        setTimeout(() => {
+          emailLink.classList.remove('clicked');
+          spanElement.classList.remove('hidden');
+        }, 1500);
+      }, () => {
+        /* clipboard write failed */
+      });
+    }
   </script>
 
   <!-- Update copyright year automatically -->
   <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var currentYear = new Date().getFullYear();
-        document.getElementById("copyright-year").innerText = currentYear;
-      });
+    document.addEventListener("DOMContentLoaded", function () {
+      var currentYear = new Date().getFullYear();
+      document.getElementById("copyright-year").innerText = currentYear;
+    });
   </script>
 </body>
 
