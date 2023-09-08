@@ -2,5 +2,8 @@ User-agent: *
 Disallow: /img/favicon.png
 Disallow: /img/favicon.ico
 
+Sitemap: https://www.imranture.com/sitemap.xml
+
+# Custom User-agent Rule
 User-agent: GPTBot
 Disallow: /
