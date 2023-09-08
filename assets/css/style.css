@@ -336,6 +336,19 @@ screen and (max-width: 720px) {
     width: 100%;
     margin-bottom: 1em;
   }
+
+  .image-size-90 {
+    max-width: 90% !important;  
+  }
+
+  .image-size-80 {
+    max-width: 80% !important;  
+  }
+
+  .image-size-70 {
+    max-width: 70% !important;  
+  }
+
   .wrapper p {
     font-size: 1em;
   }
