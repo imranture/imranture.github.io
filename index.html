@@ -51,7 +51,6 @@
 
     gtag('config', 'UA-28280217-1');
   </script>
-
 </head>
 
 <body>
@@ -399,48 +398,49 @@
         // Scrolling down, hide the arrows
         document.querySelector('.scroll-down-arrow').style.opacity = '0';
       } else {
-        // Scrolling up, show the arrows
-        document.querySelector('.scroll-down-arrow').style.opacity = '1';
+        // Scrolling up, show the arrows only if at the top of the page
+        if (currentScrollTop === 0) {
+          document.querySelector('.scroll-down-arrow').style.opacity = '1';
+        }
+
+        lastScrollTop = currentScrollTop;
       }
 
-      lastScrollTop = currentScrollTop;
-    }
-
-    window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll);
   </script>
 
   <!-- Copy email address to clipboard -->
   <script>
-    function copyURI(evt) {
-      evt.preventDefault();
-      const emailLink = evt.target.closest('.email');
-      const spanElement = emailLink.querySelector('span');
+      function copyURI(evt) {
+        evt.preventDefault();
+        const emailLink = evt.target.closest('.email');
+        const spanElement = emailLink.querySelector('span');
 
-      // Decode the HTML entities in the email address
-      const textArea = document.createElement('textarea');
-      textArea.innerHTML = emailLink.getAttribute('href').replace('mailto:', '');
-      const decodedEmail = textArea.value;
+        // Decode the HTML entities in the email address
+        const textArea = document.createElement('textarea');
+        textArea.innerHTML = emailLink.getAttribute('href').replace('mailto:', '');
+        const decodedEmail = textArea.value;
 
-      navigator.clipboard.writeText(decodedEmail).then(() => {
-        emailLink.classList.add('clicked');
-        spanElement.classList.add('hidden');
+        navigator.clipboard.writeText(decodedEmail).then(() => {
+          emailLink.classList.add('clicked');
+          spanElement.classList.add('hidden');
 
-        setTimeout(() => {
-          emailLink.classList.remove('clicked');
-          spanElement.classList.remove('hidden');
-        }, 1500);
-      }, () => {
-        /* clipboard write failed */
-      });
-    }
+          setTimeout(() => {
+            emailLink.classList.remove('clicked');
+            spanElement.classList.remove('hidden');
+          }, 1500);
+        }, () => {
+          /* clipboard write failed */
+        });
+      }
   </script>
 
   <!-- Update copyright year automatically -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var currentYear = new Date().getFullYear();
-      document.getElementById("copyright-year").innerText = currentYear;
-    });
+      document.addEventListener("DOMContentLoaded", function () {
+        var currentYear = new Date().getFullYear();
+        document.getElementById("copyright-year").innerText = currentYear;
+      });
   </script>
 </body>
 
