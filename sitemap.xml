@@ -4,7 +4,7 @@
   <url>
     <loc>https://www.imranture.com/</loc>
     <lastmod>2023-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
@@ -12,7 +12,7 @@
   <url>
     <loc>https://www.imranture.com/#profile-section</loc>
     <lastmod>2023-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
@@ -20,7 +20,7 @@
   <url>
     <loc>https://www.imranture.com/#contact-info</loc>
     <lastmod>2023-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
@@ -28,7 +28,7 @@
   <url>
     <loc>https://www.imranture.com/#selected-projects</loc>
     <lastmod>2023-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
@@ -36,7 +36,7 @@
   <url>
     <loc>https://www.imranture.com/#deep-emotion-recognition</loc>
     <lastmod>2023-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
@@ -44,7 +44,7 @@
   <url>
     <loc>https://www.imranture.com/#e4-timestamper</loc>
     <lastmod>2023-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
@@ -52,7 +52,7 @@
   <url>
     <loc>https://www.imranture.com/#python-for-openintro</loc>
     <lastmod>2023-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
@@ -60,7 +60,7 @@
   <url>
     <loc>https://www.imranture.com/#bbl-physiodb</loc>
     <lastmod>2023-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
@@ -68,7 +68,7 @@
   <url>
     <loc>https://www.imranture.com/#early-warning-system</loc>
     <lastmod>2023-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
@@ -76,7 +76,7 @@
   <url>
     <loc>https://www.imranture.com/#durcalc</loc>
     <lastmod>2023-09-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>
