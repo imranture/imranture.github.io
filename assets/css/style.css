@@ -178,6 +178,20 @@ a.weblink:hover {
   margin: 0 auto
 }
 
+header {
+  width: 300px;
+  float: left;
+  position: fixed;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-align: center;
+}
+
+section {
+  width: 740px;
+  float: right;
+  padding-bottom: 50px;
+}
+
 code {
   font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
   color: #333
@@ -228,23 +242,9 @@ img.profile {
   padding: 5px;
 }
 
-header {
-  width: 300px;
-  float: left;
-  position: fixed;
-  -webkit-font-smoothing: subpixel-antialiased;
-  text-align: center;
-}
-
 strong {
   color: #222;
   font-weight: 700
-}
-
-section {
-  width: 740px;
-  float: right;
-  padding-bottom: 50px;
 }
 
 small {

@@ -1,6 +1,4 @@
 User-agent: *
-Disallow: /img/favicon.png
-Disallow: /img/favicon.ico
 
 Sitemap: https://www.imranture.com/sitemap.xml
 
