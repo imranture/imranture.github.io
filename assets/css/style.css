@@ -270,10 +270,10 @@ hr {
 }
 
 footer {
-  width: 270px;
+  width: auto;
   float: left;
   position: fixed;
-  bottom: 50px;
+  bottom: 0.5em;
   -webkit-font-smoothing: subpixel-antialiased
 }
 
