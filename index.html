@@ -134,12 +134,10 @@
         </div>
 
       </div>
-
       <div class="scroll-down-arrow">
         <span></span>
         <span></span>
       </div>
-
     </header>
 
     <!-- Selected Projects Section -->
@@ -416,8 +414,7 @@
   </script>
 
   <!-- Enable scrolling by removing 'no-scroll' class from body -->
-  <script>
-    // JavaScript code to remove 'no-scroll' class on first scroll or touch
+  <script defer>
     function enableScrolling() {
       document.body.classList.remove('no-scroll');
       window.removeEventListener('scroll', enableScrolling);
@@ -429,7 +426,7 @@
   </script>
 
   <!-- Show or hide scroll-down arrow based on scroll direction -->
-  <script>
+  <script defer>
     let lastScrollTop = 0; // Variable to store the last scroll position
 
     function handleScroll() {
@@ -448,12 +445,19 @@
       lastScrollTop = currentScrollTop;
     }
 
-    // Attach the event listener
     window.addEventListener('scroll', handleScroll);    
   </script>
 
+  <!-- Add smooth scrolling effect -->
+  <script defer>
+    document.querySelector('.scroll-down-arrow').addEventListener('click', function () {
+      const targetSection = document.getElementById('selected-projects');
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+
   <!-- Copy email address to clipboard -->
-  <script>
+  <script defer>
     function copyURI(evt) {
       evt.preventDefault();
       const emailLink = evt.target.closest('.email');
@@ -485,7 +489,7 @@
   </script>
 
   <!-- Update copyright year automatically -->
-  <script>
+  <script defer>
     document.addEventListener("DOMContentLoaded", function () {
       var currentYear = new Date().getFullYear();
       document.getElementById("copyright-year").innerText = currentYear;
