@@ -93,7 +93,7 @@
   </script>
 
   <!-- Check whether the device is a touchscreen device -->
-  <!-- <script src="/assets/js/detect-touch.js" defer></script> -->
+  <script src="/assets/js/detect-touch.js" defer></script>
 </head>
 
 <body>
@@ -375,7 +375,7 @@
           durations without any fuss.
         </p>
 
-        <p><img style="border: #c2c2c2 solid 2px; width:60%; display: block; margin-left: auto;margin-right: auto;"
+        <p><img style="border: #c2c2c2 solid 2px; width:65%; display: block; margin-left: auto;margin-right: auto;"
             src="/img/durcalc.png" alt="DurCalc : Hassle-Free Calculation of Date and Time Durations"></p>
 
         <p>
@@ -454,62 +454,33 @@
 
   <!-- Copy email address to clipboard -->
   <script>
-    // Flag to indicate if email has been copied
-let emailCopied = false;
+    function copyURI(evt) {
+      evt.preventDefault();
+      const emailLink = evt.target.closest('.email');
+      const spanElement = emailLink.querySelector('span');
 
-// Function to set the emailCopied flag to true
-function setEmailCopiedTrue() {
-  emailCopied = true;
-}
+      const textArea = document.createElement('textarea');
+      textArea.innerHTML = emailLink.getAttribute('href').replace('mailto:', '');
+      const decodedEmail = textArea.value;
 
-// Function to copy email
-function copyURI(evt) {
-  evt.preventDefault();
-  const emailLink = evt.target.closest('.email');
-  const spanElement = emailLink.querySelector('span');
+      navigator.clipboard.writeText(decodedEmail).then(() => {
+        emailLink.classList.add('clicked');
+        spanElement.classList.add('hidden');
+        emailLink.style.setProperty('--before-content', '"Copied!"');
 
-  const textArea = document.createElement('textarea');
-  textArea.innerHTML = emailLink.getAttribute('href').replace('mailto:', '');
-  const decodedEmail = textArea.value;
+        setTimeout(() => {
+          emailLink.style.setProperty('--before-content', `"${decodedEmail}"`);
 
-  navigator.clipboard.writeText(decodedEmail).then(() => {
-    emailLink.classList.add('clicked');
-    spanElement.classList.add('hidden');
-    emailLink.style.setProperty('--before-content', '"Copied!"');
-
-    // Set the emailCopied flag to true
-    setEmailCopiedTrue();
-
-    setTimeout(() => {
-      emailLink.style.setProperty('--before-content', `"${decodedEmail}"`);
-      setTimeout(() => {
-        emailLink.classList.remove('clicked');
-        spanElement.classList.remove('hidden');
-        emailLink.style.removeProperty('--before-content');
-      }, 4500);
-    }, 1500);
-  }, () => {
-    /* clipboard write failed */
-  });
-}
-
-// Function to detect touch devices
-const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-
-if (isTouchDevice) {
-  const emailLink = document.getElementById('emailLink');
-  
-  emailLink.addEventListener('touchstart', function() {
-    if (emailCopied) {
-      // Remove hover effect after 6 seconds (1500ms + 4500ms)
-      setTimeout(() => {
-        emailLink.blur();
-        // Reset the flag
-        emailCopied = false;
-      }, 6000);
+          setTimeout(() => {
+            emailLink.classList.remove('clicked');
+            spanElement.classList.remove('hidden');
+            emailLink.style.removeProperty('--before-content');
+          }, 4000);
+        }, 2000);
+      }, () => {
+        /* clipboard write failed */
+      });
     }
-  });
-}
 
   </script>
 
