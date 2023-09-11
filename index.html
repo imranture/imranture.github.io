@@ -468,6 +468,8 @@
         spanElement.classList.add('hidden');
         emailLink.style.setProperty('--before-content', '"Copied!"');
 
+        setEmailCopiedTrue();
+
         setTimeout(() => {
           emailLink.style.setProperty('--before-content', `"${decodedEmail}"`);
 
