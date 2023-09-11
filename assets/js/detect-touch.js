@@ -30,3 +30,6 @@ if (isTouchDevice) {
     }
   });
 }
+
+// Expose setEmailCopiedTrue to the global scope so it can be called from the HTML file
+window.setEmailCopiedTrue = setEmailCopiedTrue;
