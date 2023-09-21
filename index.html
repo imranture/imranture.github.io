@@ -104,7 +104,7 @@
     <!-- Profile Section -->
     <header id="profile-section">
       <div style="text-align: left">
-        <a href="https://www.imranture.com/"><img class="profile" id="theprofile" src="/img/imranture1.png"
+        <a href="https://www.imranture.com/"><img class="profile avatar" id="theimage" src="/img/imranture5.png"
             alt="Imran Ture Profile Picture"></a>
       </div>
 
@@ -112,8 +112,7 @@
 
       <div style="text-align: justify; text-justify: inter-word;">
         <div class="summary">
-          <p>Data Scientist based in Melbourne, with over 9 years of global experience in academic and industry
-            settings.
+          <p id="thebio">I love developing ideas and solutions.<br>Sometimes I travel.
           </p>
         </div>
         <!-- Contact Info -->
@@ -410,15 +409,15 @@
   <script src="/assets/js/scale.fix.js"></script>
 
   <!-- Change profile image for each load -->
-  <script>
+  <!-- <script>
     document.addEventListener("DOMContentLoaded", () => {
       const log = console.log,
         array = ["/img/imranture1.png", "/img/imranture5.png", "/img/imranture1.png", "/img/imranture5.png"],
         random = Math.floor(Math.random() * array.length),
-        target = document.getElementById("theprofile");
+        target = document.getElementById("theimage");
       target.src = `${array[random]}`;
     });
-  </script>
+  </script> -->
 
   <!-- Enable scrolling by removing 'no-scroll' class from body -->
   <script defer>
