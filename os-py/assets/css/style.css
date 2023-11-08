@@ -14,7 +14,7 @@ body {
 header {
     background-color: #dce4fd;
     background-image: linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+        linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
     background-size: 20px 20px;
     padding: 10px;
     text-align: center;
@@ -34,31 +34,34 @@ header p {
     font-size: 1.05em;
     font-weight: 300;
     text-align: center;
-    padding: 0% 9%;
-    line-height:1.5em;
+    padding: 0% 5%;
+    line-height: 1.5em;
 }
 
-  
+
 header p sup {
     vertical-align: super;
     font-size: 0.7em;
 }
 
 header a:link {
-    text-decoration: underline; 
-    color:inherit;
+    text-decoration: underline;
+    color: inherit;
 }
+
 header a:active {
-    text-decoration: none; 
-    color:inherit;
+    text-decoration: none;
+    color: inherit;
 }
+
 header a:visited {
-    text-decoration: none; 
-    color:inherit
+    text-decoration: none;
+    color: inherit
 }
+
 header a:hover {
-    text-decoration: none; 
-    color:#507cf7;
+    text-decoration: none;
+    color: #507cf7;
 }
 
 main {
@@ -67,8 +70,8 @@ main {
 }
 
 section {
-    max-width: 1200px; 
-    margin: 0 auto; 
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 20px;
 }
 
@@ -80,11 +83,11 @@ section {
 }
 
 .grid-item {
-    background-color: rgba(220,228,253, 0.5);
+    background-color: rgba(220, 228, 253, 0.5);
     background-blend-mode: overlay;
-    background-size: cover;  
-    background-position: center; 
-    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 25px 5px;
     margin: 10px;
     border: none;
@@ -94,12 +97,12 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 .grid-item:hover {
     transform: translateY(-5px);
-    box-shadow: 5px 5px 50px rgb(80,124,247, 1);
+    box-shadow: 5px 5px 50px rgb(80, 124, 247, 1);
     background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -115,10 +118,10 @@ section {
     letter-spacing: 1px;
     color: #18254a;
     text-shadow:
-    -1px -1px 0 #fff,  
-     1px -1px 0 #fff,
-    -1px  1px 0 #fff,
-     1px  1px 0 #fff;
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
     margin: 20px 0;
 }
 
@@ -149,7 +152,8 @@ footer {
     justify-content: center;
     align-items: center;
     height: auto;
-    padding: 10px 0;  /* Adds some vertical padding for better spacing */
+    padding: 10px 0;
+    /* Adds some vertical padding for better spacing */
 }
 
 /* Responsive Styles */
@@ -157,10 +161,10 @@ footer {
     .grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     header p {
         text-align: justify;
-        padding: 0% 9%;
-        line-height:1.3em;
+        line-height: 1.3em;
     }
 }
 
@@ -168,8 +172,13 @@ footer {
     .grid {
         grid-template-columns: 1fr;
     }
+
     header h1 {
         font-size: 2em;
     }
-    
+
+    header p {
+        padding: 0% 6%;
+
+    }
 }
