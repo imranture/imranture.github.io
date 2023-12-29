@@ -496,14 +496,10 @@
         emailLink.style.setProperty('--before-content', '"Copied!"');
 
         setTimeout(() => {
-          emailLink.style.setProperty('--before-content', `"${decodedEmail}"`);
-
-          setTimeout(() => {
-            emailLink.classList.remove('clicked');
-            spanElement.classList.remove('hidden');
-            emailLink.style.removeProperty('--before-content');
-          }, 4000);
-        }, 2000);
+          emailLink.classList.remove('clicked');
+          spanElement.classList.remove('hidden');
+          emailLink.style.removeProperty('--before-content');
+        }, 3000);
       }, () => {
         /* clipboard write failed */
       });
