@@ -9,11 +9,11 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
 header {
-    background-color: #f0f6f4;
-    background-image: linear-gradient(45deg, #ebe9f0 25%, transparent 25%), linear-gradient(-45deg, #ebe9f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ebe9f0 75%), linear-gradient(-45deg, transparent 75%, #e6f0ed 75%);
+    background-color: #fff;
+    background-image: repeating-linear-gradient(45deg, #d7d3e1, #d7d3e1 5px, #dbd7e4 5px, #dbd7e4 15px);
     background-size: 20px 20px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;    
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ddd;
@@ -69,7 +69,7 @@ section {
     margin: 0 auto;
 }
 .grid-item {
-    background-color: rgba(190, 190, 190, 0.95);
+    background-color: rgba(239, 237, 243, 0.6);
     background-blend-mode: overlay;
     background-size: cover;
     background-position: center;
@@ -97,8 +97,8 @@ section {
     font-size: 1.5em;
     text-align: center;
     font-weight: 700;
-    letter-spacing: 1.2px;
-    color: #382569;
+    letter-spacing: 0.1em;
+    color: #160e2a;
     text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
     margin: 20px 0;
 }
