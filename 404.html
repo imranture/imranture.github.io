@@ -42,6 +42,15 @@
           width: 100%;
           text-align: center;
         }
+        .meme {
+          margin: 1em 0 1em;
+        }
+        .meme img {
+          max-width: 600px;
+          max-height: 600px;
+          width: auto;
+          height: auto;
+        }
       </style>
       
 </head>
@@ -49,8 +58,11 @@
 <body>
     <div class="content">
         <h1>404 - Page Not Found</h1>
-        <p>Oops! The page you're looking for doesn't exist.</p>
-        <a href="/">Go back to the homepage</a>
+        <h2>Oops! The page you're looking for doesn't exist.</h2>
+        <div class="meme">
+            <img id="memeImage" alt="404 meme">
+        </div>
+        <p><a href="/">Go back</a></p>
     </div>
 
     <footer>
@@ -62,6 +74,17 @@
         document.addEventListener("DOMContentLoaded", function () {
             var currentYear = new Date().getFullYear();
             document.getElementById("copyright-year").innerText = currentYear;
+
+            var gifs = [
+                'https://media.giphy.com/media/hU2z6FqL3eh6rjqiHA/giphy.gif',
+                'https://media.giphy.com/media/Y2z4kPLUEDddnAjXwh/giphy.gif',
+                'https://media.giphy.com/media/W6G6DU0Ten6dLYAD4t/giphy.gif',
+                'https://media.giphy.com/media/ZcLIs0dScqyW2jz3QN/giphy.gif',
+                'https://media.giphy.com/media/RIwnj1b1k1zT58SHqU/giphy.gif'
+            ];
+
+            var randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+            document.getElementById('memeImage').src = randomGif;
         });
     </script>
 </body>

@@ -1,6 +1,6 @@
 body {
     font-family: Nunito, sans-serif;
-    background-color: #044040;
+    background-color: #195953;
     margin: 0;
     padding: 0;
 }
@@ -21,12 +21,12 @@ header {
 header h1 {
     font-size: 2.3em;
     font-weight: 900;
-    color: #004848;
+    color: #195953;
     letter-spacing: 2px;
     margin: 0.75em 0 0.5em 0;
 }
 header p {
-    color: #004848;
+    color: #195953;
     font-size: 1.05em;
     font-weight: 300;
     text-align: center;
@@ -98,7 +98,7 @@ section {
     text-align: center;
     font-weight: 700;
     letter-spacing: 1px;
-    color: #004848;
+    color: #195953;
     text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
     margin: 20px 0;
 }
@@ -108,11 +108,11 @@ section {
 }
 .links a {
     text-decoration: none;
-    color: #004848;
+    color: #195953;
     font-size: 1.05em;
     background-color: #fff;
     padding: 5px 10px;
-    border: 1px solid #004848;
+    border: 1px solid #195953;
     border-radius: 4px;
     transition: background-color 0.3s;
 }
