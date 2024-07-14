@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${project.tags.map(tag => `<span>${tag}</span>`).join(' ')}
                     </div> -->
                     <p>${project.shortDescription}</p>
-                    <a class="weblink" href="../page/project.html?id=${id}#project-title">Read more →</a>
+                    <a class="weblink" href="../page/project.html?id=${id}#project-title">Read more &#8594;</a>
                 </div>
             `;
             projectListContainer.innerHTML += projectItem;
@@ -183,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(data, 'text/html');
+                
                 const narrowContent = doc.querySelector('#narrow-column').innerHTML;
                 document.getElementById('narrow-column').innerHTML = narrowContent;
 
@@ -195,20 +196,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     const content = `
                         <title>${project.title}</title>
                         <h1 id="project-title">${project.title}</h1>
+                        <h4>Description</h4>
+                        <p class="project-description">${project.description}</p>
                         <div id="image-container">
                             <img id="primary-image" src="${project.primary_image}" alt="${project.title}">
                             <img id="secondary-image" src="${project.secondary_image}" alt="">
                         </div>  
                         ${project.links.filter(link => link).length ? `
-                        <h4>Project links</h4>
+                        <h4>Links</h4>
                         <div class="project-links">
                             ${project.links.map(link => `<a class="weblink" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a>`).join(' ')} </div>` : ''}
                         <h4>Related Topics</h4>
                         <div class="tags">
                             ${project.tags.map(tag => `<span>${tag}</span>`).join(' ')}
                         </div>
-                        <h4>Description</h4>
-                        <p class="project-description">${project.description}</p>
                     `;
                     document.getElementById('project-content').innerHTML = content;
 
