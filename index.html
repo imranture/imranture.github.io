@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
   <!-- Basic Info -->
   <title>Imran Ture</title>
@@ -81,31 +80,10 @@
 
   <!-- Preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/assets/css/style.min.css">
-
-  <!-- Google Analytics -->
-  <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-28280217-1"></script>
-  <script defer>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-28280217-1');
-  </script>
-
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-KZMPBG9N');
-  </script>
 
   <!-- Check whether the device is a touchscreen device -->
   <script src="/assets/js/detect-touch.js" defer></script>
@@ -141,8 +119,7 @@
             emailLink.href = user + '@' + site;
           </script>
           <p class="links">
-            <a class="sociallink weblink" href="https://www.linkedin.com/in/imranture/" target="_blank"
-              rel="noopener noreferrer">LinkedIn</a>
+            <a class="sociallink weblink" href="https://www.linkedin.com/in/imranture/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </p>
         </div>
 
@@ -157,19 +134,26 @@
     <!-- Selected Projects Section -->
     <section id="selected-projects">
       <h2>
-        Selected Projects in <span style="white-space: nowrap ; color: #d9534f">Data Analytics</span>, <span
-          style="white-space: nowrap ; color: #4264aa">Machine Learning</span>,
-        and <span style="white-space: nowrap ; color:#84437e">Software Development</span>
-      </h2>
-
-      <hr>
-
+        Selected Projects in <span style="white-space: nowrap ; color: #d9534f">data analytics</span>, <span
+          style="white-space: nowrap ; color: #4264aa">machine learning</span>,
+        and <span style="white-space: nowrap ; color:#84437e">software development</span>
+      </h2>      
+      
       <!-- Deep Emotion Recognition Project -->
       <article id="deep-emotion-recognition">
         <h3>
           Deep Emotion Recognition using Wearable Sensors
         </h3>
-
+        <p class="badges">
+          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/python-3670A0?&logo=python&logoColor=ffdd54" alt="Python"></a>
+          <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?&logo=TensorFlow&logoColor=white" alt="TensorFlow"></a>
+          <a href="https://keras.io/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/Keras-%23D00000.svg?&logo=Keras&logoColor=white" alt="Keras"></a>
+          <a href="https://scikit-learn.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/scikit--learn-%23F7931E.svg?&logo=scikit-learn&logoColor=white" alt="scikit-learn"></a>
+        </p>
         <p>
           Emotion recognition is an emerging interdisciplinary field that integrates methodologies from affective
           computing, sentiment analysis, signal processing, and machine learning. This project focuses on classifying
@@ -181,9 +165,9 @@
           states.
         </p>
         <div class="image-container">
-          <img class="image-item image-size-L" style="max-height: 250px;" src="/img/model-accuracy.png"
+          <img class="image-item" style="width: 100%; max-height: 250px;" src="/img/model-accuracy.png"
             alt="Model accuracy plot">
-          <img class="image-item image-size-S" style="max-height: 250px;" src="/img/e4-sensors.jpg"
+          <img class="image-item" style="width: 100%; max-height: 250px;" src="/img/e4-sensors.jpg"
             alt="E4 Wristband Sensors">
         </div>
         <p>
@@ -195,20 +179,6 @@
           contribution to the development of real-time affective computing systems that could be integrated into future
           generations of a wide range of wearable products, from smartwatches to health monitors.
         </p>
-
-        <p>
-          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/Python-ddd?logo=Python" alt="Python"></a>
-          <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/TensorFlow-ddd?logo=TensorFlow" alt="TensorFlow"></a>
-          <a href="https://keras.io/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/Keras-ddd?logo=Keras&logoColor=D00000" alt="Keras"></a>
-          <a href="https://scikit-learn.org/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/sklearn-ddd?logo=scikit-learn" alt="scikit-learn"></a>
-        </p>
-        <p>
-          <!-- <a class="weblink " href="https://github.com/imranture/" target="_blank" rel="noopener noreferrer">More info on GitHub</a> -->
-        </p>
       </article>
 
       <hr>
@@ -216,40 +186,33 @@
       <!-- E4 TimeStamper Project -->
       <article id="e4-timestamper">
         <h3>
-          E4 TimeStamper : A GUI application for automatic timestamping and analysis of physiological signals collected
-          from Empatica E4 wristbands
+          E4 TimeStamper: GUI App for Automatic Timestamping and Analysis of Empatica E4 Data
         </h3>
+        <p class="badges">
+          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/python-3670A0?&logo=python&logoColor=ffdd54" alt="Python"></a>
+          <a href="https://docs.python.org/3/library/tkinter.html" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/Tkinter-ddd?logo=python&logoColor=ffdd54" alt="tkinter"></a>
+        </p>
         <p>
           <span style="white-space: nowrap">E4 TimeStamper</span> is a user-friendly GUI application designed to
           facilitate researchers in adding timestamps to
           physiological signal data obtained from <span style="white-space: nowrap">Empatica E4</span> wristbands. This
           tool allows for seamless extraction and
           precise timestamping of files, all in accordance with the chosen timezone and preferred date & time format.
-        </p>
-        <div class="image-container">
-          <img class="image-item" style="max-width: 333px;" src="/img/e4-timestamper.png" alt="E4 Timestamper">
-          <div>
-            <img class="image-item" style="max-width: 275px; border: 0px;" src="/img/e4-wristband.jpg"
-              alt="E4 Wristband">
-            <small><a style="display:block; text-align: center" href="https://e4.empatica.com/e4-wristband"
-                target="_blank" rel="noopener noreferrer">Image source</a></small>
-          </div>
-        </div>
-        <p> <span style="white-space: nowrap">E4 TimeStamper</span>, adopted and implemented by researchers worldwide in
+          <span style="white-space: nowrap">E4 TimeStamper</span>, adopted and implemented by researchers worldwide in
           their <span style="white-space: nowrap">studies,<sup><a
                 href="https://www.igi-global.com/gateway/article/full-text-html/313181&riu=true" target="_blank"
                 rel="noopener noreferrer">1</a></sup></span> is available for both Windows and Mac
           operating systems.
-          For more information on how to download and use the app, please go to the GitHub page.</p>
-
-
-        <p>
-          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/Python-ddd?logo=Python" alt="Python"></a>
-          <a href="https://docs.python.org/3/library/tkinter.html" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/Tkinter-ddd?logo=python&logoColor=ffdd54" alt="tkinter"></a>
         </p>
-
+        <div class="image-container" style="display: flex;">
+          <img class="image-item" style="max-width: 70%; max-height: 400px; margin-right: 10px;" src="/img/e4-timestamper.png" alt="E4 Timestamper">
+          <div>
+            <img class="image-item" style="max-width: 90%; border: 0px;" src="/img/e4-wristband.jpg" alt="E4 Wristband">
+            <small><a style="display: block; text-align: center;" href="https://e4.empatica.com/e4-wristband" target="_blank" rel="noopener noreferrer">Image source</a></small>
+          </div>
+        </div>
         <div>
           <a class="weblink " href="https://github.com/imranture/E4-TimeStamper" target="_blank"
             rel="noopener noreferrer">View on GitHub</a>
@@ -263,6 +226,20 @@
         <h3>
           Python Implementation of OpenIntro Statistics Labs
         </h3>
+        <p class="badges">
+          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/python-3670A0?&logo=python&logoColor=ffdd54" alt="Python"></a>
+          <a href="https://www.r-project.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/R-276DC3?&logo=r&logoColor=white" alt="R"></a>
+          <a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=fff" alt="Jupyter Notebook"></a>
+          <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/HTML-e34c26?&logo=html5&logoColor=white" alt="HTML"></a>
+          <a href="https://www.w3.org/Style/CSS/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/CSS-563d7c?&&logo=css3&logoColor=white" alt="CSS"></a> 
+          <a href="https://ecma-international.org/publications-and-standards/standards/ecma-262/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/JavaScript-F7DF1E?&logo=javascript&logoColor=black" alt="JavaScript"></a>
+        </p>
         <p>
           We developed the Python labs for <a href="https://www.openintro.org/book/os/" target="_blank"
             rel="noopener noreferrer">OpenIntro
@@ -271,7 +248,6 @@
           Colleges to the Ivy League)
           around
           the world, to promote the understanding and application of statistical data analysis using Python.
-
         </p>
         <div class="image-container">
           <a href="https://openintro.info/stat/labs.php?stat_lab_software=Python%20(beta)" target="_blank"
@@ -284,15 +260,6 @@
         <p>
           The labs are officially available on the OpenIntro Statistics website.
         </p>
-        <p>
-          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/Python-ddd?logo=Python" alt="Python"></a>
-          <a href="https://www.r-project.org/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/R-ddd?logo=R&logoColor=276DC3" alt="R"></a>
-          <a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/Jupyter-ddd?logo=Jupyter" alt="Jupyter Notebook"></a>
-        </p>
-
         <div style="display:inline-block; margin-right:10px;">
           <a class="weblink " href="https://www.imranture.com/os-py/" target="_blank" rel="noopener noreferrer">View
             the
@@ -313,6 +280,20 @@
         <h3>
           BBL-PhysioDB : Data Hub for Entrepreneurship Assessment and Development Workshop
         </h3>
+        <p class="badges">
+          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/python-3670A0?&logo=python&logoColor=ffdd54" alt="Python"></a>
+          <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/SQL-4169E1?&logo=postgresql&logoColor=white" alt="PostgreSQL"></a>
+          <a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/Django-092E20?&logo=django&logoColor=white" alt="Django"></a>
+          <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/HTML-e34c26?&logo=html5&logoColor=white" alt="HTML"></a>
+          <a href="https://www.w3.org/Style/CSS/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/CSS-563d7c?&&logo=css3&logoColor=white" alt="CSS"></a> 
+          <a href="https://ecma-international.org/publications-and-standards/standards/ecma-262/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/JavaScript-F7DF1E?&logo=javascript&logoColor=black" alt="JavaScript"></a>
+        </p>
         <p>
           BBL-PhysioDB is a robust database, developed with Django and PostgreSQL, for the Entrepreneurship Assessment
           and Development Workshop studies conducted at RMIT's
@@ -326,7 +307,7 @@
         <div class="image-container">
           <img class="image-item image-size-L" style="height: 400px;" src="/img/bbl-physiodb.png" alt="BBL-PhysioDB">
           <div>
-            <img class="image-item image-size-S" style="height: 400px; margin:5% 0 0 5%;" src="/img/rmit-bbl.jpg"
+            <img class="image-item image-size-S" style="height: 400px; margin:5% 0 0 0;" src="/img/rmit-bbl.jpg"
               alt="RMIT Behavioural Business Lab">
             <small><a style="display:block; text-align: center"
                 href="https://www.rmit.edu.au/about/schools-colleges/economics-finance-and-marketing/research/research-groups/behavioural-business-lab"
@@ -339,206 +320,194 @@
           Researchers can seamlessly query the database to explore findings from BBL studies. The database scheme can be
           leveraged by other researchers to address their own research needs.
         </p>
+      </article>
 
-        <p>
-          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/Python-ddd?logo=Python" alt="Python"></a>
-          <a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/Django-ddd?logo=Django&logoColor=092E20" alt="Django"></a>
-          <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer"><img
-              src="https://img.shields.io/badge/SQL-ddd?logo=PostgreSQL" alt="PostgreSQL"></a>
+      <hr>
+
+      <!-- Forecasting Translation Project -->
+      <article id="forecasting-translation">
+        <h3>
+          Translating <i>Forecasting: Principles and Practice</i>
+        </h3>
+        <p class="badges">
+          <a href="https://www.r-project.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/R-276DC3?&logo=r&logoColor=white" alt="R"></a>
+          <a href="https://docs.google.com/spreadsheets/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/Sheets-34A853?logo=googlesheets&logoColor=fff"
+              alt="Google Sheets"></a>
         </p>
+        <p>
+          The initiative involves translating <a href="https://otexts.com/fpp3/" target="_blank" rel="noopener noreferrer">Forecasting: Principles and Practice (3rd ed)</a> to broaden the accessibility and understanding of forecasting principles among Turkish speakers. Alongside this effort, a
+          suite of documents has been developed to facilitate the collaborative process among translation teams,
+          ensuring efficient workflows and high-quality educational outcomes.
+        </p>
+        <div class="image-container">
+          <img class="image-item"
+              style="width: 100%; height: auto;" src="/img/fpp3.jpg"
+              alt="Front Cover - Forecasting: Principles and Practice (3rd ed)">
+        </div>
+        <div style="display:inline-block; margin-right:10px;">
+          <a class="weblink " href="https://otexts.com/fpptr/" target="_blank" rel="noopener noreferrer">View
+            the
+            translation (in progress)</a>
+        </div>
+      </article>
 
-        <hr>
+      <hr>
 
-        <!-- Forecasting Translation Project -->
-        <article id="forecasting-translation">
-          <h3>
-            Translation Initiative for Forecasting: Principles and Practice
-          </h3>
-          <p>
-            The initiative involves translating "Forecasting: Principles and Practice (3rd ed)" to broaden the
-            accessibility and understanding of forecasting principles among Turkish speakers. Alongside this effort, a
-            suite of documents has been developed to facilitate the collaborative process among translation teams,
-            ensuring efficient workflows and high-quality educational outcomes.
-          </p>
-          <div class="image-container">
-            <a href="https://otexts.com/fpp3/" target="_blank" rel="noopener noreferrer"><img class="image-item"
-                style="max-width: 90%; margin-left: auto; margin-right: auto;" src="/img/fpp3.jpg"
-                alt="Front Cover - Forecasting: Principles and Practice (3rd ed)"></a>
-          </div>
-          <p>
-            <a href="https://www.r-project.org/" target="_blank" rel="noopener noreferrer"><img
-                src="https://img.shields.io/badge/R-ddd?logo=R&logoColor=276DC3" alt="R"></a>
-            <a href="https://docs.google.com/spreadsheets/" target="_blank" rel="noopener noreferrer"><img
-                src="https://img.shields.io/badge/Sheets-ddd?logo=googlesheets&logoColor=34A853"
-                alt="Google Sheets"></a>
-          </p>
+      <!-- Melbourne Property Sales Project -->
+      <article id="melbourne-property-sales">
+        <h3>
+          Melbourne Property Sales: Visual Exploration of Housing Market Dynamics
+        </h3>
+        <p class="badges">
+          <a href="https://www.tableau.com" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/Tableau-E97627?&logo=Tableau&logoColor=white" alt="Tableau"></a>
+          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/python-3670A0?&logo=python&logoColor=ffdd54" alt="Python"></a>
+          <a href="https://www.kaggle.com" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/Kaggle-20BEFF?logo=kaggle&logoColor=fff" alt="kaggle"></a>
+        </p>
+        <p>
+          Melbourne Property Sales is an interactive dashboard with a detailed visual overview of the city's real
+          estate
+          trends, based on historical sales data. The dashboard offers an range of visualizations, including average
+          property prices over time, distributions of key property features, and regional price comparisons for
+          various housing types. These visualizations highlight patterns on the Melbourne housing market dynamics, such as seasonal pricing trends and the common characteristics of sold properties. 
+        </p>
+        <div class="image-container">
+          <a href="https://public.tableau.com/app/profile/imranture/viz/MelbournePropertySales_17051684571690/Dashboard"
+            target="_blank" rel="noopener noreferrer"><img class="image-item"
+            style="width: 100%; height: auto;" src="/img/melbourne-property-sales.png"
+              alt="Tableau Dashboard for Melbourne Property Sales"></a>
+        </div>
+        <div style="display:inline-block; margin-right:10px;">
+          <a class="weblink "
+            href="https://public.tableau.com/app/profile/imranture/viz/MelbournePropertySales_17051684571690/Dashboard"
+            target="_blank" rel="noopener noreferrer">View
+            the
+            Tableau</a>
+        </div>
+        |
+        <div style="display:inline-block; margin-left:10px;">
+          <a class="weblink " href="https://github.com/imranture/MelbournePropertySales" target="_blank"
+            rel="noopener noreferrer">View on
+            GitHub</a>
+        </div>
+      </article>
 
-          <div style="display:inline-block; margin-right:10px;">
-            <a class="weblink " href="https://otexts.com/fpptr/" target="_blank" rel="noopener noreferrer">View
-              the
-              translation (in progress)</a>
-          </div>
-        </article>
+      <hr>
 
-        <hr>
+      <!-- pdf4u Project -->
+      <article id="pdf4u">
+        <h3>
+          pdf4u: Web-Based PDF Management Toolkit App
+        </h3>
+        <p class="badges">
+          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/python-3670A0?&logo=python&logoColor=ffdd54" alt="Python"></a>
+          <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/Flask-000000?&logo=flask&logoColor=white" alt="Flask"></a>
+          <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/HTML-e34c26?&logo=html5&logoColor=white" alt="HTML"></a>
+          <a href="https://www.w3.org/Style/CSS/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/CSS-563d7c?&&logo=css3&logoColor=white" alt="CSS"></a> 
+          <a href="https://ecma-international.org/publications-and-standards/standards/ecma-262/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/JavaScript-F7DF1E?&logo=javascript&logoColor=black" alt="JavaScript"></a>
+        </p>
+        <p>
+          <a href="https://pdf4u.onrender.com/" target="_blank" rel="noopener noreferrer">pdf4u</a>
+          is a versatile web-based PDF management toolkit app designed to handle a wide range of PDF operations, including merging, splitting, rotating, and extracting pages from PDF files. Developed using Flask for the backend, the application provides a user-friendly interface built with HTML, CSS, and JavaScript. Users can easily upload and manipulate files using an intuitive drag-and-drop feature. The toolkit is designed for extensibility, with additional functionalities like converting images to PDFs and more in development. This project demonstrates full-stack development skills, utilizing Python, Flask, and modern web technologies to create an efficient and robust tool for PDF solutions.
+        </p>
+        <p><img class="image-item" style="width: 100%; height: auto;"
+            src="/img/pdf4u.png" alt="pdf4u: The Ultimate Free Toolkit for Your PDF Needs"></p>
+        <div style="display:inline-block; margin-right:10px;">
+          <a class="weblink "
+            href="https://pdf4u.onrender.com/"
+            target="_blank" rel="noopener noreferrer">Visit the app</a>
+        </div>
+        |
+        <div style="display:inline-block; margin-left:10px;">
+          <a class="weblink " href="https://github.com/imranture/pdf4u" target="_blank"
+            rel="noopener noreferrer">View on
+            GitHub</a>
+        </div>
+      </article>
 
-        <!-- Melbourne Property Sales Project -->
-        <article id="melbourne-property-sales">
-          <h3>
-            Melbourne Property Sales: A Visual Exploration of Housing Market Dynamics
-          </h3>
-          <p>
-            Melbourne Property Sales is an interactive dashboard with a detailed visual overview of the city's real
-            estate
-            trends, based on historical sales data. The dashboard offers an range of visualizations, including average
-            property prices over time, distributions of key property features, and regional price comparisons for
-            various housing types.
-          </p>
+      <hr>
 
-          <div class="image-container">
-            <a href="https://public.tableau.com/app/profile/imranture/viz/MelbournePropertySales_17051684571690/Dashboard"
-              target="_blank" rel="noopener noreferrer"><img class="image-item"
-                style="max-width: 80%; margin-left: auto; margin-right: auto;" src="/img/melbourne-property-sales.png"
-                alt="Tableau Dashboard for Melbourne Property Sales"></a>
-          </div>
-          <p>
-            These visualizations highlight patterns on the Melbourne housing market dynamics, such as seasonal pricing
-            trends and the common characteristics of sold properties. For further analysis and insights, please refer to
-            the links provided.
-          </p>
-          <p>
-            <a href="https://www.tableau.com" target="_blank" rel="noopener noreferrer"><img
-                src="https://img.shields.io/badge/Tableau-ddd?logo=Tableau" alt="Tableau"></a>
-            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
-                src="https://img.shields.io/badge/Python-ddd?logo=Python" alt="Python"></a>
-            <a href="https://www.kaggle.com" target="_blank" rel="noopener noreferrer"><img
-                src="https://img.shields.io/badge/kaggle-ddd?logo=Kaggle" alt="kaggle"></a>
-          </p>
+      <!-- Early Warning System for Drinking Water Safety and Quality Project -->
+      <article id="early-warning-system">
+        <h3>
+          Advancing Water Safety : Early Warning System to Monitor and Evaluate Drinking Water Quality
+        </h3>
+        <p class="badges">
+          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/python-3670A0?&logo=python&logoColor=ffdd54" alt="Python"></a>
+          <a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/Excel-217346?&logo=microsoft-excel&logoColor=white" alt="MS Excel"></a>
+        </p>
+        <p>
+          An early warning system was developed that can enhance the safety and quality of drinking water in Turkiye
+          by
+          identifying hazardous contaminants such as E. coli O157:H7, anthrax, and ricin. Utilizing a hybrid approach
+          that integrates various statistical methods like Z-score analysis, moving averages, control charts, and
+          weighted
+          voting, the system was designed to provide real-time monitoring and detect unexpected levels of multiple
+          parameters, including temperature, pH, total organic carbon, conductivity, oxidation-reduction potential,
+          free
+          chlorine, and dissolved oxygen.
+        </p>
+        <div class="image-container">
+          <img class="image-item" style="width: 100%; height: auto;"
+            src="/img/early-warning-system.png" alt="Plots for Early Warning System">
+        </div>
+        <p>The idea with employing a multi-tiered approach is to facilitate early intervention for minor deviations
+          while enabling immediate action for more severe anomalies. It has the potential for wide-ranging
+          applications,
+          not just limited
+          to municipal water treatment plants but also extending to main storage and distribution lines, thereby
+          serving
+          as a critical tool with the capability to safeguard public health and environmental integrity.
+        </p>
+      </article>
 
+      <hr>
 
-          <div style="display:inline-block; margin-right:10px;">
-            <a class="weblink "
-              href="https://public.tableau.com/app/profile/imranture/viz/MelbournePropertySales_17051684571690/Dashboard"
-              target="_blank" rel="noopener noreferrer">View
-              the
-              Tableau</a>
-          </div>
-          |
-          <div style="display:inline-block; margin-left:10px;">
-            <a class="weblink " href="https://github.com/imranture/MelbournePropertySales" target="_blank"
-              rel="noopener noreferrer">View on
-              GitHub</a>
-          </div>
-        </article>
-
-        <hr>
-
-        <!-- Early Warning System for Drinking Water Safety and Quality Project -->
-        <article id="early-warning-system">
-          <h3>
-            Advancing Water Safety : An Early Warning System to Monitor and Evaluate Drinking Water Quality
-          </h3>
-          <p>
-
-            An early warning system was developed that can enhance the safety and quality of drinking water in Turkiye
-            by
-            identifying hazardous contaminants such as E. coli O157:H7, anthrax, and ricin. Utilizing a hybrid approach
-            that integrates various statistical methods like Z-score analysis, moving averages, control charts, and
-            weighted
-            voting, the system was designed to provide real-time monitoring and detect unexpected levels of multiple
-            parameters, including temperature, pH, total organic carbon, conductivity, oxidation-reduction potential,
-            free
-            chlorine, and dissolved oxygen. </p>
-
-          <div class="image-container">
-            <img class="image-item" style="max-width: 80%; margin-left: auto; margin-right: auto;"
-              src="/img/early-warning-system.png" alt="Plots for Early Warning System">
-          </div>
-          <p>The idea with employing a multi-tiered approach is to facilitate early intervention for minor deviations
-            while enabling immediate action for more severe anomalies. It has the potential for wide-ranging
-            applications,
-            not just limited
-            to municipal water treatment plants but also extending to main storage and distribution lines, thereby
-            serving
-            as a critical tool with the capability to safeguard public health and environmental integrity.</p>
-          <p>
-            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
-                src="https://img.shields.io/badge/Python-ddd?logo=Python" alt="Python"></a>
-            <a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" rel="noopener noreferrer"><img
-                src="https://img.shields.io/badge/Excel-ddd?logo=Microsoft-Excel&logoColor=217346" alt="MS Excel"></a>
-          </p>
-
-          <p>
-          </p>
-        </article>
-
-        <hr>
-
-        <!-- DurCalc Project -->
-        <article id="durcalc">
-          <h3>
-            DurCalc : Hassle-Free Calculation of Date and Time Durations
-          </h3>
-          <p>
-            <a href="https://durcalc.streamlit.app/" target="_blank" rel="noopener noreferrer">DurCalc</a>
-            is a web app designed to
-            effortlessly calculate the duration between dates and/or times.
-            With its user-friendly interface and intuitive functionality, DurCalc streamlines the process and calculates
-            durations without any fuss.
-          </p>
-
-          <p><img class="image-item image-item-responsive" style="margin-left: auto; margin-right: auto;"
-              src="/img/durcalc.png" alt="DurCalc : Hassle-Free Calculation of Date and Time Durations"></p>
-
-          <p>
-            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
-                src="https://img.shields.io/badge/Python-ddd?logo=Python" alt="Python"></a>
-            <a href="https://streamlit.io/" target="_blank" rel="noopener noreferrer"><img
-                src="https://img.shields.io/badge/streamlit-ddd?logo=streamlit" alt="Streamlit"></a>
-          </p>
-
-          <div>
-            <a class="weblink " href="https://github.com/imranture/DurCalc" target="_blank"
-              rel="noopener noreferrer">View
-              on GitHub</a>
-          </div>
-        </article>
-        <hr>
-
+      <!-- DurCalc Project -->
+      <article id="durcalc">
+        <h3>
+          DurCalc : Hassle-Free Calculation of Date and Time Durations
+        </h3>
+        <p class="badges">
+          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/python-3670A0?&logo=python&logoColor=ffdd54" alt="Python"></a>
+          <a href="https://streamlit.io/" target="_blank" rel="noopener noreferrer"><img
+              src="https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=fff" alt="Streamlit"></a>
+        </p>
+        <p>
+          <a href="https://durcalc.streamlit.app/" target="_blank" rel="noopener noreferrer">DurCalc</a>
+          is a web app designed to
+          effortlessly calculate the duration between dates and/or times.
+          With its user-friendly interface and intuitive functionality, DurCalc streamlines the process and calculates
+          durations without any fuss.
+        </p>
+        <p><img class="image-item" style="width: 100%; height: auto;"
+            src="/img/durcalc.png" alt="DurCalc : Hassle-Free Calculation of Date and Time Durations"></p>
+        <div>
+          <a class="weblink " href="https://github.com/imranture/DurCalc" target="_blank"
+            rel="noopener noreferrer">View
+            on GitHub</a>
+        </div>
+      </article>
     </section>
   </div>
   <footer>
     <small>&copy; <span id="copyright-year"></span> Imran Ture. All rights reserved.</small>
   </footer>
-  </div>
 
   <!-- Adjust viewport meta tag for mobile to handle scaling during gestures -->
   <script src="/assets/js/scale.fix.js"></script>
-
-  <!-- Change profile image for each load -->
-  <!-- <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const log = console.log,
-        array = ["/img/imranture1.png", "/img/imranture5.png", "/img/imranture1.png", "/img/imranture5.png"],
-        random = Math.floor(Math.random() * array.length),
-        target = document.getElementById("theimage");
-      target.src = `${array[random]}`;
-    });
-  </script> -->
-
-  <!-- Enable scrolling by removing 'no-scroll' class from body -->
-  <script defer>
-    function enableScrolling() {
-      document.body.classList.remove('no-scroll');
-      window.removeEventListener('scroll', enableScrolling);
-      window.removeEventListener('touchmove', enableScrolling);
-    }
-
-    window.addEventListener('scroll', enableScrolling);
-    window.addEventListener('touchmove', enableScrolling);
-  </script>
 
   <!-- Show or hide scroll-down arrow based on scroll direction -->
   <script defer>
@@ -596,7 +565,6 @@
         /* clipboard write failed */
       });
     }
-
   </script>
 
   <!-- Update copyright year automatically -->
@@ -608,9 +576,6 @@
   </script>
 
   <!-- Google Tag Manager (noscript) -->
-  <!--   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZMPBG9N" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript> -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZMPBG9N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
-
-
 </html>
