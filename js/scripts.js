@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const projects = {
         'e4-timestamper': {
             title: 'E4 TimeStamper: GUI App for Automatic Timestamping and Analysis of Empatica E4 Data',
-            cover_image: '../image/cover_e4.png',
-            primary_image: '../image/e4-timestamper.gif',
+            cover_image: '/image/cover_e4.png',
+            primary_image: '/image/e4-timestamper.gif',
             links: [{ url: 'https://github.com/imranture/E4-TimeStamper', text: '<i class="fab fa-github"></i> GitHub' }],
             tags: ['Software Development', 'Time Series Analysis', 'Physiological Signals', 'Empatica E4'],
             shortDescription: 'A user-friendly GUI application designed to facilitate researchers in adding timestamps to physiological signal data obtained from Empatica E4 wristbands.',
@@ -67,19 +67,19 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'emotion-recognition': {
             title: 'Deep Emotion Recognition using Wearable Sensors',
-            cover_image: '../image/cover_emotion.png',
-            primary_image: '../image/model-accuracy.png',
+            cover_image: '/image/cover_emotion.png',
+            primary_image: '/image/model-accuracy.png',
             secondary_image: '',
             links: [{ url: '', text: '' }],
             tags: ['Deep Learning', 'Machine Learning', 'Emotion Recognition', 'Physiological Signals', 'LSTM', 'CNN', 'Empatica E4'],
             shortDescription: 'A deep learning based emotion recognition model for the classification of emotional states using physiological signals collected via wearables.',
-            description: 'Emotion recognition is an emerging interdisciplinary field that integrates methodologies from affective computing, sentiment analysis, signal processing, and machine learning. This project focuses on classifying emotions such as amusement and stress using physiological signals like heart rate and skin conductivity, collected via wearables. To build the model, a hybrid approach was employed that combines various deep learning architectures, including Convolutional Neural Networks (CNN) and Long Short-Term Memory (LSTM) networks. This approach is capable of accurately capturing changes in physiological signals to identify specific emotional states.<br><br>The performance of the model has been rigorously evaluated using a variety of metrics, including accuracy, precision, recall, and F1-score. To fine-tune the model\'s performance, hyperparameter tuning was conducted using grid search and Bayesian optimization techniques. The model achieved an accuracy rate of 92% under a 5-fold cross-validation setting. As wearable technology continues to evolve, this project serves as a significant contribution to the development of real-time affective computing systems that could be integrated into future generations of a wide range of wearable products, from smartwatches to health monitors.'
+            description: 'Emotion recognition is an emerging interdisciplinary field that integrates methodologies from affective computing, sentiment analysis, signal processing, and machine learning. This project focuses on classifying emotions such as amusement and stress using physiological signals like heart rate and skin conductivity, collected via wearables. To build the model, a hybrid approach was employed that combines various deep learning architectures, including Convolutional Neural Networks (CNN) and Long Short-Term Memory (LSTM) networks. This approach is capable of accurately capturing changes in physiological signals to identify specific emotional states.<br>The performance of the model has been rigorously evaluated using a variety of metrics, including accuracy, precision, recall, and F1-score. To fine-tune the model\'s performance, hyperparameter tuning was conducted using grid search and Bayesian optimization techniques. The model achieved an accuracy rate of 92% under a 5-fold cross-validation setting. As wearable technology continues to evolve, this project serves as a significant contribution to the development of real-time affective computing systems that could be integrated into future generations of a wide range of wearable products, from smartwatches to health monitors.'
         },
         'python-for-openintro': {
             title: ' Python Implementation of OpenIntro',
-            cover_image: '../image/cover_openintro.jpg',
-            primary_image: '../image/openintro-python-official-page.png',
-            secondary_image: '../image/openintro-python-labs.png',
+            cover_image: '/image/cover_openintro.jpg',
+            primary_image: '/image/openintro-python-official-page.png',
+            secondary_image: '/image/openintro-python-labs.png',
             links: [{ url: 'https://www.imranture.com/labs/os/,', text: '<i class="fas fa-link"></i> Labs' }, {
                 url: 'https://openintro.info/stat/labs.php?stat_lab_software=Python%20(beta)',
                 text: '<i class="fas fa-link"></i> OpenIntro',
@@ -91,9 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'bbl-physiodb': {
             title: 'BBL-PhysioDB : Data Hub for Entrepreneurship Assessment and Development Workshop',
-            cover_image: '../image/cover_rmit.jpg',
-            primary_image: '../image/bbl-physiodb.png',
-            secondary_image: '../image/rmit-bbl.jpg',
+            cover_image: '/image/cover_rmit.jpg',
+            primary_image: '/image/bbl-physiodb.png',
+            secondary_image: '/image/rmit-bbl.jpg',
             links: [{ url: '', text: '' }],
             tags: ['Database Management', 'SQL', 'PostgreSQL', 'Django'],
             shortDescription: 'A robust database designed for the Entrepreneurship Assessment and Development Workshop studies conducted at RMIT University.',
@@ -101,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'forecasting-translation': {
             title: 'Translating Forecasting: Principles and Practice',
-            cover_image: '../image/cover_fpp3.jpg',
-            primary_image: '../image/fpp3.png',
+            cover_image: '/image/cover_fpp3.jpg',
+            primary_image: '/image/fpp3.png',
             secondary_image: '',
             links: [{ url: 'https://otexts.com/fpp3/', text: '<i class="fas fa-link"></i> Link' }],
             tags: ['Forecasting', 'R', 'RStudio'],
@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'melbourne-property-sales': {
             title: 'Melbourne Property Sales: Visual Exploration of Housing Market Dynamics',
-            cover_image: '../image/melbourne-property-sales.png',
-            primary_image: '../image/melbourne-property-sales.png',
+            cover_image: '/image/melbourne-property-sales.png',
+            primary_image: '/image/melbourne-property-sales.png',
             secondary_image: '',
             links: [{ url: 'https://public.tableau.com/app/profile/imranture/viz/MelbournePropertySales_17051684571690/Dashboard', text: 'Link' }],
             tags: ['Data Visualization', 'Tableau'],
@@ -121,8 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'early-warning-system': {
             title: 'Advancing Water Safety : Early Warning System to Monitor and Evaluate Drinking Water Quality',
-            cover_image: '../image/early-warning-system.png',
-            primary_image: '../image/early-warning-system.png',
+            cover_image: '/image/early-warning-system.png',
+            primary_image: '/image/early-warning-system.png',
             secondary_image: '',
             links: [{ url: '', text: '' }],
             tags: ['Anomaly Detection', 'Statistical Quality Control'],
@@ -131,8 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'pdf4u': {
             title: 'pdf4u: Web-Based PDF Management Toolkit App',
-            cover_image: '../image/pdf4u.png',
-            primary_image: '../image/pdf4u.png',
+            cover_image: '/image/pdf4u.png',
+            primary_image: '/image/pdf4u.png',
             secondary_image: '',
             links: [{ url: 'https://pdf4u.onrender.com/', text: '<i class="fas fa-link"></i> Link' }],
             tags: ['Web Development', 'HTML', 'CSS', 'JavaScript', 'Flask'],
@@ -141,8 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'durcalc': {
             title: 'DurCalc : Hassle-Free Calculation of Date and Time Durations',
-            cover_image: '../image/durcalc.png',
-            primary_image: '../image/durcalc.png',
+            cover_image: '/image/durcalc.png',
+            primary_image: '/image/durcalc.png',
             secondary_image: '',
             links: [{ url: 'https://github.com/imranture/durcalc', text: '<i class="fas fa-link"></i> Link' }],
             tags: ['Web Development'],
