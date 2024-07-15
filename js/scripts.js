@@ -160,13 +160,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const project = projects[id];
             const projectItem = `
                 <div class="item">
-                    <a href="../page/project.html?id=${id}#project-title"><img src="${project.cover_image}" alt="${project.title}"></a>
+                    <a href="/project.html?id=${id}"><img src="${project.cover_image}" alt="${project.title}"></a>
                     <h2>${project.title}</h2>
                     <!-- <div class="tags">
                         ${project.tags.map(tag => `<span>${tag}</span>`).join(' ')}
                     </div> -->
                     <p>${project.shortDescription}</p>
-                    <a class="weblink" href="../page/project.html?id=${id}#project-title">Read more &#8594;</a>
+                    <a class="weblink" href="/project.html?id=${id}">Read more &#8594;</a>
                 </div>
             `;
             projectListContainer.innerHTML += projectItem;
@@ -202,10 +202,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             <img id="primary-image" src="${project.primary_image}" alt="${project.title}">
                             <img id="secondary-image" src="${project.secondary_image}" alt="">
                         </div>  
-                        ${project.links.filter(link => link).length ? `
-                        <h4>Links</h4>
-                        <div class="project-links">
-                            ${project.links.map(link => `<a class="weblink" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a>`).join(' ')} </div>` : ''}
+
+                        ${project.links.filter(link => link.url && link.text).length ? `
+                            <h4>Links</h4>
+                            <div class="project-links">
+                                ${project.links.map(link => `<a class="weblink" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.text}</a>`).join(' ')} 
+                            </div>` : ''}
+
                         <h4>Related Topics</h4>
                         <div class="tags">
                             ${project.tags.map(tag => `<span>${tag}</span>`).join(' ')}

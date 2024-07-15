@@ -17,15 +17,15 @@ body {
 }
 
 :root {
-    --bg-color: #e9ecee;
-    --text-color: #333;
-    --primary-color: #111;
+    --bg-color: #f9fafc;
+    --text-color: #222;
+    --primary-color: #444;
     --secondary-color: #666;
-    --tertiary-color: #848484;
+    --tertiary-color: #b5b5b5;
     --link-color: #007BFF;
     --link-hover-color: #004999;
-    --tag-color: #e8eaff;
-    --tag-background-color: #007BFF;
+    --tag-color: #007BFF;
+    --tag-bg-color: #e8eaff;
 }
 
 body.dark-mode {
@@ -37,7 +37,7 @@ body.dark-mode {
     --link-color: #81bdff;
     --link-hover-color: #007BFF;
     --tag-color: #007BFF;
-    --tag-background-color: #e8eaff;
+    --tag-bg-color: #e8eaff;
 }
 
 body.dark-mode .container {
@@ -112,15 +112,16 @@ a.weblink:hover {
     background-size: 0 3px, 100% 3px;
 }
 
-.social-links {
+social-links {
     margin-bottom: 15px;
 }
 
 .social-links a {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     width: 25px;
     height: 25px;
-    line-height: 20px;
     border-radius: 50%;
     color: white;
     text-align: center;
@@ -130,7 +131,6 @@ a.weblink:hover {
 .social-links a.linkedin {
     background-color: #0077B5;
 }
-
 
 .social-links a.github {
     background-color: #7d258d;
@@ -189,7 +189,7 @@ a.weblink:hover {
 }
 
 .tags span {
-    background-color: var(--tag-background-color);
+    background-color: var(--tag-bg-color);
     color: var(--tag-color);
     padding: 3px 5px;
     border-radius: 10px;
@@ -289,7 +289,7 @@ a.weblink:hover {
 
 .item .tags span,
 #project-content .tags span {
-    background-color: var(--tag-background-color);
+    background-color: var(--tag-bg-color);
     color: var(--tag-color);
     padding: 5px 8px;
     border-radius: 10px;
@@ -361,7 +361,7 @@ button {
 }
 
 button:hover {
-    color: var(--bg-color);
+    color: var(--primary-color);
     background-color: var(--tertiary-color);
     text-decoration: none;
 }
@@ -474,7 +474,6 @@ footer {
 .double-image #primary-image,
 .double-image #secondary-image {
     width: 30%;
-    margin: 1%;
 }
 
 /* Adjust the image sizes for medium large screens */
