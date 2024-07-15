@@ -1,8 +1,15 @@
-//Rewrite to www
+# Rewrite to www
 Options +FollowSymLinks
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^imranture.com[nc]
-RewriteRule ^(.*)$ http://www.imranture.com/$1 [r=301,nc]
 
-//301 Redirect Entire Directory
+# Redirect non-www to www
+RewriteCond %{HTTP_HOST} ^imranture.com [NC]
+RewriteRule ^(.*)$ http://www.imranture.com/$1 [R=301,NC]
+
+# 301 Redirect Entire Directory
 RedirectMatch 301 imranture.com/page/E4-TimeStamper(.*) https://github.com/imranture/E4-TimeStamper/$1
+
+# Clean URL for project pages
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^project/([a-zA-Z0-9_-]+)$ /project.html?id=$1 [L,QSA]
