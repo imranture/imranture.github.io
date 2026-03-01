@@ -301,7 +301,10 @@ function renderProjectDetail(projectId) {
 
 function renderProjectsList() {
     const dropdown = document.getElementById('projects-dropdown');
+    if (!dropdown) return;
+    
     const dropdownContent = dropdown.querySelector('.dropdown-content');
+    if (!dropdownContent) return;
     
     const projectsHTML = Object.keys(PROJECTS).map(projectId => {
         const project = PROJECTS[projectId];
