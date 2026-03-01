@@ -1,44 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore selected projects in data analytics, machine learning, and software development by Imran Ture, a data scientist based in Melbourne, Australia.">
+    <title>Project - Imran Ture</title>
+    <meta name="description"
+        content="Explore selected projects in data analytics, machine learning, and software development by Imran Ture.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon.png">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="/css/styles.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
+    <!-- Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <!-- Scripts -->
-    <script src="/js/scripts.min.js" defer></script>
-    <script src="/js/detect-touch.js" defer></script>
-    <script src="/js/scale.fix.js" defer></script>    
+    <!-- project-loader.js is loaded at end of body -->
 </head>
+
 <body class="project-page">
-    <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round"></div>
-        </label>
-        <em></em>
+    <script>
+        // Apply theme immediately to prevent flashing
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('theme-light');
+        }
+
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const isLight = document.body.classList.toggle('theme-light');
+            const icon = document.getElementById('theme-icon');
+
+            if (isLight) {
+                localStorage.setItem('theme', 'light');
+                if (icon) {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            } else {
+                localStorage.setItem('theme', 'dark');
+                if (icon) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                }
+            }
+        }
+
+        // Initialize theme icon on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (document.body.classList.contains('theme-light')) {
+                const icon = document.getElementById('theme-icon');
+                if (icon) {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            }
+        });
+    </script>
+
+    <!-- Subtle Grid Background -->
+    <div class="bg-grid"></div>
+
+    <div class="layout-container">
+
+        <!-- HEADER -->
+        <header class="site-header">
+            <a href="/index.html#projects" class="logo" aria-label="Back to Projects"
+                style="text-decoration: none; display: flex; align-items: center; gap: var(--space-2);">
+                <i class="fa-solid fa-arrow-left"></i> <span
+                    style="font-size: 1rem; font-family: var(--font-sans);">Back</span>
+            </a>
+            <nav class="site-nav" style="display: flex; align-items: center;">
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" id="btn-theme" class="theme-toggle" aria-label="Toggle Theme"
+                    style="margin-right: 0;">
+                    <i class="fa-solid fa-sun" id="theme-icon"></i>
+                </button>
+            </nav>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main id="main-content" style="overflow-y: auto; padding: var(--space-6) 0; height: 100%;">
+            <!-- Project content injected by JS -->
+            <div id="project-content"></div>
+        </main>
     </div>
-    <div class="container">
-        <div class="column narrow" id="narrow-column">
-            <!-- Bio column --> 
-        </div>
-        <div class="column wide">
-            <button onclick="history.back()">&#8592; back</button>
-            <div id="project-content">
-                <!-- Project content here -->
-            </div>
-        </div>
-        <footer>
-            <small>&copy; <span id="copyright-year"></span> Imran Ture. All rights reserved.</small>
-        </footer>
-    </div>
+
+    <!-- Project loader: must be at end of body (no defer) so DOM is available -->
+    <script src="/js/project-loader.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Basic Info -->
     <title>Imran Ture</title>
@@ -9,11 +10,13 @@
     <!-- SEO Meta Tags -->
     <meta name="title" content="Imran Ture">
     <meta name="author" content="Imran Ture">
-    <meta name="description" content="Senior Analyst & Developer | Engineering Solutions with Applied AI/ML and Optimization">
-    <meta name="keywords" content="Imran Ture, imranture, business analysis, data science, machine learning, data analytics, statistics, Python">
+    <meta name="description"
+        content="Senior Analyst & Developer | Engineering Solutions with Applied AI/ML and Optimization">
+    <meta name="keywords"
+        content="Imran Ture, imranture, business analysis, data science, machine learning, data analytics, statistics, Python">
     <meta name="google-site-verification" content="kVci95-qKDzQBG7nCmX6NTtXL3bwws_hpq9TdliWUXg" />
     <meta name="msvalidate.01" content="46FE9E61D7DE98B7E1F76C5633C2BA5B">
-    <link rel="canonical" href="https://www.imranture.com/">    
+    <link rel="canonical" href="https://www.imranture.com/">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-773DZQ4QLB"></script>
@@ -21,7 +24,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-773DZQ4QLB');
     </script>
 
@@ -31,7 +33,8 @@
     <meta property="og:url" content="https://www.imranture.com/">
     <meta property="og:site_name" content="Imran Ture">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Senior Analyst & Developer | Engineering Solutions with Applied AI/ML and Optimization">
+    <meta property="og:description"
+        content="Senior Analyst & Developer | Engineering Solutions with Applied AI/ML and Optimization">
     <meta property="og:image" content="https://www.imranture.com/image/imranture.png">
 
     <!-- Schema -->
@@ -84,101 +87,126 @@
     <!-- Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="/css/styles.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <!-- Scripts -->
-    <script src="/js/scripts.min.js" defer></script>
-    <script src="/js/detect-touch.js" defer></script>
-    <script src="/js/scale.fix.js" defer></script>    
 </head>
-<body class="dark-mode">
-    <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round"></div>
-        </label>
-        <em></em>
-    </div>
-    <div class="container">
-        <div class="column narrow" id="narrow-column">
-            <a href="/">
-                <img src="/image/imranture.png" alt="Profile Picture" class="profile-pic">
-            </a>
-            <h1>Imran Ture</h1>
-            <h3 class="title">Senior Analyst & Developer</h3>
-            <h3 class="subtitle"></h3>
-            <p class="location"><i class="fa-solid fa-location-dot"></i> Somewhere on the globe</p>
-            <div class="social-links">
-                <a class="linkedin" href="https://www.linkedin.com/in/imranture/" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a class="github" href="https://github.com/imranture" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a class="kaggle" href="https://www.kaggle.com/imranture" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-kaggle"></i>
-                </a>
+
+<body>
+    <script>
+        // Apply saved theme before page renders to prevent flash
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('theme-light');
+        }
+    </script>
+
+    <!-- SVG Pattern Definitions: Animated backgrounds for skill cards -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <!-- Dots Pattern (Research) -->
+            <pattern id="pattern-research" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="4" cy="4" r="1.5" fill="rgba(255, 255, 255, 0.15)"/>
+                <circle cx="14" cy="14" r="1.5" fill="rgba(255, 255, 255, 0.15)"/>
+                <circle cx="4" cy="14" r="1" fill="rgba(255, 255, 255, 0.1)"/>
+                <circle cx="14" cy="4" r="1" fill="rgba(255, 255, 255, 0.1)"/>
+            </pattern>
+            
+            <!-- Grid Pattern (Planning) -->
+            <pattern id="pattern-planning" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <rect x="0" y="0" width="8" height="8" fill="rgba(255, 255, 255, 0.12)"/>
+                <rect x="10" y="10" width="8" height="8" fill="rgba(255, 255, 255, 0.12)"/>
+            </pattern>
+            
+            <!-- Slash Pattern (Development) -->
+            <pattern id="pattern-development" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="20" x2="20" y2="0" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2"/>
+                <line x1="-5" y1="5" x2="5" y2="-5" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2"/>
+                <line x1="15" y1="25" x2="25" y2="15" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2"/>
+            </pattern>
+            
+            <!-- Waves Pattern (Testing) -->
+            <pattern id="pattern-testing" x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse">
+                <path d="M0 10 Q10 5, 20 10 T40 10" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2" fill="none"/>
+                <path d="M0 15 Q10 12, 20 15 T40 15" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" fill="none"/>
+            </pattern>
+            
+            <!-- Backslash Pattern (Optimization) -->
+            <pattern id="pattern-optimization" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <line x1="0" y1="0" x2="20" y2="20" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2"/>
+                <line x1="-5" y1="-5" x2="5" y2="5" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2"/>
+                <line x1="15" y1="15" x2="25" y2="25" stroke="rgba(255, 255, 255, 0.15)" stroke-width="2"/>
+            </pattern>
+        </defs>
+    </svg>
+
+    <!-- Background Grid: Subtle decorative grid overlay -->
+    <div class="bg-grid"></div>
+
+    <!-- Layout Container -->
+    <div class="layout-container">
+
+        <!-- HEADER -->
+        <header class="site-header">
+            <div class="site-name" id="site-name">
+                <img src="/image/imranture.png" alt="Imran Ture" class="profile-pic">
             </div>
-            <div class="section">
-                <h4>About</h4>
-                <p>
-                    I develop data-driven strategies, build predictive models, and implement AI-powered solutions to improve planning, optimize operations, and enhance business performance.
-                </p>
+            <nav class="site-nav">
+                <button id="btn-projects" class="nav-btn">Projects</button>
+            </nav>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- Center Content Panel: Dynamic content area (intro or project details) -->
+            <div id="center-panel" class="center-panel">
+                <!-- Content will be injected by JavaScript -->
             </div>
-            <div class="section">
-                <h4>Skills</h4>
-                <div class="tags">
-                    <span><a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">Python</a></span>
-                    <span><a href="https://www.w3schools.com/sql/" target="_blank" rel="noopener noreferrer">SQL</a></span>
-                    <span><a href="https://www.r-project.org/" target="_blank" rel="noopener noreferrer">R</a></span>
-                    <span><a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" rel="noopener noreferrer">Excel</a></span>
-                    <span><a href="https://numpy.org/" target="_blank" rel="noopener noreferrer">NumPy</a></span>
-                    <span><a href="https://pandas.pydata.org/" target="_blank" rel="noopener noreferrer">Pandas</a></span>
-                    <span><a href="https://pola.rs/" target="_blank" rel="noopener noreferrer">Polars</a></span>
-                    <span><a href="https://scipy.org/" target="_blank" rel="noopener noreferrer">SciPy</a></span>
-                    <span><a href="https://www.statsmodels.org/" target="_blank" rel="noopener noreferrer">Statsmodels</a></span>
-                    <span><a href="https://scikit-learn.org/" target="_blank" rel="noopener noreferrer">Scikit-learn</a></span>
-                    <span><a href="https://keras.io/" target="_blank" rel="noopener noreferrer">Keras</a></span>
-                    <span><a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer">TensorFlow</a></span>
-                    <span><a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer">PyTorch</a></span>
-                    <span><a href="https://xgboost.ai/" target="_blank" rel="noopener noreferrer">XGBoost</a></span>
-                    <span><a href="https://matplotlib.org/" target="_blank" rel="noopener noreferrer">Matplotlib</a></span>
-                    <span><a href="https://seaborn.pydata.org/" target="_blank" rel="noopener noreferrer">Seaborn</a></span>
-                    <span><a href="https://www.tableau.com/" target="_blank" rel="noopener noreferrer">Tableau</a></span>
-                    <span><a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer">MySQL</a></span>
-                    <span><a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer">PostgreSQL</a></span>
-                    <span><a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer">HTML</a></span>
-                    <span><a href="https://www.w3schools.com/css/" target="_blank" rel="noopener noreferrer">CSS</a></span>
-                    <span><a href="https://www.w3schools.com/js/" target="_blank" rel="noopener noreferrer">JavaScript</a></span>
-                    <span><a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer">Django</a></span>
-                    <span><a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer">Flask</a></span>
-                </div>      
+
+            <!-- Skills Card Deck: Interactive cards showing areas of expertise -->
+            <div id="card-deck" class="card-deck">
+                <!-- Cards will be injected by JavaScript -->
             </div>
-            <div class="section">
-                <h4>Contact</h4>
-                <p>
-                    <a class="weblink email" id="emailLink" onclick="copyURI(event)"><span><i class="fas fa-paper-plane"></i> Email</span></a>
-                </p>
+        </main>
+
+        <!-- Projects Dropdown: Overlay menu listing all portfolio projects -->
+        <div id="projects-dropdown-backdrop" class="dropdown-backdrop hidden"></div>
+        <div id="projects-dropdown" class="projects-dropdown hidden">
+            <div class="dropdown-content">
+                <!-- Project list will be injected by JavaScript -->
             </div>
         </div>
-        <hr>
-        <div class="column wide">
-            <h2>Selected projects in <span class="da">data analytics</span>, <span class="ml">machine learning</span>,
-        and <span class="sd">software development</span></h2>
-            <div class="content">
-                <!-- Project items  -->
+
+        <!-- Project Detail Overlay: Modal displaying full project information -->
+        <div id="project-detail-overlay" class="project-detail-overlay">
+            <div class="overlay-backdrop"></div>
+            <div class="overlay-content">
+                <button class="overlay-close" id="overlay-close" aria-label="Close">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+                <div id="project-detail-content" class="project-detail-content">
+                    <!-- Project details will be injected by JavaScript -->
+                </div>
             </div>
         </div>
-        <footer>
-            <small>&copy; <span id="copyright-year"></span> Imran Ture. All rights reserved.</small>
-        </footer>
+
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+            <i class="fa-solid fa-sun" id="theme-icon"></i>
+        </button>
+
+        <!-- Social Links (Bottom Left) -->
+        <div id="social-links" class="social-links-fixed">
+            <!-- Links will be injected by JavaScript -->
+        </div>
+
     </div>
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZMPBG9N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- Main JavaScript -->
+    <script src="/js/main.js"></script>
 </body>
+
 </html>
