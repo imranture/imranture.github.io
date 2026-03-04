@@ -1104,7 +1104,7 @@ body.theme-light .dropdown-item:hover {
     }
 
     .main-content {
-        padding-top: 6rem;
+        padding-top: 9rem;
     }
 
     .center-panel {
@@ -1114,6 +1114,11 @@ body.theme-light .dropdown-item:hover {
 
     .intro-message {
         font-size: 1.5rem;
+    }
+
+    /* Increase card body text size for better readability on mobile */
+    .skill-card-details {
+        font-size: 1rem;
     }
 
     /* Reposition social links inline on mobile */
@@ -1130,13 +1135,40 @@ body.theme-light .dropdown-item:hover {
         font-size: 1.5rem;
     }
 
-    /* Move theme toggle to header on mobile */
+    /* Move theme toggle to subtle floating button in bottom-right */
     .theme-toggle {
         position: fixed;
-        top: calc(var(--space-3) + 0.5rem);
-        right: calc(var(--space-3) + 4.5rem);
-        bottom: auto;
-        z-index: 1003;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: rgba(30, 41, 59, 0.7);
+        opacity: 0.6;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:active {
+        opacity: 1;
+        background: rgba(30, 41, 59, 0.9);
+    }
+
+    body.theme-light .theme-toggle {
+        background: rgba(248, 250, 252, 0.7);
+    }
+
+    body.theme-light .theme-toggle:hover,
+    body.theme-light .theme-toggle:active {
+        background: rgba(248, 250, 252, 0.9);
+    }
+
+    .theme-toggle #theme-icon {
+        font-size: 1rem;
     }
 
     .projects-dropdown {
