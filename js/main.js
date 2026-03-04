@@ -739,6 +739,7 @@ function navigateCarousel(direction) {
 // Touch/Swipe Handlers - Horizontal swipe-to-dismiss
 function handleTouchStart(e) {
     if (window.innerWidth > 950) return;
+    if (state.isDropdownOpen || state.isOverlayOpen) return;
     
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) return;
@@ -833,6 +834,7 @@ function handleTouchEnd(e) {
 // Mouse handlers (for desktop testing)
 function handleMouseDown(e) {
     if (window.innerWidth > 950) return;
+    if (state.isDropdownOpen || state.isOverlayOpen) return;
     
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) return;
