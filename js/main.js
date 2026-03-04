@@ -392,6 +392,7 @@ function toggleDropdown() {
         dropdown.classList.remove('hidden');
         backdrop.classList.remove('hidden');
         state.isDropdownOpen = true;
+        document.body.classList.add('dropdown-open');
     } else {
         closeDropdown();
     }
@@ -403,6 +404,7 @@ function closeDropdown() {
     dropdown.classList.add('hidden');
     backdrop.classList.add('hidden');
     state.isDropdownOpen = false;
+    document.body.classList.remove('dropdown-open');
 }
 
 function toggleCard(cardId) {

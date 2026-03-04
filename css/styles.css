@@ -311,6 +311,11 @@ p {
     visibility: visible;
 }
 
+body.dropdown-open .card-deck {
+    pointer-events: none;
+    touch-action: none;
+}
+
 /* Mobile-only Projects section: hidden on desktop */
 .mobile-projects-section {
     display: none;
