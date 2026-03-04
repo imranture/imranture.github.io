@@ -1103,11 +1103,11 @@ body.theme-light .dropdown-item:hover {
         left: 0;
         right: 0;
         padding: var(--space-3) 0;
-        margin-bottom: var(--space-4);
+        margin-bottom: 0;
     }
 
     .main-content {
-        padding-top: 0;
+        padding-top: var(--space-6);
     }
 
     .center-panel {
