@@ -184,9 +184,9 @@ p {
 }
 
 .nav-btn {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-muted);
+    background: var(--accent-dim);
+    border: 1px solid var(--accent);
+    color: var(--accent);
     font-family: var(--font-sans);
     font-size: 1rem;
     cursor: pointer;
@@ -195,11 +195,14 @@ p {
     text-align: right;
     margin-bottom: var(--space-3);
     border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 .nav-btn:hover {
-    color: var(--accent);
-    background: var(--bg-card);
+    background: var(--accent);
+    color: var(--bg-dark);
     border-color: var(--accent);
     transform: translateY(-2px);
 }
@@ -306,6 +309,11 @@ p {
 .dropdown-backdrop:not(.hidden) {
     opacity: 1;
     visibility: visible;
+}
+
+/* Mobile-only Projects section: hidden on desktop */
+.mobile-projects-section {
+    display: none;
 }
 
 /* Projects List */
@@ -687,7 +695,7 @@ body.theme-light .dropdown-item:hover {
 }
 
 .skill-card-description {
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.98);
     opacity: 1;
@@ -697,7 +705,7 @@ body.theme-light .dropdown-item:hover {
 }
 
 .skill-card-details {
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.96);
     opacity: 0;
@@ -1101,13 +1109,25 @@ body.theme-light .dropdown-item:hover {
         overflow: visible;
     }
 
+    /* Header: only profile pic, centered */
     .site-header {
         position: relative;
         top: 0;
         left: 0;
         right: 0;
-        padding: var(--space-3) 0;
+        flex-direction: column;
+        align-items: center;
+        padding: var(--space-4) 0 var(--space-2);
         margin-bottom: 0;
+    }
+
+    .site-header .site-nav {
+        display: none;
+    }
+
+    .site-header .profile-pic {
+        width: 5.5rem;
+        height: 5.5rem;
     }
 
     .main-content {
@@ -1121,12 +1141,13 @@ body.theme-light .dropdown-item:hover {
     }
 
     .intro-message {
-        font-size: 1.5rem;
+        font-size: 2.2rem;
     }
 
     /* Increase card body text size for better readability on mobile */
+    .skill-card-description,
     .skill-card-details {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     /* Reposition social links inline on mobile */
@@ -1186,24 +1207,65 @@ body.theme-light .dropdown-item:hover {
         font-size: 1rem;
     }
 
+    /* Projects button before card deck */
+    .mobile-projects-section {
+        display: flex;
+        justify-content: center;
+        padding: 0 var(--space-3);
+        margin-top: var(--space-1);
+        margin-bottom: var(--space-1);
+    }
+
+    .mobile-projects-btn {
+        width: 55%;
+        max-width: 15rem;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        margin-bottom: 0;
+    }
+
+    .mobile-projects-btn:hover,
+    .mobile-projects-btn:active {
+        transform: none;
+    }
+
+    /* Dropdown: fixed centered on screen */
     .projects-dropdown {
-        right: auto;
-        left: 50%;
-        transform: translateX(-50%);
-        width: auto;
-        max-width: 95%;
-        top: 8.5rem;
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translate(-50%, -50%) !important;
+        width: calc(100% - 2 * var(--space-5)) !important;
+        max-width: 100% !important;
+        max-height: 70vh;
+        z-index: 1003 !important;
+        margin: 0 !important;
     }
-    
+
     .projects-dropdown.hidden {
-        transform: translateX(-50%) translateY(-20px);
+        display: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translate(-50%, -50%) !important;
     }
-    
+
     .dropdown-item {
         white-space: normal;
         text-align: left;
         word-wrap: break-word;
-        padding-right: var(--space-3);
+        padding: var(--space-3) var(--space-3);
+        font-size: 1rem;
+        line-height: 1.4;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .dropdown-item:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content {
+        gap: 0;
     }
 
     /* Mobile deck: cards stacked with visible offset */
@@ -1215,9 +1277,11 @@ body.theme-light .dropdown-item:hover {
         align-items: flex-start;
         justify-content: center;
         margin-top: var(--space-3);
-        margin-bottom: var(--space-6);
+        margin-bottom: var(--space-4);
+        margin-left: var(--space-3);
+        margin-right: var(--space-3);
         padding-bottom: env(safe-area-inset-bottom, 0px);
-        width: 100%;
+        width: calc(100% - 2 * var(--space-3));
         overflow: visible;
         perspective: 1000px;
     }
@@ -1227,7 +1291,7 @@ body.theme-light .dropdown-item:hover {
         position: absolute !important;
         left: 50% !important;
         top: 0 !important;
-        width: min(92vw, 22rem) !important;
+        width: min(80vw, 20rem) !important;
         height: auto !important;
         min-height: 20rem !important;
         max-height: none !important;

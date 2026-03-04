@@ -669,11 +669,13 @@ function initTheme() {
 document.addEventListener('click', (e) => {
     const dropdown = document.getElementById('projects-dropdown');
     const projectsBtn = document.getElementById('btn-projects');
+    const mobileProjectsBtn = document.getElementById('btn-projects-mobile');
     
-    // Close dropdown if clicking outside
+    // Close dropdown if clicking outside (check both desktop and mobile buttons)
     if (state.isDropdownOpen && 
         !dropdown.contains(e.target) && 
-        !projectsBtn.contains(e.target)) {
+        !projectsBtn.contains(e.target) &&
+        !(mobileProjectsBtn && mobileProjectsBtn.contains(e.target))) {
         closeDropdown();
     }
 
@@ -943,6 +945,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Attach event listeners
     document.getElementById('site-name').addEventListener('click', resetToIntro);
     document.getElementById('btn-projects').addEventListener('click', toggleDropdown);
+    const mobileProjectsBtn = document.getElementById('btn-projects-mobile');
+    if (mobileProjectsBtn) {
+        mobileProjectsBtn.addEventListener('click', toggleDropdown);
+    }
     document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
     document.getElementById('overlay-close').addEventListener('click', closeProjectDetail);
     document.getElementById('projects-dropdown-backdrop').addEventListener('click', closeDropdown);
