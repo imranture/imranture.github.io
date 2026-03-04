@@ -1098,13 +1098,16 @@ body.theme-light .dropdown-item:hover {
     }
 
     .site-header {
-        top: var(--space-3);
-        left: var(--space-3);
-        right: var(--space-3);
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: var(--space-3) 0;
+        margin-bottom: var(--space-4);
     }
 
     .main-content {
-        padding-top: 9rem;
+        padding-top: 0;
     }
 
     .center-panel {
@@ -1145,7 +1148,7 @@ body.theme-light .dropdown-item:hover {
         border-radius: 50%;
         background: rgba(30, 41, 59, 0.7);
         opacity: 0.6;
-        z-index: 50;
+        z-index: 1005;
         display: flex;
         align-items: center;
         justify-content: center;
