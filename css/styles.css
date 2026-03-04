@@ -1081,10 +1081,20 @@ body.theme-light .dropdown-item:hover {
 /* Mobile/Tablet Responsiveness - Stack Deck Layout
    Cards arranged in vertical stack with active card on top, swipeable */
 @media (max-width: 950px) {
+    /* Allow scrolling on mobile */
+    html,
+    body {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
     /* Layout adjustments */
     .layout-container {
-        height: 100vh;
+        min-height: 100vh;
+        height: auto;
         padding: var(--space-3);
+        padding-bottom: calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+        overflow: visible;
     }
 
     .site-header {
@@ -1093,13 +1103,40 @@ body.theme-light .dropdown-item:hover {
         right: var(--space-3);
     }
 
+    .main-content {
+        padding-top: 6rem;
+    }
+
     .center-panel {
         padding: var(--space-3);
-        margin-top: var(--space-5);
+        margin-top: 0;
     }
 
     .intro-message {
         font-size: 1.5rem;
+    }
+
+    /* Reposition social links inline on mobile */
+    .social-links-fixed {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--space-5);
+        margin-top: var(--space-5);
+        margin-bottom: var(--space-6);
+    }
+
+    .social-links-fixed a {
+        font-size: 1.5rem;
+    }
+
+    /* Move theme toggle to header on mobile */
+    .theme-toggle {
+        position: fixed;
+        top: calc(var(--space-3) + 0.5rem);
+        right: calc(var(--space-3) + 4.5rem);
+        bottom: auto;
+        z-index: 1003;
     }
 
     .projects-dropdown {
@@ -1126,12 +1163,13 @@ body.theme-light .dropdown-item:hover {
     .card-deck {
         position: relative;
         height: auto;
-        min-height: 24rem;
+        min-height: 28rem;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
-        margin-top: var(--space-0);
-        margin-bottom: 3rem;
+        margin-top: var(--space-3);
+        margin-bottom: var(--space-6);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
         width: 100%;
         overflow: visible;
         perspective: 1000px;
@@ -1141,11 +1179,11 @@ body.theme-light .dropdown-item:hover {
     .card-deck .skill-card {
         position: absolute !important;
         left: 50% !important;
-        bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)) !important;
+        top: 0 !important;
         width: min(92vw, 22rem) !important;
         height: auto !important;
-        min-height: 18rem !important;
-        max-height: calc(100vh - 14rem) !important;
+        min-height: 20rem !important;
+        max-height: none !important;
         padding: var(--space-4) !important;
         transform: translateX(-50%) scale(0.985) !important;
         transform-style: flat !important;
@@ -1187,7 +1225,7 @@ body.theme-light .dropdown-item:hover {
 
     /* Cards moving to back of stack */
     .card-deck .skill-card.moving-to-back {
-        transform: translateX(calc(-50% + 3rem)) translateY(2.5rem) scale(0.85) !important;
+        transform: translateX(calc(-50% + 3rem)) translateY(2rem) scale(0.85) !important;
         opacity: 0 !important;
         pointer-events: none !important;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -1199,7 +1237,7 @@ body.theme-light .dropdown-item:hover {
     .card-deck .skill-card.stacked-1 {
         opacity: 1;
         z-index: 9 !important;
-        transform: translateX(calc(-50% + 0.4rem)) translateY(1.5rem) scale(0.96) rotate(2deg) !important;
+        transform: translateX(calc(-50% + 0.4rem)) translateY(0.5rem) scale(0.96) rotate(2deg) !important;
         pointer-events: none !important;
         cursor: default !important;
         box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
@@ -1208,7 +1246,7 @@ body.theme-light .dropdown-item:hover {
     .card-deck .skill-card.stacked-2 {
         opacity: 1;
         z-index: 8 !important;
-        transform: translateX(calc(-50% + 0.8rem)) translateY(2rem) scale(0.93) rotate(4deg) !important;
+        transform: translateX(calc(-50% + 0.8rem)) translateY(1rem) scale(0.93) rotate(4deg) !important;
         pointer-events: none !important;
         cursor: default !important;
         box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
@@ -1217,7 +1255,7 @@ body.theme-light .dropdown-item:hover {
     .card-deck .skill-card.stacked-3 {
         opacity: 1;
         z-index: 7 !important;
-        transform: translateX(calc(-50% + 1.2rem)) translateY(2.5rem) scale(0.90) rotate(6deg) !important;
+        transform: translateX(calc(-50% + 1.2rem)) translateY(1.5rem) scale(0.90) rotate(6deg) !important;
         pointer-events: none !important;
         cursor: default !important;
         box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
@@ -1226,7 +1264,7 @@ body.theme-light .dropdown-item:hover {
     .card-deck .skill-card.stacked-4 {
         opacity: 1;
         z-index: 6 !important;
-        transform: translateX(calc(-50% + 1.6rem)) translateY(3rem) scale(0.87) rotate(8deg) !important;
+        transform: translateX(calc(-50% + 1.6rem)) translateY(2rem) scale(0.87) rotate(8deg) !important;
         pointer-events: none !important;
         cursor: default !important;
         box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.05);

@@ -807,7 +807,7 @@ function handleTouchEnd(e) {
     const swipeThreshold = windowWidth * 0.4;
     
     activeCard.classList.remove('swiping');
-    activeCard.style.zIndex = '';
+    activeCard.style.removeProperty('z-index');
     
     if (Math.abs(diffX) > swipeThreshold) {
         // Card thrown far enough - animate to back of deck
@@ -817,12 +817,12 @@ function handleTouchEnd(e) {
             // Circular navigation: wraps around to first card after last
             state.activeCardIndex = (state.activeCardIndex + 1) % cards.length;
             activeCard.classList.remove('moving-to-back');
-            activeCard.style.transform = '';
+            activeCard.style.removeProperty('transform');
             updateCardPositions();
         }, 400);
     } else {
         // Not thrown far enough - snap back to front position
-        activeCard.style.transform = '';
+        activeCard.style.removeProperty('transform');
     }
     
     state.isSwiping = false;
@@ -897,7 +897,7 @@ function handleMouseUp(e) {
     const swipeThreshold = windowWidth * 0.4; // 40% of screen width
     
     activeCard.classList.remove('swiping');
-    activeCard.style.zIndex = '';
+    activeCard.style.removeProperty('z-index');
     
     if (Math.abs(diffX) > swipeThreshold) {
         // Card thrown far enough - move to back of deck
@@ -907,12 +907,12 @@ function handleMouseUp(e) {
             // Advance to next card (circular)
             state.activeCardIndex = (state.activeCardIndex + 1) % cards.length;
             activeCard.classList.remove('moving-to-back');
-            activeCard.style.transform = '';
+            activeCard.style.removeProperty('transform');
             updateCardPositions();
         }, 400);
     } else {
         // Not thrown far enough - snap back to front
-        activeCard.style.transform = '';
+        activeCard.style.removeProperty('transform');
     }
     
     state.isSwiping = false;
