@@ -8,7 +8,7 @@
 // ========================================
 
 const INTRO = {
-    name: "İmran Türe",
+    name: "İMRAN TÜRE",
     role: "Senior Analyst & Developer",
     tagline: "RESEARCH · PLANNING · DEVELOPMENT · TESTING · OPTIMIZATION",
     mainMessage: "I design and build systems<br>people rely on.",
@@ -780,8 +780,8 @@ function handleTouchMove(e) {
     e.preventDefault();
     const rotation = diffX * 0.08;
     const scale = 1.02;
-    activeCard.style.transform = `translateX(calc(-50% + ${diffX}px)) translateY(0) rotate(${rotation}deg) scale(${scale})`;
-    activeCard.style.zIndex = '100';
+    activeCard.style.setProperty('transform', `translateX(calc(-50% + ${diffX}px)) translateY(0) rotate(${rotation}deg) scale(${scale})`, 'important');
+    activeCard.style.setProperty('z-index', '100', 'important');
 }
 
 function handleTouchEnd(e) {
