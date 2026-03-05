@@ -140,36 +140,27 @@ const PROJECTS = {
 
     // Build and inject complete project detail HTML dynamically
     container.innerHTML = `
-        <div style="max-width: 800px; margin: 0 auto; padding: 0 var(--space-4) var(--space-6);">
-            <h1 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 500; color: var(--text-main); line-height: 1.3; margin-bottom: var(--space-4);">${project.title}</h1>
-
-            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: var(--space-5);">
-                ${project.tags.map(tag => `
-                    <span style="background: var(--bg-card); color: var(--accent); padding: 4px 12px; border-radius: 100px; font-size: clamp(0.75rem, 1.5vw, 0.85rem); font-family: var(--font-mono); border: 1px solid var(--border-color);">${tag}</span>
-                `).join('')}
-            </div>
+        <div class="project-detail-content">
+            <h1 class="project-detail-title">${project.title}</h1>
 
             ${hasLinks ? `
-            <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-6);">
+            <div class="project-detail-links">
                 ${project.links.map(link => `
-                    <a href="${link.url}" target="_blank" rel="noopener noreferrer"
-                       style="color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 6px;
-                              font-weight: 400; padding: 4px 10px; background: var(--bg-card); border: 1px solid var(--border-color);
-                              border-radius: 6px; transition: all 0.2s ease; font-size: 0.8rem;">
-                        <i class="fas fa-link" style="color: var(--accent); font-size: 0.75rem;"></i> ${link.text}
+                    <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="project-detail-link">
+                        <i class="fas fa-link"></i> ${link.text}
                     </a>
                 `).join('')}
             </div>` : ''}
 
-            <p style="font-size: clamp(0.95rem, 2vw, 1.05rem); line-height: 1.65; color: var(--text-body); margin-bottom: var(--space-5);">${project.description}</p>
+            <p class="project-detail-description">${project.description}</p>
 
-            <div style="display: flex; flex-direction: column; gap: var(--space-5);">
-                <img src="${project.primary_image}" alt="${project.title}"
-                     style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-                ${project.secondary_image ? `
-                <img src="${project.secondary_image}" alt=""
-                     style="width: 100%; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
-                ` : ''}
+            <div class="project-detail-images">
+                <img src="${project.primary_image}" alt="${project.title}">
+                ${project.secondary_image ? `<img src="${project.secondary_image}" alt="">` : ''}
+            </div>
+
+            <div class="project-detail-tags">
+                ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
             </div>
         </div>`;
 })();

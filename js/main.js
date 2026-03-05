@@ -125,7 +125,7 @@ const SKILLS_CARDS = [
         title: "Research Analysis",
         description: "I find what is missing, unclear, or overlooked before it becomes a problem.",
         details: "Stakeholder interviews, process mapping, SQL checks, exploratory analysis in Python. I trace workflows and validate assumptions before defining the actual problem.",
-        color: "#CC6A1E",
+        color: "#B89968",
         pattern: "pattern-research"
     },
     {
@@ -133,7 +133,7 @@ const SKILLS_CARDS = [
         title: "Strategic Planning",
         description: "I turn messy ideas into structured plans with clear steps that can actually be followed.",
         details: "Scope breakdowns, dependency mapping, decision matrices, simple prioritization frameworks. I sketch the flow first, compare options, and define what should be built now versus later.",
-        color: "#3f7689",
+        color: "#5E8492",
         pattern: "pattern-planning"
     },
     {
@@ -141,7 +141,7 @@ const SKILLS_CARDS = [
         title: "System Development",
         description: "I build prototypes, models, and tools that take ideas out of discussion and into use.",
         details: "Python scripts, SQL logic, internal tools, LLM-assisted workflows, web apps with Flask or Django. I build working models that can be tested and improved through real use.",
-        color: "#d81c3f",
+        color: "#BE4E61",
         pattern: "pattern-development"
     },
     {
@@ -149,7 +149,7 @@ const SKILLS_CARDS = [
         title: "Solution Testing",
         description: "I test, compare, and refine until the solution holds up in real situations.",
         details: "Side-by-side output comparisons, edge case testing, user feedback loops, reliability metrics. I check how the solution behaves under actual use conditions before calling it done.",
-        color: "#229954",
+        color: "#4D8965",
         pattern: "pattern-testing"
     },
     {
@@ -157,7 +157,7 @@ const SKILLS_CARDS = [
         title: "Workflow Optimization",
         description: "I identify where work slows down or wastes time, then simplify it.",
         details: "Process flow refinement, automation scripts in Python, tool consolidation, removing redundant steps. I reduce repeated manual work and adjust how systems interact to eliminate friction.",
-        color: "#6A35CC",
+        color: "#8062B8",
         pattern: "pattern-optimization"
     }
 ];
@@ -175,8 +175,6 @@ const state = {
     // Mobile stack state (single focused card + top peeks)
     activeCardIndex: 0,
     isSwiping: false,
-    swipePending: false,
-    swipeDirectionLocked: null, // 'horizontal' | 'vertical' | null
     swipeStartX: 0,
     swipeStartY: 0
 };
@@ -294,10 +292,10 @@ function renderProjectDetail(projectId) {
 
     contentDiv.innerHTML = `
         <h1 class="project-detail-title">${project.title}</h1>
-        <div class="project-detail-tags">${tagsHTML}</div>
         ${linksHTML}
         <p class="project-detail-description">${project.description}</p>
         ${imagesHTML}
+        <div class="project-detail-tags">${tagsHTML}</div>
     `;
 }
 
@@ -741,6 +739,8 @@ function navigateCarousel(direction) {
 }
 
 // Touch/Swipe Handlers - Horizontal swipe-to-dismiss
+// touch-action: pan-y on .skill-card lets the browser own vertical scrolling;
+// JS only takes over once the gesture is confirmed as horizontal.
 function handleTouchStart(e) {
     if (window.innerWidth > 950) return;
     if (state.isDropdownOpen || state.isOverlayOpen) return;
@@ -758,20 +758,17 @@ function handleTouchStart(e) {
     const rect = activeCard.getBoundingClientRect();
     if (touch.clientX < rect.left || touch.clientX > rect.right ||
         touch.clientY < rect.top || touch.clientY > rect.bottom) {
-        return; // Touch is outside the active card
+        return;
     }
     
-    // Record start position but don't commit yet — wait to see direction in touchmove
-    state.swipePending = true;
-    state.isSwiping = false;
-    state.swipeDirectionLocked = null;
+    // Tentatively start tracking; direction confirmed in touchmove
+    state.isSwiping = true;
     state.swipeStartX = touch.clientX;
     state.swipeStartY = touch.clientY;
 }
 
 function handleTouchMove(e) {
-    if (window.innerWidth > 950) return;
-    if (!state.swipePending && !state.isSwiping) return;
+    if (!state.isSwiping || window.innerWidth > 950) return;
     
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) return;
@@ -780,31 +777,22 @@ function handleTouchMove(e) {
     const activeCard = cards[state.activeCardIndex];
     if (!activeCard) return;
     
-    const currentX = e.touches[0].clientX;
-    const currentY = e.touches[0].clientY;
-    const diffX = currentX - state.swipeStartX;
-    const diffY = currentY - state.swipeStartY;
+    const diffX = e.touches[0].clientX - state.swipeStartX;
+    const diffY = e.touches[0].clientY - state.swipeStartY;
     
-    // Direction not yet decided — wait for 10px of movement then judge
-    if (!state.swipeDirectionLocked) {
-        if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) return;
-        
-        if (Math.abs(diffX) > Math.abs(diffY)) {
-            // Horizontal gesture — engage card swipe
-            state.swipeDirectionLocked = 'horizontal';
-            state.swipePending = false;
-            state.isSwiping = true;
-            activeCard.classList.add('swiping');
-        } else {
-            // Vertical gesture — let the page scroll, cancel swipe tracking
-            state.swipeDirectionLocked = 'vertical';
-            state.swipePending = false;
-            return;
-        }
+    // Vertical gesture — browser's touch-action: pan-y handles the scroll; we bail out
+    if (Math.abs(diffY) > Math.abs(diffX)) {
+        state.isSwiping = false;
+        activeCard.classList.remove('swiping');
+        activeCard.style.removeProperty('transform');
+        activeCard.style.removeProperty('z-index');
+        return;
     }
     
-    if (state.swipeDirectionLocked !== 'horizontal') return;
-    
+    // Horizontal gesture confirmed — take over and move the card
+    if (!activeCard.classList.contains('swiping')) {
+        activeCard.classList.add('swiping');
+    }
     e.preventDefault();
     const rotation = diffX * 0.08;
     const scale = 1.02;
@@ -814,10 +802,6 @@ function handleTouchMove(e) {
 
 function handleTouchEnd(e) {
     if (window.innerWidth > 950) return;
-    
-    // Reset pending state regardless of direction
-    state.swipePending = false;
-    state.swipeDirectionLocked = null;
     
     if (!state.isSwiping) return;
     
