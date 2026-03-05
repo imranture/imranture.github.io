@@ -175,6 +175,8 @@ const state = {
     // Mobile stack state (single focused card + top peeks)
     activeCardIndex: 0,
     isSwiping: false,
+    swipePending: false,
+    swipeDirectionLocked: null, // 'horizontal' | 'vertical' | null
     swipeStartX: 0,
     swipeStartY: 0
 };
@@ -759,16 +761,17 @@ function handleTouchStart(e) {
         return; // Touch is outside the active card
     }
     
-    state.isSwiping = true;
+    // Record start position but don't commit yet — wait to see direction in touchmove
+    state.swipePending = true;
+    state.isSwiping = false;
+    state.swipeDirectionLocked = null;
     state.swipeStartX = touch.clientX;
     state.swipeStartY = touch.clientY;
-    activeCard.classList.add('swiping');
-    e.preventDefault();
-    e.stopPropagation();
 }
 
 function handleTouchMove(e) {
-    if (!state.isSwiping || window.innerWidth > 950) return;
+    if (window.innerWidth > 950) return;
+    if (!state.swipePending && !state.isSwiping) return;
     
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) return;
@@ -782,6 +785,26 @@ function handleTouchMove(e) {
     const diffX = currentX - state.swipeStartX;
     const diffY = currentY - state.swipeStartY;
     
+    // Direction not yet decided — wait for 10px of movement then judge
+    if (!state.swipeDirectionLocked) {
+        if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) return;
+        
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            // Horizontal gesture — engage card swipe
+            state.swipeDirectionLocked = 'horizontal';
+            state.swipePending = false;
+            state.isSwiping = true;
+            activeCard.classList.add('swiping');
+        } else {
+            // Vertical gesture — let the page scroll, cancel swipe tracking
+            state.swipeDirectionLocked = 'vertical';
+            state.swipePending = false;
+            return;
+        }
+    }
+    
+    if (state.swipeDirectionLocked !== 'horizontal') return;
+    
     e.preventDefault();
     const rotation = diffX * 0.08;
     const scale = 1.02;
@@ -790,7 +813,13 @@ function handleTouchMove(e) {
 }
 
 function handleTouchEnd(e) {
-    if (!state.isSwiping || window.innerWidth > 950) return;
+    if (window.innerWidth > 950) return;
+    
+    // Reset pending state regardless of direction
+    state.swipePending = false;
+    state.swipeDirectionLocked = null;
+    
+    if (!state.isSwiping) return;
     
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) {
