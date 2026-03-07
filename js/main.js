@@ -211,6 +211,44 @@ function copyEmail(evt) {
     });
 }
 
+function generateProjectSchema(projectId, projectData) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": projectData.title,
+        "description": projectData.description,
+        "applicationCategory": "DeveloperApplication",
+        "creator": {
+            "@type": "Person",
+            "name": "Imran Ture",
+            "url": "https://www.imranture.com/"
+        },
+        "keywords": projectData.tags.join(", "),
+        "image": `https://www.imranture.com${projectData.primary_image}`,
+        "url": `https://www.imranture.com/project.html?id=${projectId}`
+    };
+}
+
+function injectProjectSchema(projectId, projectData) {
+    const existingSchema = document.getElementById('project-schema');
+    if (existingSchema) {
+        existingSchema.remove();
+    }
+    
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.id = 'project-schema';
+    schemaScript.textContent = JSON.stringify(generateProjectSchema(projectId, projectData));
+    document.head.appendChild(schemaScript);
+}
+
+function removeProjectSchema() {
+    const existingSchema = document.getElementById('project-schema');
+    if (existingSchema) {
+        existingSchema.remove();
+    }
+}
+
 // ========================================
 // RENDER FUNCTIONS
 // ========================================
@@ -346,6 +384,10 @@ function renderProjectDetail(projectId) {
         ${imagesHTML}
         <div class="project-detail-tags">${tagsHTML}</div>
     `;
+    
+    injectProjectSchema(projectId, project);
+    
+    document.title = `${project.title} | Imran Ture`;
 }
 
 function renderProjectsList() {
@@ -435,6 +477,9 @@ function closeProjectDetail() {
     const overlay = document.getElementById('project-detail-overlay');
     overlay.classList.remove('active');
     state.isOverlayOpen = false;
+    
+    removeProjectSchema();
+    document.title = 'Imran Ture';
 }
 
 function toggleDropdown() {

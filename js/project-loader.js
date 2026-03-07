@@ -103,6 +103,32 @@ const PROJECTS = {
     }
 };
 
+function generateProjectSchema(projectId, projectData) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": projectData.title,
+        "description": projectData.description,
+        "applicationCategory": "DeveloperApplication",
+        "creator": {
+            "@type": "Person",
+            "name": "Imran Ture",
+            "url": "https://www.imranture.com/"
+        },
+        "keywords": projectData.tags.join(", "),
+        "image": `https://www.imranture.com${projectData.primary_image}`,
+        "url": `https://www.imranture.com/project.html?id=${projectId}`
+    };
+}
+
+function injectProjectSchema(projectId, projectData) {
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.id = 'project-schema';
+    schemaScript.textContent = JSON.stringify(generateProjectSchema(projectId, projectData));
+    document.head.appendChild(schemaScript);
+}
+
 // IIFE (Immediately Invoked Function Expression)
 // Runs as soon as script loads since DOM is ready (script at end of body)
 (function loadProject() {
@@ -163,4 +189,6 @@ const PROJECTS = {
                 ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
             </div>
         </div>`;
+    
+    injectProjectSchema(projectId, project);
 })();
