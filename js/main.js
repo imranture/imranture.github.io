@@ -280,10 +280,17 @@ function renderIntro() {
     }
 
     // Format tagline: each word in its own span, dots in separate spans
+    // Add line break after 3rd word (DEVELOPMENT) for preferred layout on smaller screens
+    const shouldAddBreak = window.innerWidth < 1200; // Only add break on narrower screens
     const taglineHTML = INTRO.tagline.map((word, index) => {
         const wordSpan = `<span class="tagline-word" data-index="${index}">${word}</span>`;
         if (index < INTRO.tagline.length - 1) {
-            return wordSpan + `<span class="tagline-dot" data-index="${index}"> ·</span> `;
+            const dot = `<span class="tagline-dot" data-index="${index}"> ·</span> `;
+            // Add line break after DEVELOPMENT (index 2) on narrower screens
+            if (index === 2 && shouldAddBreak) {
+                return wordSpan + dot + '<br>';
+            }
+            return wordSpan + dot;
         }
         return wordSpan;
     }).join('');
@@ -1000,10 +1007,16 @@ function handleResize() {
     // Check if we crossed the 951px or 1350px boundaries
     const crossedLowerBoundary = (previousWidth <= 950 && currentWidth >= 951) || (previousWidth >= 951 && currentWidth <= 950);
     const crossedUpperBoundary = (previousWidth <= 1350 && currentWidth >= 1351) || (previousWidth >= 1351 && currentWidth <= 1350);
+    const crossedTaglineBoundary = (previousWidth <= 1200 && currentWidth >= 1201) || (previousWidth >= 1201 && currentWidth <= 1200);
     
     // Re-render cards when crossing boundaries to update <br> tags in titles
     if (crossedLowerBoundary || crossedUpperBoundary) {
         renderSkillCards();
+    }
+    
+    // Re-render intro when crossing tagline boundary to update line breaks
+    if (crossedTaglineBoundary && state.currentView === 'intro') {
+        renderIntro();
     }
     
     if (currentWidth <= 950) {
