@@ -292,7 +292,7 @@ p {
 
 .intro-name {
     font-family: 'Caveat', cursive;
-    font-size: clamp(3rem, 8vw, 4.2rem);
+    font-size: clamp(3.4rem, 8vw, 4.2rem);
     font-weight: 600;
     color: var(--text-main);
     margin-bottom: var(--space-2);
@@ -1285,7 +1285,7 @@ body.theme-light .dropdown-item:hover {
     }
 
     .intro-message {
-        font-size: 2.5rem;
+        font-size: 2.1rem;
     }
 
     /* Increase card body text size for better readability on mobile */
