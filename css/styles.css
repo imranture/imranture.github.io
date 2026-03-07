@@ -268,7 +268,7 @@ p {
     font-weight: 600;
     color: var(--text-main);
     margin-bottom: var(--space-2);
-    letter-spacing: 0.005em;
+    letter-spacing: 0.1em;
 }
 
 .intro-role {
