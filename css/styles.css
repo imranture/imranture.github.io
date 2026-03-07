@@ -579,9 +579,78 @@ body.theme-light .dropdown-item:hover {
 
 .project-detail-images img {
     width: 100%;
+    height: auto;
+    object-fit: contain;
     border-radius: 12px;
     border: 1px solid var(--border-color);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+}
+
+.project-detail-images img:hover {
+    opacity: 0.95;
+}
+
+/* Image Modal (Lightbox) */
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    animation: fadeIn 0.2s ease;
+}
+
+.image-modal.active {
+    display: flex;
+}
+
+.image-modal img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    cursor: default;
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background 0.2s;
+    border: none;
+    padding: 0;
+}
+
+.image-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Skills Card Deck
@@ -1466,6 +1535,16 @@ body.theme-light .dropdown-item:hover {
     .project-detail-description {
         font-size: 1rem;
         text-align: left;
+    }
+
+    .project-detail-images {
+        margin-left: calc(-1 * var(--space-4));
+        margin-right: calc(-1 * var(--space-4));
+        width: calc(100% + 2 * var(--space-4));
+    }
+
+    .project-detail-images img {
+        border-radius: 0;
     }
 }
 
