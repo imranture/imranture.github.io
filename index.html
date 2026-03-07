@@ -197,45 +197,52 @@
             <div class="site-name" id="site-name">
                 <img src="/image/imranture.png" alt="Imran Ture" class="profile-pic">
             </div>
-            <nav class="site-nav">
-                <button id="btn-projects" class="nav-btn"><i class="fas fa-layer-group"></i> Projects</button>
+            <nav class="site-nav" role="navigation" aria-label="Main navigation">
+                <button id="btn-projects" class="nav-btn" aria-label="View all projects"><i class="fas fa-layer-group" aria-hidden="true"></i> Projects</button>
             </nav>
         </header>
 
         <!-- MAIN CONTENT -->
-        <main class="main-content">
+        <main class="main-content" role="main">
             <!-- Center Content Panel: Dynamic content area (intro or project details) -->
-            <div id="center-panel" class="center-panel">
+            <div id="center-panel" class="center-panel" role="region" aria-label="Main content area">
                 <!-- Content will be injected by JavaScript -->
             </div>
 
             <!-- Mobile-only Projects button (shown before card deck on mobile) -->
             <div class="mobile-projects-section">
-                <button id="btn-projects-mobile" class="nav-btn mobile-projects-btn">
-                    <i class="fas fa-layer-group"></i> Projects
+                <button id="btn-projects-mobile" class="nav-btn mobile-projects-btn" aria-label="View all projects">
+                    <i class="fas fa-layer-group" aria-hidden="true"></i> Projects
                 </button>
             </div>
 
             <!-- Skills Card Deck: Interactive cards showing areas of expertise -->
-            <div id="card-deck" class="card-deck">
+            <section id="card-deck" class="card-deck" aria-label="Skills and expertise">
                 <!-- Cards will be injected by JavaScript -->
-            </div>
+            </section>
         </main>
 
         <!-- Projects Dropdown: Overlay menu listing all portfolio projects -->
-        <div id="projects-dropdown-backdrop" class="dropdown-backdrop hidden"></div>
-        <div id="projects-dropdown" class="projects-dropdown hidden">
+        <div id="projects-dropdown-backdrop" class="dropdown-backdrop hidden" aria-hidden="true"></div>
+        <div id="projects-dropdown" 
+             class="projects-dropdown hidden" 
+             role="menu"
+             aria-label="Project selection menu">
             <div class="dropdown-content">
                 <!-- Project list will be injected by JavaScript -->
             </div>
         </div>
 
         <!-- Project Detail Overlay: Modal displaying full project information -->
-        <div id="project-detail-overlay" class="project-detail-overlay">
-            <div class="overlay-backdrop"></div>
+        <div id="project-detail-overlay" 
+             class="project-detail-overlay"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="project-detail-title">
+            <div class="overlay-backdrop" aria-hidden="true"></div>
             <div class="overlay-content">
-                <button class="overlay-close" id="overlay-close" aria-label="Close">
-                    <i class="fa-solid fa-times"></i>
+                <button class="overlay-close" id="overlay-close" aria-label="Close project details">
+                    <i class="fa-solid fa-times" aria-hidden="true"></i>
                 </button>
                 <div id="project-detail-content" class="project-detail-content">
                     <!-- Project details will be injected by JavaScript -->
@@ -244,14 +251,14 @@
         </div>
 
         <!-- Theme Toggle Button -->
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
-            <i class="fa-solid fa-sun" id="theme-icon"></i>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light theme">
+            <i class="fa-solid fa-sun" id="theme-icon" aria-hidden="true"></i>
         </button>
 
         <!-- Social Links (Bottom Left) -->
-        <div id="social-links" class="social-links-fixed">
+        <nav id="social-links" class="social-links-fixed" role="navigation" aria-label="Social media links">
             <!-- Links will be injected by JavaScript -->
-        </div>
+        </nav>
 
     </div>
 

@@ -334,13 +334,13 @@ function renderIntro() {
     }).join('');
     
     centerPanel.innerHTML = `
-        <div class="intro-content">
-            <h1 class="intro-name">${INTRO.name}</h1>
-            <p class="intro-role">${INTRO.role}</p>
-            <p class="intro-tagline">${taglineHTML}</p>
+        <article class="intro-content" itemscope itemtype="https://schema.org/Person">
+            <h1 class="intro-name" itemprop="name">${INTRO.name}</h1>
+            <p class="intro-role" itemprop="jobTitle">${INTRO.role}</p>
+            <p class="intro-tagline" aria-label="Skills: ${INTRO.tagline.join(', ')}">${taglineHTML}</p>
             <h2 class="intro-message">${INTRO.mainMessage}</h2>
             <p class="intro-subtitle">${INTRO.subtitle}</p>
-        </div>
+        </article>
     `;
     
     // After rendering, check line positions and hide dots at line ends
@@ -378,11 +378,11 @@ function renderProjectDetail(projectId) {
     `;
 
     contentDiv.innerHTML = `
-        <h1 class="project-detail-title">${project.title}</h1>
+        <h1 class="project-detail-title" id="project-detail-title">${project.title}</h1>
         ${linksHTML}
         <p class="project-detail-description">${project.description}</p>
         ${imagesHTML}
-        <div class="project-detail-tags">${tagsHTML}</div>
+        <div class="project-detail-tags" role="list" aria-label="Project tags">${tagsHTML}</div>
     `;
     
     injectProjectSchema(projectId, project);
@@ -399,7 +399,10 @@ function renderProjectsList() {
     
     const projectsHTML = Object.keys(PROJECTS).map(projectId => {
         const project = PROJECTS[projectId];
-        return `<div class="dropdown-item" onclick="selectProject('${projectId}')">${project.title}</div>`;
+        return `<button class="dropdown-item" 
+                        onclick="selectProject('${projectId}')" 
+                        role="menuitem"
+                        aria-label="View ${project.title} project">${project.title}</button>`;
     }).join('');
 
     dropdownContent.innerHTML = projectsHTML;
@@ -420,11 +423,17 @@ function renderSkillCards() {
     const cardDeck = document.getElementById('card-deck');
     
     const cardsHTML = SKILLS_CARDS.map(card => `
-        <div class="skill-card" data-card-id="${card.id}" data-pattern="${card.pattern}" style="--card-color: ${card.color}">
+        <article class="skill-card" 
+                 data-card-id="${card.id}" 
+                 data-pattern="${card.pattern}" 
+                 style="--card-color: ${card.color}"
+                 role="article"
+                 tabindex="0"
+                 aria-label="${card.title}">
             <h3 class="skill-card-title">${formatCardTitle(card.title)}</h3>
             <p class="skill-card-description">${card.description}</p>
             <p class="skill-card-details">${card.details}</p>
-        </div>
+        </article>
     `).join('');
 
     cardDeck.innerHTML = cardsHTML;

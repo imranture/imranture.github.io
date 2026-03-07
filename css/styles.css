@@ -111,6 +111,34 @@ p {
     color: var(--text-muted);
 }
 
+/* Accessibility: Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Accessibility: Focus indicators for keyboard navigation */
+*:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 /* Subtle Grid Background Effect
    Creates a fixed-position decorative grid overlay behind all content */
 .bg-grid {
@@ -377,6 +405,10 @@ body.dropdown-open .card-deck {
     animation: slideInItem 0.3s ease forwards;
     text-align: right;
     white-space: nowrap;
+    background: none;
+    border: none;
+    width: 100%;
+    font-family: inherit;
 }
 
 .dropdown-item:nth-child(1) { animation-delay: 0.05s; }
