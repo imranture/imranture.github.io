@@ -1,4 +1,4 @@
-/**
+  /**
  * Minimal Portfolio - Main JavaScript
  * Single-page interactions and state management
  */
@@ -10,7 +10,7 @@
 const INTRO = {
     name: "İMRAN TÜRE",
     role: "Senior Analyst & Developer",
-    tagline: "RESEARCH · PLANNING · DEVELOPMENT · TESTING · OPTIMIZATION",
+    tagline: ["RESEARCH", "PLANNING", "DEVELOPMENT", "TESTING", "OPTIMIZATION"],
     mainMessage: "I design and build systems<br>people rely on.",
     subtitle: "Prototypes, models, apps, and AI tools for everyday challenges and decisions",
     location: "Somewhere on the globe",
@@ -240,6 +240,36 @@ function renderSocialLinks() {
     }
 }
 
+function adjustTaglineDots() {
+    const words = document.querySelectorAll('.tagline-word');
+    const dots = document.querySelectorAll('.tagline-dot');
+    
+    if (words.length === 0 || dots.length === 0) return;
+    
+    // Reset all dots to visible first
+    dots.forEach(dot => dot.style.visibility = 'visible');
+    
+    // Check each word-dot pair
+    words.forEach((word, index) => {
+        if (index >= dots.length) return;
+        
+        const dot = dots[index];
+        const nextWord = words[index + 1];
+        
+        if (!nextWord) return;
+        
+        // Get vertical positions
+        const wordRect = word.getBoundingClientRect();
+        const nextWordRect = nextWord.getBoundingClientRect();
+        
+        // If next word is on a different line (lower vertical position),
+        // hide the dot to prevent it appearing at end of line
+        if (Math.abs(nextWordRect.top - wordRect.top) > 5) {
+            dot.style.visibility = 'hidden';
+        }
+    });
+}
+
 function renderIntro() {
     const centerPanel = document.getElementById('center-panel');
     const cardDeck = document.getElementById('card-deck');
@@ -249,15 +279,27 @@ function renderIntro() {
         cardDeck.classList.remove('hidden');
     }
 
+    // Format tagline: each word in its own span, dots in separate spans
+    const taglineHTML = INTRO.tagline.map((word, index) => {
+        const wordSpan = `<span class="tagline-word" data-index="${index}">${word}</span>`;
+        if (index < INTRO.tagline.length - 1) {
+            return wordSpan + `<span class="tagline-dot" data-index="${index}"> ·</span> `;
+        }
+        return wordSpan;
+    }).join('');
+    
     centerPanel.innerHTML = `
         <div class="intro-content">
             <h1 class="intro-name">${INTRO.name}</h1>
             <p class="intro-role">${INTRO.role}</p>
-            <p class="intro-tagline">${INTRO.tagline}</p>
+            <p class="intro-tagline">${taglineHTML}</p>
             <h2 class="intro-message">${INTRO.mainMessage}</h2>
             <p class="intro-subtitle">${INTRO.subtitle}</p>
         </div>
     `;
+    
+    // After rendering, check line positions and hide dots at line ends
+    setTimeout(() => adjustTaglineDots(), 0);
 
     state.currentView = 'intro';
     state.currentProjectId = null;
@@ -314,12 +356,23 @@ function renderProjectsList() {
     dropdownContent.innerHTML = projectsHTML;
 }
 
+function formatCardTitle(title) {
+    const width = window.innerWidth;
+    
+    // Add <br> between words for screen sizes 951-1350px
+    if (width >= 951 && width <= 1350) {
+        return title.replace(/ /g, '<br>');
+    }
+    
+    return title;
+}
+
 function renderSkillCards() {
     const cardDeck = document.getElementById('card-deck');
     
     const cardsHTML = SKILLS_CARDS.map(card => `
         <div class="skill-card" data-card-id="${card.id}" data-pattern="${card.pattern}" style="--card-color: ${card.color}">
-            <h3 class="skill-card-title">${card.title}</h3>
+            <h3 class="skill-card-title">${formatCardTitle(card.title)}</h3>
             <p class="skill-card-description">${card.description}</p>
             <p class="skill-card-details">${card.details}</p>
         </div>
@@ -938,10 +991,32 @@ function handleMouseUp(e) {
 }
 
 // Window resize handler to reinitialize on breakpoint change
+let previousWidth = window.innerWidth;
+let resizeTimer;
+
 function handleResize() {
-    if (window.innerWidth <= 950) {
+    const currentWidth = window.innerWidth;
+    
+    // Check if we crossed the 951px or 1350px boundaries
+    const crossedLowerBoundary = (previousWidth <= 950 && currentWidth >= 951) || (previousWidth >= 951 && currentWidth <= 950);
+    const crossedUpperBoundary = (previousWidth <= 1350 && currentWidth >= 1351) || (previousWidth >= 1351 && currentWidth <= 1350);
+    
+    // Re-render cards when crossing boundaries to update <br> tags in titles
+    if (crossedLowerBoundary || crossedUpperBoundary) {
+        renderSkillCards();
+    }
+    
+    if (currentWidth <= 950) {
         updateCardPositions();
     }
+    
+    // Debounce tagline dot adjustment
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        adjustTaglineDots();
+    }, 100);
+    
+    previousWidth = currentWidth;
 }
 
 
