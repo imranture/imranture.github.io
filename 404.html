@@ -178,15 +178,14 @@
         /* Meme Container */
         .meme-container {
             margin: var(--space-5) 0;
-            border-radius: 12px;
+            border-radius: 5px;
             overflow: hidden;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
         }
 
         .meme-container img {
-            width: 100%;
-            max-width: 500px;
+            width: 70%;
             height: auto;
             display: block;
             margin: 0 auto;
@@ -269,38 +268,6 @@
 
         .theme-toggle:active #theme-icon {
             transform: rotate(180deg);
-        }
-
-        /* Social Links */
-        .social-links {
-            position: fixed;
-            bottom: 1.5rem;
-            left: 1.5rem;
-            display: flex;
-            gap: 1rem;
-            z-index: 100;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.5rem;
-            height: 2.5rem;
-            color: var(--text-muted);
-            background: var(--bg-glass);
-            border: 1px solid var(--border-glass);
-            border-radius: 8px;
-            text-decoration: none;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.2s ease;
-        }
-
-        .social-link:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-2px);
         }
 
         /* Header */
