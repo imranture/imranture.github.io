@@ -2,9 +2,13 @@
 Options +FollowSymLinks
 RewriteEngine on
 
-# Redirect non-www to www
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect non-www to www (already using HTTPS from above rule)
 RewriteCond %{HTTP_HOST} ^imranture.com [NC]
-RewriteRule ^(.*)$ http://www.imranture.com/$1 [R=301,NC]
+RewriteRule ^(.*)$ https://www.imranture.com/$1 [R=301,NC]
 
 # 301 Redirect Entire Directory
 RedirectMatch 301 imranture.com/page/E4-TimeStamper(.*) https://github.com/imranture/E4-TimeStamper/$1
