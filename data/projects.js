@@ -1,11 +1,9 @@
 /**
- * Project Loader - Standalone script for project.html pages
- * Loads project details from URL parameters and renders content
- * Uses centralized PROJECTS_DATA from data/projects.js
+ * Projects Data - Centralized source of truth for portfolio projects
+ * This file is loaded before main.js and project-loader.js
  */
 
-// Projects data loaded from centralized data file (data/projects.js)
-const PROJECTS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : {
+const PROJECTS_DATA = {
     'e4-timestamper': {
         title: 'E4 TimeStamper: Web App for Automatic Timestamping and Analysis of Empatica E4 Data',
         primary_image: '/image/e4-timestamper.png',
@@ -15,7 +13,7 @@ const PROJECTS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : {
             { url: 'https://github.com/imranture/E4-TimeStamper', text: 'GitHub' }
         ],
         tags: ['Software Development', 'Time Series Analysis', 'Physiological Signals', 'Empatica E4'],
-        description: 'E4 TimeStamper is a user-friendly web application designed to help researchers add timestamps to physiological signal data collected from Empatica E4 wristbands. The tool enables seamless file extraction and precise timestamping, customizable by timezone and preferred date &amp; time format. Widely adopted by researchers worldwide, E4 TimeStamper is now a web-based tool, having previously been available for both Windows and Mac operating systems.'
+        description: 'E4 TimeStamper is a user-friendly web application designed to help researchers add timestamps to physiological signal data collected from Empatica E4 wristbands. The tool enables seamless file extraction and precise timestamping, customizable by timezone and preferred date & time format. Widely adopted by researchers worldwide, E4 TimeStamper is now a web-based tool, having previously been available for both Windows and Mac operating systems.'
     },
     'emotion-recognition': {
         title: 'Deep Emotion Recognition using Wearable Sensors',
@@ -54,14 +52,6 @@ const PROJECTS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : {
         tags: ['A/B Testing', 'Chi-Square', 'Mann–Whitney U test'],
         description: 'The report presents a detailed A/B testing analysis to understand how ad exposure and timing impact user conversions. By examining data across different days, times, and levels of ad exposure, key insights are uncovered for optimizing marketing strategies. The analysis identifies the best days and times to run campaigns and an optimal ad exposure range, balancing the maximization of conversions while minimizing ad fatigue. The findings highlight the significant role of targeted ads in driving campaign success.'
     },
-    // 'forecasting-translation': {
-    //     title: 'Translating Forecasting: Principles and Practice',
-    //     primary_image: '/image/fpp3.png',
-    //     secondary_image: null,
-    //     links: [],
-    //     tags: ['Forecasting', 'R', 'RStudio'],
-    //     description: 'The initiative involves translating the popular textbook "Forecasting: Principles and Practice" to broaden the accessibility and understanding of forecasting principles among Turkish speakers. Alongside this effort, a suite of documents has been developed to facilitate the collaborative process among translation teams, ensuring efficient workflows and high-quality educational outcomes.'
-    // },
     'melbourne-property-sales': {
         title: 'Melbourne Property Sales: Visual Exploration of Housing Market Dynamics',
         primary_image: '/image/melbourne-property-sales.png',
@@ -101,112 +91,3 @@ const PROJECTS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : {
         description: 'DurCalc is a web app designed to effortlessly calculate the duration between dates and/or times. With its user-friendly interface and intuitive functionality, DurCalc streamlines the process and calculates durations without any fuss.'
     }
 };
-
-/**
- * Generates Schema.org structured data for a project
- * @param {string} projectId - Unique project identifier
- * @param {Object} projectData - Project data object
- * @returns {Object} Schema.org SoftwareApplication JSON-LD object
- */
-function generateProjectSchema(projectId, projectData) {
-    return {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": projectData.title,
-        "description": projectData.description,
-        "applicationCategory": "DeveloperApplication",
-        "creator": {
-            "@type": "Person",
-            "name": "Imran Ture",
-            "url": "https://www.imranture.com/"
-        },
-        "keywords": projectData.tags.join(", "),
-        "image": `https://www.imranture.com${projectData.primary_image}`,
-        "url": `https://www.imranture.com/project.html?id=${projectId}`
-    };
-}
-
-/**
- * Injects project structured data into document head
- * @param {string} projectId - Unique project identifier
- * @param {Object} projectData - Project data object
- */
-function injectProjectSchema(projectId, projectData) {
-    const schemaScript = document.createElement('script');
-    schemaScript.type = 'application/ld+json';
-    schemaScript.id = 'project-schema';
-    schemaScript.textContent = JSON.stringify(generateProjectSchema(projectId, projectData));
-    document.head.appendChild(schemaScript);
-}
-
-// IIFE (Immediately Invoked Function Expression)
-// Runs as soon as script loads since DOM is ready (script at end of body)
-(function loadProject() {
-    // Extract project ID from URL query parameter (?id=project-name)
-    const params = new URLSearchParams(window.location.search);
-    const projectId = params.get('id');
-    const container = document.getElementById('project-content');
-
-    if (!container || !projectId) return;
-
-    const project = PROJECTS[projectId];
-
-    // Update back button to link to correct anchor on homepage
-    const backBtn = document.querySelector('a[aria-label="Back to Projects"]');
-    if (backBtn) {
-        backBtn.href = `/index.html#projects-${projectId}`;
-    }
-
-    // Handle invalid project ID
-    if (!project) {
-        container.innerHTML = `
-            <div style="text-align: center; padding: 100px 0;">
-                <h2 style="color: var(--text-main);">Project not found</h2>
-                <p style="color: var(--text-muted); margin-top: 10px;">
-                    <a href="/index.html" style="color: var(--accent); text-decoration: none;">← Return to home</a>
-                </p>
-            </div>`;
-        return;
-    }
-
-    // Update page title with project name
-    document.title = project.title + ' - Imran Ture';
-
-    const hasLinks = project.links && project.links.filter(l => l.url).length > 0;
-
-    // Build and inject complete project detail HTML dynamically
-    container.innerHTML = `
-        <div class="project-detail-content">
-            <h1 class="project-detail-title">${project.title}</h1>
-
-            ${hasLinks ? `
-            <div class="project-detail-links">
-                ${project.links.map(link => `
-                    <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="project-detail-link">
-                        <i class="fas fa-link"></i> ${link.text}
-                    </a>
-                `).join('')}
-            </div>` : ''}
-
-            <p class="project-detail-description">${project.description}</p>
-
-            <div class="project-detail-images">
-                <img src="${project.primary_image}" 
-                     alt="${project.title} - Project screenshot" 
-                     loading="lazy"
-                     width="800"
-                     height="600">
-                ${project.secondary_image ? `<img src="${project.secondary_image}" 
-                                                 alt="${project.title} - Additional screenshot" 
-                                                 loading="lazy"
-                                                 width="800"
-                                                 height="600">` : ''}
-            </div>
-
-            <div class="project-detail-tags">
-                ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-            </div>
-        </div>`;
-    
-    injectProjectSchema(projectId, project);
-})();

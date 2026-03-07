@@ -22,7 +22,8 @@ const INTRO = {
     ]
 };
 
-const PROJECTS = {
+// Projects data loaded from centralized data file (data/projects.js)
+const PROJECTS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : {
     'e4-timestamper': {
         title: 'E4 TimeStamper: Web App for Automatic Timestamping and Analysis of Empatica E4 Data',
         primary_image: '/image/e4-timestamper.png',
@@ -183,6 +184,10 @@ const state = {
 // UTILITY FUNCTIONS
 // ========================================
 
+/**
+ * Copies email address to clipboard with visual feedback
+ * @param {Event} evt - Click event from email link
+ */
 function copyEmail(evt) {
     evt.preventDefault();
     const emailLink = evt.target.closest('.email-link');
@@ -211,6 +216,12 @@ function copyEmail(evt) {
     });
 }
 
+/**
+ * Generates Schema.org structured data for a project
+ * @param {string} projectId - Unique project identifier
+ * @param {Object} projectData - Project data object
+ * @returns {Object} Schema.org SoftwareApplication JSON-LD object
+ */
 function generateProjectSchema(projectId, projectData) {
     return {
         "@context": "https://schema.org",
@@ -229,6 +240,11 @@ function generateProjectSchema(projectId, projectData) {
     };
 }
 
+/**
+ * Injects project structured data into document head
+ * @param {string} projectId - Unique project identifier
+ * @param {Object} projectData - Project data object
+ */
 function injectProjectSchema(projectId, projectData) {
     const existingSchema = document.getElementById('project-schema');
     if (existingSchema) {
@@ -242,6 +258,9 @@ function injectProjectSchema(projectId, projectData) {
     document.head.appendChild(schemaScript);
 }
 
+/**
+ * Removes project structured data from document head
+ */
 function removeProjectSchema() {
     const existingSchema = document.getElementById('project-schema');
     if (existingSchema) {
@@ -253,6 +272,9 @@ function removeProjectSchema() {
 // RENDER FUNCTIONS
 // ========================================
 
+/**
+ * Renders social media links in the fixed sidebar
+ */
 function renderSocialLinks() {
     const socialLinksContainer = document.getElementById('social-links');
     if (!socialLinksContainer) return;
@@ -278,6 +300,10 @@ function renderSocialLinks() {
     }
 }
 
+/**
+ * Adjusts visibility of tagline dots to prevent them appearing at line ends
+ * Hides dots when the next word wraps to a new line
+ */
 function adjustTaglineDots() {
     const words = document.querySelectorAll('.tagline-word');
     const dots = document.querySelectorAll('.tagline-dot');
@@ -308,6 +334,9 @@ function adjustTaglineDots() {
     });
 }
 
+/**
+ * Renders the intro/home page with name, role, tagline, and message
+ */
 function renderIntro() {
     const centerPanel = document.getElementById('center-panel');
     const cardDeck = document.getElementById('card-deck');
@@ -350,6 +379,10 @@ function renderIntro() {
     state.currentProjectId = null;
 }
 
+/**
+ * Renders project details in the modal overlay
+ * @param {string} projectId - Unique project identifier
+ */
 function renderProjectDetail(projectId) {
     const project = PROJECTS[projectId];
     if (!project) return;
@@ -372,8 +405,16 @@ function renderProjectDetail(projectId) {
 
     const imagesHTML = `
         <div class="project-detail-images">
-            <img src="${project.primary_image}" alt="${project.title}">
-            ${project.secondary_image ? `<img src="${project.secondary_image}" alt="">` : ''}
+            <img src="${project.primary_image}" 
+                 alt="${project.title} - Project screenshot" 
+                 loading="lazy"
+                 width="800"
+                 height="600">
+            ${project.secondary_image ? `<img src="${project.secondary_image}" 
+                                             alt="${project.title} - Additional screenshot" 
+                                             loading="lazy"
+                                             width="800"
+                                             height="600">` : ''}
         </div>
     `;
 
@@ -390,6 +431,9 @@ function renderProjectDetail(projectId) {
     document.title = `${project.title} | Imran Ture`;
 }
 
+/**
+ * Renders the list of projects in the dropdown menu
+ */
 function renderProjectsList() {
     const dropdown = document.getElementById('projects-dropdown');
     if (!dropdown) return;
@@ -408,6 +452,11 @@ function renderProjectsList() {
     dropdownContent.innerHTML = projectsHTML;
 }
 
+/**
+ * Formats skill card titles with responsive line breaks
+ * @param {string} title - Card title to format
+ * @returns {string} Formatted title with optional <br> tags
+ */
 function formatCardTitle(title) {
     const width = window.innerWidth;
     
@@ -419,6 +468,9 @@ function formatCardTitle(title) {
     return title;
 }
 
+/**
+ * Renders skill cards with patterns and animations
+ */
 function renderSkillCards() {
     const cardDeck = document.getElementById('card-deck');
     
@@ -463,11 +515,19 @@ function renderSkillCards() {
 // EVENT HANDLERS
 // ========================================
 
+/**
+ * Handles project selection from dropdown menu
+ * @param {string} projectId - Unique project identifier
+ */
 function selectProject(projectId) {
     closeDropdown();
     openProjectDetail(projectId);
 }
 
+/**
+ * Opens project detail modal overlay
+ * @param {string} projectId - Unique project identifier
+ */
 function openProjectDetail(projectId) {
     renderProjectDetail(projectId);
     const overlay = document.getElementById('project-detail-overlay');
@@ -482,6 +542,9 @@ function openProjectDetail(projectId) {
     state.isOverlayOpen = true;
 }
 
+/**
+ * Closes project detail modal overlay and cleans up schema
+ */
 function closeProjectDetail() {
     const overlay = document.getElementById('project-detail-overlay');
     overlay.classList.remove('active');
@@ -491,6 +554,9 @@ function closeProjectDetail() {
     document.title = 'Imran Ture';
 }
 
+/**
+ * Toggles the projects dropdown menu visibility
+ */
 function toggleDropdown() {
     const dropdown = document.getElementById('projects-dropdown');
     const backdrop = document.getElementById('projects-dropdown-backdrop');
@@ -512,6 +578,9 @@ function toggleDropdown() {
     }
 }
 
+/**
+ * Closes the projects dropdown menu
+ */
 function closeDropdown() {
     const dropdown = document.getElementById('projects-dropdown');
     const backdrop = document.getElementById('projects-dropdown-backdrop');
@@ -521,6 +590,10 @@ function closeDropdown() {
     document.body.classList.remove('dropdown-open');
 }
 
+/**
+ * Toggles card expansion state on desktop or brings card to focus on mobile
+ * @param {string} cardId - Unique card identifier
+ */
 function toggleCard(cardId) {
     const cards = document.querySelectorAll('.skill-card');
     const clickedCard = document.querySelector(`[data-card-id="${cardId}"]`);
@@ -726,6 +799,10 @@ function toggleCard(cardId) {
     }
 }
 
+/**
+ * Smoothly transitions content in the center panel
+ * @param {Function} callback - Function to execute during transition
+ */
 function transitionContent(callback) {
     const centerPanel = document.getElementById('center-panel');
     centerPanel.classList.add('fade-out');
@@ -741,6 +818,9 @@ function transitionContent(callback) {
     }, 300);
 }
 
+/**
+ * Resets view to intro page, closing any open modals
+ */
 function resetToIntro() {
     closeDropdown();
     if (state.isOverlayOpen) {
@@ -753,6 +833,9 @@ function resetToIntro() {
 // THEME TOGGLE
 // ========================================
 
+/**
+ * Toggles between light and dark theme
+ */
 function toggleTheme() {
     const isLight = document.body.classList.toggle('theme-light');
     const icon = document.getElementById('theme-icon');
@@ -768,6 +851,9 @@ function toggleTheme() {
     }
 }
 
+/**
+ * Initializes theme from localStorage on page load
+ */
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
