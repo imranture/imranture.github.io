@@ -12,7 +12,7 @@ const INTRO = {
     role: "Senior Analyst & Developer",
     tagline: ["RESEARCH", "PLANNING", "DEVELOPMENT", "TESTING", "OPTIMIZATION"],
     mainMessage: "I design and build systems<br>people rely on.",
-    subtitle: "Prototypes, models, apps, and AI tools for everyday challenges and decisions",
+    subtitle: "Prototypes, models, software, and AI applications<br>for everyday challenges and decisions",
     location: "Somewhere on the globe",
     socialLinks: [
         { icon: "fas fa-envelope", url: "mailto:&#105;&#109;&#114;&#097;&#110;@&#097;&#108;&#117;&#109;&#110;&#105;.&#114;&#117;&#116;&#103;&#101;&#114;&#115;.&#101;&#100;&#117;", label: "Email", isEmail: true },
@@ -151,7 +151,7 @@ const SKILLS_CARDS = [
     {
         id: "testing",
         title: "Solution Testing",
-        description: "I validate, compare, and refine solutions until they hold up in real-world situations.",
+        description: "I validate, compare, and refine solutions until they are ready for real-world use.",
         approach: "A/B testing, statistical validation, cross-validation for ML models, edge case testing, user feedback loops. I check how solutions behave under actual use conditions.",
         tools: "Python (SciPy, Statsmodels), chi-square tests, t-tests, reliability metrics",
         color: "#4D8965",
