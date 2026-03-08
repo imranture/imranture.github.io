@@ -1197,6 +1197,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderSkillCards();
     renderSocialLinks();
 
+    // Update copyright year
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
     // Attach event listeners
     document.getElementById('site-name').addEventListener('click', resetToIntro);
     document.getElementById('btn-projects').addEventListener('click', toggleDropdown);

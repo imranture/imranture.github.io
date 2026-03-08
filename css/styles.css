@@ -158,11 +158,12 @@ p {
 /* Layout Container */
 .layout-container {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     padding: var(--space-3) var(--space-5);
     z-index: 10;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 2rem;
     position: relative;
     overflow: hidden;
 }
@@ -1193,6 +1194,11 @@ body.theme-light .dropdown-item:hover {
         height: 65vh !important;
         max-height: 65vh !important;
     }
+
+    /* Footer: sits with margin from bottom on medium screens */
+    .site-footer {
+        padding: 1rem 0 2rem 0;
+    }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
@@ -1282,7 +1288,7 @@ body.theme-light .dropdown-item:hover {
         min-height: 100vh;
         height: auto;
         padding: var(--space-3);
-        padding-bottom: calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+        padding-bottom: var(--space-3);
         overflow: visible;
     }
 
@@ -1653,4 +1659,22 @@ body.theme-light .dropdown-item:hover {
     100% {
         background-position: 40px 40px;
     }
+}
+
+/* Site Footer - Copyright */
+.site-footer {
+    text-align: center;
+    padding: 1rem 0 0.5rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.site-footer p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+    margin: 0;
+}
+
+body.theme-light .site-footer {
+    border-top-color: rgba(15, 23, 42, 0.08);
 }
