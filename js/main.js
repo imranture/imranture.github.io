@@ -127,7 +127,7 @@ const SKILLS_CARDS = [
         description: "I identify gaps, ambiguities, and hidden issues through systematic analysis and collaborative discovery.",
         approach: "Stakeholder interviews, process mapping, exploratory data analysis. I trace workflows and validate assumptions before defining the actual problem.",
         tools: "Python (Pandas, NumPy, Matplotlib), R, SQL (BigQuery, PostgreSQL), Tableau",
-        color: "#B89968",
+        color: "#e5ab5b",
         pattern: "pattern-research"
     },
     {
@@ -136,7 +136,7 @@ const SKILLS_CARDS = [
         description: "I turn messy ideas into structured plans with clear steps and dependencies.",
         approach: "Scope breakdowns, dependency mapping, decision matrices, feasibility analysis. I use process modeling and cost-benefit analysis to compare options and define priorities.",
         tools: "Python, Excel, process modeling software, simulation tools",
-        color: "#5E8492",
+        color: "#7e9ca7",
         pattern: "pattern-planning"
     },
     {
@@ -145,7 +145,7 @@ const SKILLS_CARDS = [
         description: "I build prototypes, models, and tools that take ideas out of discussion and into working systems.",
         approach: "Rapid prototyping, iterative development, building working systems that can be tested and improved through real use.",
         tools: "Python (scikit-learn, TensorFlow, PyTorch), SQL (PostgreSQL, BigQuery), LLMs (OpenAI API, LangChain), Flask, Django",
-        color: "#BE4E61",
+        color: "#cb7180",
         pattern: "pattern-development"
     },
     {
@@ -154,7 +154,7 @@ const SKILLS_CARDS = [
         description: "I validate, compare, and refine solutions until they are ready for real-world use.",
         approach: "A/B testing, statistical validation, cross-validation for ML models, edge case testing, user feedback loops. I check how solutions behave under actual use conditions.",
         tools: "Python (SciPy, Statsmodels), chi-square tests, t-tests, reliability metrics",
-        color: "#4D8965",
+        color: "#70a083",
         pattern: "pattern-testing"
     },
     {
@@ -163,7 +163,7 @@ const SKILLS_CARDS = [
         description: "I find bottlenecks and implement targeted improvements to eliminate waste and optimize processes.",
         approach: "Process analysis, workflow mapping, optimization models for complex scheduling and allocation problems.",
         tools: "Python (PuLP, Gurobi for MILP), automation scripts, process modeling",
-        color: "#8062B8",
+        color: "#9981c6",
         pattern: "pattern-optimization"
     }
 ];

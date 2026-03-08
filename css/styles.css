@@ -344,7 +344,7 @@ p {
 .intro-message {
     font-size: clamp(2.2rem, 4.5vw, 2.9rem);
     font-weight: 400;
-    color: var(--text-main);
+    color: var(--text-body);
     line-height: 1.3;
     margin-bottom: var(--space-4);
 }
@@ -473,7 +473,7 @@ body.theme-light .projects-dropdown {
 }
 
 body.theme-light .dropdown-item {
-    color: #0f172a;
+    color: var(--text-body);
     font-weight: 500;
 }
 
@@ -558,7 +558,7 @@ body.theme-light .dropdown-item:hover {
 .project-detail-title {
     font-size: clamp(1.2rem, 4vw, 1.75rem);
     font-weight: 500;
-    color: var(--text-main);
+    color: var(--text-body);
     margin-bottom: var(--space-4);
     padding-right: 4rem;
     line-height: 1.3;
@@ -696,6 +696,7 @@ body.theme-light .dropdown-item:hover {
     justify-content: center;
     perspective: 75rem;
     margin-top: var(--space-0);
+    margin-bottom: 2rem;
     width: 100%;
     z-index: 1;
 }
@@ -859,7 +860,11 @@ body.theme-light .dropdown-item:hover {
     margin-bottom: var(--space-3);
     transition: font-size 0.5s ease, margin 0.5s ease;
     letter-spacing: -0.02em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 
+        0.75px 0.75px 0 rgba(0, 0, 0, 0.3),
+        -0.75px -0.75px 0 rgba(0, 0, 0, 0.3),
+        0.75px -0.75px 0 rgba(0, 0, 0, 0.3),
+        -0.75px 0.75px 0 rgba(0, 0, 0, 0.3);
 }
 
 .skill-card-description {
@@ -869,21 +874,11 @@ body.theme-light .dropdown-item:hover {
     opacity: 1;
     transition: all 0.4s ease;
     font-weight: 400;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-}
-
-.skill-card-details {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.96);
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    margin-top: var(--space-5);
-    padding-top: var(--space-4);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    text-shadow: 
+        0.75px 0.75px 0 rgba(0, 0, 0, 0.3),
+        -0.75px -0.75px 0 rgba(0, 0, 0, 0.3),
+        0.75px -0.75px 0 rgba(0, 0, 0, 0.3),
+        -0.75px 0.75px 0 rgba(0, 0, 0, 0.3);
 }
 
 .skill-card-approach,
@@ -895,7 +890,11 @@ body.theme-light .dropdown-item:hover {
     max-height: 0;
     overflow: hidden;
     transition: all 0.4s ease;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    text-shadow: 
+        0.75px 0.75px 0 rgba(0, 0, 0, 0.3),
+        -0.75px -0.75px 0 rgba(0, 0, 0, 0.3),
+        0.75px -0.75px 0 rgba(0, 0, 0, 0.3),
+        -0.75px 0.75px 0 rgba(0, 0, 0, 0.3);
 }
 
 .skill-card-approach {
@@ -1096,7 +1095,7 @@ body.theme-light .dropdown-item:hover {
 }
 
 .social-links-fixed a {
-    color: var(--text-main);
+    color: var(--text-body);
     font-size: 1.2rem;
     opacity: 0.85;
     transition: all 0.3s ease;
@@ -1229,7 +1228,7 @@ body.theme-light .dropdown-item:hover {
 
     /* Footer: sits with margin from bottom on medium screens */
     .site-footer {
-        padding: 1rem 0 2rem 0;
+        padding-bottom: 1rem;
     }
 }
 
@@ -1388,10 +1387,10 @@ body.theme-light .dropdown-item:hover {
         top: auto;
     }
 
-    /* Move theme toggle to subtle floating button in bottom-right */
+    /* Move theme toggle to subtle floating button in top-right */
     .theme-toggle {
         position: fixed;
-        bottom: 1.5rem;
+        top: 1.5rem;
         right: 1.5rem;
         width: 2.5rem;
         height: 2.5rem;
@@ -1696,6 +1695,7 @@ body.theme-light .dropdown-item:hover {
 /* Site Footer - Copyright */
 .site-footer {
     text-align: center;
+    padding-bottom: 1rem;
 }
 
 .site-footer p {
