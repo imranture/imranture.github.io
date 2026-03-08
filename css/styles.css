@@ -887,12 +887,12 @@ body.theme-light .dropdown-item:hover {
 /* Card positions - fanned out deck layout (desktop only)
    Each card offset horizontally with slight rotation for visual depth */
 .skill-card:nth-child(1) {
-    transform: translateX(-30rem) translateY(1rem) rotate(-8deg) scale(1);
+    transform: translateX(-30rem) translateY(0) rotate(-8deg) scale(1);
     z-index: 1;
 }
 
 .skill-card:nth-child(2) {
-    transform: translateX(-15rem) translateY(0.5rem) rotate(-4deg) scale(1);
+    transform: translateX(-15rem) translateY(0) rotate(-4deg) scale(1);
     z-index: 2;
 }
 
@@ -902,12 +902,12 @@ body.theme-light .dropdown-item:hover {
 }
 
 .skill-card:nth-child(4) {
-    transform: translateX(15rem) translateY(0.5rem) rotate(4deg) scale(1);
+    transform: translateX(15rem) translateY(0) rotate(4deg) scale(1);
     z-index: 4;
 }
 
 .skill-card:nth-child(5) {
-    transform: translateX(30rem) translateY(1rem) rotate(8deg) scale(1);
+    transform: translateX(30rem) translateY(0) rotate(8deg) scale(1);
     z-index: 5;
 }
 
@@ -1149,11 +1149,11 @@ body.theme-light .dropdown-item:hover {
 
     /* Tighter spread with less rotation for better fit */
     .skill-card:nth-child(1) {
-        transform: translateX(clamp(-22rem, -20vw, -18rem)) translateY(0.5rem) rotate(-5deg) scale(1);
+        transform: translateX(clamp(-22rem, -20vw, -18rem)) translateY(0) rotate(-5deg) scale(1);
     }
     
     .skill-card:nth-child(2) {
-        transform: translateX(clamp(-12rem, -10vw, -9rem)) translateY(0.3rem) rotate(-2.5deg) scale(1);
+        transform: translateX(clamp(-12rem, -10vw, -9rem)) translateY(0) rotate(-2.5deg) scale(1);
     }
     
     .skill-card:nth-child(3) {
@@ -1161,11 +1161,11 @@ body.theme-light .dropdown-item:hover {
     }
     
     .skill-card:nth-child(4) {
-        transform: translateX(clamp(9rem, 10vw, 12rem)) translateY(0.3rem) rotate(2.5deg) scale(1);
+        transform: translateX(clamp(9rem, 10vw, 12rem)) translateY(0) rotate(2.5deg) scale(1);
     }
     
     .skill-card:nth-child(5) {
-        transform: translateX(clamp(18rem, 20vw, 22rem)) translateY(0.5rem) rotate(5deg) scale(1);
+        transform: translateX(clamp(18rem, 20vw, 22rem)) translateY(0) rotate(5deg) scale(1);
     }
 
     /* Hover states for responsive cards */
@@ -1242,11 +1242,11 @@ body.theme-light .dropdown-item:hover {
 
     /* Reduce card spacing and rotation for tablet */
     .skill-card:nth-child(1) {
-        transform: translateX(-16rem) translateY(0.5rem) rotate(-4deg) scale(1);
+        transform: translateX(-16rem) translateY(0) rotate(-4deg) scale(1);
     }
     
     .skill-card:nth-child(2) {
-        transform: translateX(-8rem) translateY(0.25rem) rotate(-2deg) scale(1);
+        transform: translateX(-8rem) translateY(0) rotate(-2deg) scale(1);
     }
     
     .skill-card:nth-child(3) {
@@ -1254,11 +1254,11 @@ body.theme-light .dropdown-item:hover {
     }
     
     .skill-card:nth-child(4) {
-        transform: translateX(8rem) translateY(0.25rem) rotate(2deg) scale(1);
+        transform: translateX(8rem) translateY(0) rotate(2deg) scale(1);
     }
     
     .skill-card:nth-child(5) {
-        transform: translateX(16rem) translateY(0.5rem) rotate(4deg) scale(1);
+        transform: translateX(16rem) translateY(0) rotate(4deg) scale(1);
     }
     
     .skill-card.expanded {
