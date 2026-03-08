@@ -124,40 +124,45 @@ const SKILLS_CARDS = [
     {
         id: "research",
         title: "Research Analysis",
-        description: "I find what is missing, unclear, or overlooked before it becomes a problem.",
-        details: "Stakeholder interviews, process mapping, SQL checks, exploratory analysis in Python. I trace workflows and validate assumptions before defining the actual problem.",
+        description: "I identify gaps, ambiguities, and hidden issues through systematic analysis and collaborative discovery.",
+        approach: "Stakeholder interviews, process mapping, exploratory data analysis. I trace workflows and validate assumptions before defining the actual problem.",
+        tools: "Python (Pandas, NumPy, Matplotlib), R, SQL (BigQuery, PostgreSQL), Tableau",
         color: "#B89968",
         pattern: "pattern-research"
     },
     {
         id: "planning",
         title: "Strategic Planning",
-        description: "I turn messy ideas into structured plans with clear steps that can actually be followed.",
-        details: "Scope breakdowns, dependency mapping, decision matrices, simple prioritization frameworks. I sketch the flow first, compare options, and define what should be built now versus later.",
+        description: "I turn messy ideas into structured plans with clear steps and dependencies.",
+        approach: "Scope breakdowns, dependency mapping, decision matrices, feasibility analysis. I use process modeling and cost-benefit analysis to compare options and define priorities.",
+        tools: "Python, Excel, process modeling software, simulation tools",
         color: "#5E8492",
         pattern: "pattern-planning"
     },
     {
         id: "development",
         title: "System Development",
-        description: "I build prototypes, models, and tools that take ideas out of discussion and into use.",
-        details: "Python scripts, SQL logic, internal tools, LLM-assisted workflows, web apps with Flask or Django. I build working models that can be tested and improved through real use.",
+        description: "I build prototypes, models, and tools that take ideas out of discussion and into working systems.",
+        approach: "Rapid prototyping, iterative development, building working systems that can be tested and improved through real use.",
+        tools: "Python (scikit-learn, TensorFlow, PyTorch), SQL (PostgreSQL, BigQuery), LLMs (OpenAI API, LangChain), Flask, Django",
         color: "#BE4E61",
         pattern: "pattern-development"
     },
     {
         id: "testing",
         title: "Solution Testing",
-        description: "I test, compare, and refine until the solution holds up in real situations.",
-        details: "Side-by-side output comparisons, edge case testing, user feedback loops, reliability metrics. I check how the solution behaves under actual use conditions before calling it done.",
+        description: "I validate, compare, and refine solutions until they hold up in real-world situations.",
+        approach: "A/B testing, statistical validation, cross-validation for ML models, edge case testing, user feedback loops. I check how solutions behave under actual use conditions.",
+        tools: "Python (SciPy, Statsmodels), chi-square tests, t-tests, reliability metrics",
         color: "#4D8965",
         pattern: "pattern-testing"
     },
     {
         id: "optimization",
         title: "Workflow Optimization",
-        description: "I identify where work slows down or wastes time, then simplify it.",
-        details: "Process flow refinement, automation scripts in Python, tool consolidation, removing redundant steps. I reduce repeated manual work and adjust how systems interact to eliminate friction.",
+        description: "I find bottlenecks and implement targeted improvements to eliminate waste and optimize processes.",
+        approach: "Process analysis, workflow mapping, optimization models for complex scheduling and allocation problems.",
+        tools: "Python (PuLP, Gurobi for MILP), automation scripts, process modeling",
         color: "#8062B8",
         pattern: "pattern-optimization"
     }
@@ -484,7 +489,12 @@ function renderSkillCards() {
                  aria-label="${card.title}">
             <h3 class="skill-card-title">${formatCardTitle(card.title)}</h3>
             <p class="skill-card-description">${card.description}</p>
-            <p class="skill-card-details">${card.details}</p>
+            <div class="skill-card-approach">
+                <strong>Approach:</strong> ${card.approach}
+            </div>
+            <div class="skill-card-tools">
+                <strong>Tools:</strong> ${card.tools}
+            </div>
         </article>
     `).join('');
 

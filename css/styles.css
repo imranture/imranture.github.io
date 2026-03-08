@@ -759,7 +759,9 @@ body.theme-light .dropdown-item:hover {
     transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.skill-card.collapsing .skill-card-details {
+.skill-card.collapsing .skill-card-details,
+.skill-card.collapsing .skill-card-approach,
+.skill-card.collapsing .skill-card-tools {
     opacity: 0 !important;
     transition: opacity 0.2s ease !important;
 }
@@ -849,6 +851,35 @@ body.theme-light .dropdown-item:hover {
     padding-top: var(--space-4);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.skill-card-approach,
+.skill-card-tools {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.96);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.skill-card-approach {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.skill-card-tools {
+    margin-top: var(--space-3);
+}
+
+.skill-card-approach strong,
+.skill-card-tools strong {
+    color: rgba(255, 255, 255, 1);
+    font-weight: 600;
+    display: inline;
 }
 
 
@@ -973,7 +1004,9 @@ body.theme-light .dropdown-item:hover {
         transition: all 0.5s ease 0.2s;
     }
 
-    .skill-card.expanded .skill-card-details {
+    .skill-card.expanded .skill-card-details,
+    .skill-card.expanded .skill-card-approach,
+    .skill-card.expanded .skill-card-tools {
         opacity: 1;
         max-height: none;
         font-size: 1.1rem;
@@ -1290,7 +1323,9 @@ body.theme-light .dropdown-item:hover {
 
     /* Increase card body text size for better readability on mobile */
     .skill-card-description,
-    .skill-card-details {
+    .skill-card-details,
+    .skill-card-approach,
+    .skill-card-tools {
         font-size: 1.2rem;
     }
 
@@ -1415,7 +1450,7 @@ body.theme-light .dropdown-item:hover {
     .card-deck {
         position: relative;
         height: auto;
-        min-height: 35rem;
+        min-height: 40rem;
         display: flex;
         align-items: flex-start;
         justify-content: center;
@@ -1435,8 +1470,7 @@ body.theme-light .dropdown-item:hover {
         left: 50% !important;
         top: 0 !important;
         width: min(80vw, 20rem) !important;
-        height: auto !important;
-        min-height: 20rem !important;
+        height: 40rem !important;
         max-height: none !important;
         padding: var(--space-4) !important;
         transform: translateX(-50%) scale(0.985) !important;
@@ -1444,12 +1478,14 @@ body.theme-light .dropdown-item:hover {
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
         opacity: 0;
         pointer-events: none;
-        overflow-y: auto !important;
+        overflow: hidden !important;
     }
 
     /* Show all content on mobile (no expand needed) */
     .card-deck .skill-card .skill-card-description,
-    .card-deck .skill-card .skill-card-details {
+    .card-deck .skill-card .skill-card-details,
+    .card-deck .skill-card .skill-card-approach,
+    .card-deck .skill-card .skill-card-tools {
         opacity: 1 !important;
         max-height: none !important;
     }
