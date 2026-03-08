@@ -3,6 +3,27 @@
   Clean, Technical, Modern
 */
 
+/* Satoshi Font */
+@font-face {
+  font-family: 'Satoshi-Bold';
+  src: url('../fonts/Satoshi-Bold.woff2') format('woff2'),
+       url('../fonts/Satoshi-Bold.woff') format('woff'),
+       url('../fonts/Satoshi-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi-Variable';
+  src: url('../fonts/Satoshi-Variable.woff2') format('woff2'),
+       url('../fonts/Satoshi-Variable.woff') format('woff'),
+       url('../fonts/Satoshi-Variable.ttf') format('truetype');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
 :root {
     /* Color Palette - Default Dark (Navy) */
     --bg-dark: #0d0a0b;
@@ -16,6 +37,10 @@
 
     --accent: #38bdf8;
     --accent-dim: rgba(56, 189, 248, 0.15);
+
+    /* Name Highlight Colors */
+    --name-gradient-start: #60a5fa;
+    --name-gradient-end: #a78bfa;
 
     /* Aesthetic Elements */
     --bg-grid-color: rgba(255, 255, 255, 0.02);
@@ -52,6 +77,10 @@ body.theme-light {
 
     --accent: #0ea5e9;
     --accent-dim: rgba(14, 165, 233, 0.15);
+
+    /* Name Highlight Colors */
+    --name-gradient-start: #3b82f6;
+    --name-gradient-end: #8b5cf6;
 
     --bg-grid-color: rgba(15, 23, 42, 0.04);
     --bg-glass: rgba(255, 255, 255, 0.95);
@@ -292,17 +321,20 @@ p {
 }
 
 .intro-name {
-    font-family: 'Caveat', cursive;
-    font-size: clamp(3.4rem, 8vw, 4.2rem);
+    font-family: 'Satoshi-Variable', 'Satoshi-Bold', sans-serif;
+    font-size: clamp(3.1rem, 8vw, 3.8rem);
     font-weight: 600;
-    color: var(--text-main);
+    background: linear-gradient(135deg, var(--name-gradient-start), var(--name-gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: var(--space-2);
     letter-spacing: 0.1em;
 }
 
 .intro-role {
     font-family: 'DM Sans', var(--font-sans);
-    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    font-size: clamp(1.3rem, 3vw, 1.5rem);
     font-weight: 400;
     color: var(--text-muted);
     margin-bottom: var(--space-5);
@@ -1664,8 +1696,6 @@ body.theme-light .dropdown-item:hover {
 /* Site Footer - Copyright */
 .site-footer {
     text-align: center;
-    padding: 1rem 0 0.5rem 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .site-footer p {
@@ -1675,6 +1705,3 @@ body.theme-light .dropdown-item:hover {
     margin: 0;
 }
 
-body.theme-light .site-footer {
-    border-top-color: rgba(15, 23, 42, 0.08);
-}
