@@ -273,13 +273,12 @@ p {
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
-    padding-top: calc(var(--space-3) * 3);
+    padding-top: calc(var(--space-8) * 2); /* Significantly increased top padding */
 }
 
 /* Center Content Panel */
 .center-panel {
     padding: var(--space-6);
-    padding-top: var(--space-8);
     max-width: 800px;
     margin: 0 auto;
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -330,7 +329,7 @@ p {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: var(--space-2);
-    margin-top: var(--space-6); /* Increased from space-4 */
+    margin-top: 0; /* Reset this, using padding on main-content instead */
     letter-spacing: 0.1em;
 }
 
