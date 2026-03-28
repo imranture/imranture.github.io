@@ -279,7 +279,7 @@ p {
 /* Center Content Panel */
 .center-panel {
     padding: var(--space-6);
-    padding-top: var(--space-8); /* Increased top padding */
+    padding-top: var(--space-8);
     max-width: 800px;
     margin: 0 auto;
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -1192,6 +1192,7 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 
 .skill-card.collapsing {
     z-index: 1000 !important;
+    position: fixed !important;
     transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 

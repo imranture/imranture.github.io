@@ -695,7 +695,6 @@ function toggleCard(cardId, forceCollapse = false) {
         clickedCard.style.width = targetRect.width + 'px';
         clickedCard.style.height = targetRect.height + 'px';
         clickedCard.style.transform = targetTransform;
-        clickedCard.style.padding = '0';
         
         backdrop.classList.remove('active');
         
@@ -717,6 +716,10 @@ function toggleCard(cardId, forceCollapse = false) {
             clickedCard.style.transform = '';
             clickedCard.style.margin = '';
             clickedCard.style.padding = '';
+            
+            // Force reflow to ensure it settles correctly
+            clickedCard.offsetHeight;
+            
             state.expandedCardId = null;
         }, 500);
     } else {
@@ -757,7 +760,6 @@ function toggleCard(cardId, forceCollapse = false) {
                 card.style.width = targetRect.width + 'px';
                 card.style.height = targetRect.height + 'px';
                 card.style.transform = targetTransform;
-                card.style.padding = '0';
                 
                 setTimeout(() => {
                     if (card.parentElement === document.body) {
@@ -776,6 +778,9 @@ function toggleCard(cardId, forceCollapse = false) {
                     card.style.transform = '';
                     card.style.margin = '';
                     card.style.padding = '';
+                    
+                    // Force reflow
+                    card.offsetHeight;
                 }, 500);
             }
         });
