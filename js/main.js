@@ -124,15 +124,17 @@ const SKILLS_CARDS = [
     {
         id: "research",
         title: "Research Analysis",
+        icon: "fa-solid fa-magnifying-glass-chart",
         description: "I identify gaps, ambiguities, and hidden issues through systematic analysis and collaborative discovery.",
         approach: "Stakeholder interviews, process mapping, exploratory data analysis. I trace workflows and validate assumptions before defining the actual problem.",
         tools: "Python (Pandas, NumPy, Matplotlib), R, SQL (BigQuery, PostgreSQL), Tableau",
-        color: "#FB923C",
+        color: "#8B5CF6",
         pattern: "pattern-research"
     },
     {
         id: "planning",
         title: "Strategic Planning",
+        icon: "fa-solid fa-chess-knight",
         description: "I turn messy ideas into structured plans with clear steps and dependencies.",
         approach: "Scope breakdowns, dependency mapping, decision matrices, feasibility analysis. I use process modeling and cost-benefit analysis to compare options and define priorities.",
         tools: "Python, Excel, process modeling software, simulation tools",
@@ -142,6 +144,7 @@ const SKILLS_CARDS = [
     {
         id: "development",
         title: "System Development",
+        icon: "fa-solid fa-code",
         description: "I build prototypes, models, and tools that take ideas out of discussion and into working systems.",
         approach: "Rapid prototyping, iterative development, building working systems that can be tested and improved through real use.",
         tools: "Python (scikit-learn, TensorFlow, PyTorch), SQL (PostgreSQL, BigQuery), LLMs (OpenAI API, LangChain), Flask, Django",
@@ -151,6 +154,7 @@ const SKILLS_CARDS = [
     {
         id: "testing",
         title: "Solution Testing",
+        icon: "fa-solid fa-vial-circle-check",
         description: "I validate, compare, and refine solutions until they are ready for real-world use.",
         approach: "A/B testing, statistical validation, cross-validation for ML models, edge case testing, user feedback loops. I check how solutions behave under actual use conditions.",
         tools: "Python (SciPy, Statsmodels), chi-square tests, t-tests, reliability metrics",
@@ -160,10 +164,11 @@ const SKILLS_CARDS = [
     {
         id: "optimization",
         title: "Workflow Optimization",
+        icon: "fa-solid fa-gauge-high",
         description: "I find bottlenecks and implement targeted improvements to eliminate waste and optimize processes.",
         approach: "Process analysis, workflow mapping, optimization models for complex scheduling and allocation problems.",
         tools: "Python (PuLP, Gurobi for MILP), automation scripts, process modeling",
-        color: "#8B5CF6",
+        color: "#FB923C",
         pattern: "pattern-optimization"
     }
 ];
@@ -463,14 +468,8 @@ function renderProjectsList() {
  * @returns {string} Formatted title with optional <br> tags
  */
 function formatCardTitle(title) {
-    const width = window.innerWidth;
-    
-    // Add <br> between words for screen sizes 951-1350px
-    if (width >= 951 && width <= 1350) {
-        return title.replace(/ /g, '<br>');
-    }
-    
-    return title;
+    // Always split words for the front face to create a stacked look
+    return title.split(' ').map(word => `<span style="display: block;">${word}</span>`).join('');
 }
 
 /**
@@ -487,13 +486,23 @@ function renderSkillCards() {
                  role="article"
                  tabindex="0"
                  aria-label="${card.title}">
-            <h3 class="skill-card-title">${formatCardTitle(card.title)}</h3>
-            <p class="skill-card-description">${card.description}</p>
-            <div class="skill-card-approach">
-                <strong>Approach:</strong> ${card.approach}
-            </div>
-            <div class="skill-card-tools">
-                <strong>Tools:</strong> ${card.tools}
+            <div class="skill-card-inner">
+                <div class="skill-card-front">
+                    <div class="skill-card-front-content">
+                        <i class="${card.icon} skill-card-icon"></i>
+                        <h3 class="skill-card-title">${formatCardTitle(card.title)}</h3>
+                    </div>
+                </div>
+                <div class="skill-card-back">
+                    <h3 class="skill-card-title">${card.title}</h3>
+                    <p class="skill-card-description">${card.description}</p>
+                    <div class="skill-card-approach">
+                        <strong>Approach:</strong> ${card.approach}
+                    </div>
+                    <div class="skill-card-tools">
+                        <strong>Tools:</strong> ${card.tools}
+                    </div>
+                </div>
             </div>
         </article>
     `).join('');
@@ -506,12 +515,10 @@ function renderSkillCards() {
         img.draggable = false;
     });
 
-    // Add click event listeners (desktop only - mobile uses swipe)
-    if (window.innerWidth > 950) {
-        document.querySelectorAll('.skill-card').forEach(card => {
-            card.addEventListener('click', () => toggleCard(card.dataset.cardId));
-        });
-    }
+    // Add click event listeners (for both desktop and mobile)
+    document.querySelectorAll('.skill-card').forEach(card => {
+        card.addEventListener('click', () => toggleCard(card.dataset.cardId));
+    });
 
     // Initialize mobile stack classes after injection
     if (window.innerWidth <= 950) {
@@ -603,25 +610,34 @@ function closeDropdown() {
 /**
  * Toggles card expansion state on desktop or brings card to focus on mobile
  * @param {string} cardId - Unique card identifier
+ * @param {boolean} forceCollapse - If true, forces collapse even if clicking the card itself
  */
-function toggleCard(cardId) {
+function toggleCard(cardId, forceCollapse = false) {
     const cards = document.querySelectorAll('.skill-card');
     const clickedCard = document.querySelector(`[data-card-id="${cardId}"]`);
     const cardDeck = document.getElementById('card-deck');
     
-    // On mobile/tablet: clicking a stacked card brings it to focus (no expand)
-    if (window.innerWidth <= 950) {
-        const deckCards = Array.from(cardDeck.querySelectorAll('.skill-card'));
-        const clickedIndex = deckCards.indexOf(clickedCard);
-        if (clickedIndex !== -1 && clickedIndex !== state.activeCardIndex) {
-            state.activeCardIndex = clickedIndex;
-            updateCardPositions();
-        }
-        // Clicking active card does nothing on mobile (already fully visible)
+    // If clicking an already expanded card, don't collapse unless forced (e.g. via close button)
+    if (state.expandedCardId === cardId && !forceCollapse) {
         return;
     }
     
-    // Desktop only: Get or create backdrop
+    // On mobile/tablet: clicking a stacked card brings it to focus
+    if (window.innerWidth <= 950) {
+        // If card is in the deck, check if it's the active one
+        if (cardDeck && cardDeck.contains(clickedCard)) {
+            const deckCards = Array.from(cardDeck.querySelectorAll('.skill-card'));
+            const clickedIndex = deckCards.indexOf(clickedCard);
+            if (clickedIndex !== -1 && clickedIndex !== state.activeCardIndex) {
+                state.activeCardIndex = clickedIndex;
+                updateCardPositions();
+                return; // Don't expand, just bring to front
+            }
+        }
+        // If it's the active card (or already expanded), proceed with expand/collapse logic
+    }
+    
+    // Get or create backdrop
     let backdrop = document.getElementById('card-backdrop');
     if (!backdrop) {
         backdrop = document.createElement('div');
@@ -632,7 +648,7 @@ function toggleCard(cardId) {
         // Close card when clicking backdrop
         backdrop.addEventListener('click', () => {
             if (state.expandedCardId) {
-                toggleCard(state.expandedCardId);
+                toggleCard(state.expandedCardId, true);
             }
         });
     }
@@ -677,7 +693,7 @@ function toggleCard(cardId) {
         clickedCard.style.width = targetRect.width + 'px';
         clickedCard.style.height = targetRect.height + 'px';
         clickedCard.style.transform = targetTransform;
-        clickedCard.style.padding = 'var(--space-5)';
+        clickedCard.style.padding = '0';
         
         backdrop.classList.remove('active');
         
@@ -739,7 +755,7 @@ function toggleCard(cardId) {
                 card.style.width = targetRect.width + 'px';
                 card.style.height = targetRect.height + 'px';
                 card.style.transform = targetTransform;
-                card.style.padding = 'var(--space-5)';
+                card.style.padding = '0';
                 
                 setTimeout(() => {
                     if (card.parentElement === document.body) {
@@ -792,7 +808,7 @@ function toggleCard(cardId) {
             closeBtn.setAttribute('aria-label', 'Close card');
             closeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                toggleCard(cardId);
+                toggleCard(cardId, true);
             });
             clickedCard.appendChild(closeBtn);
         }
@@ -908,7 +924,7 @@ document.addEventListener('keydown', (e) => {
         if (state.isOverlayOpen) {
             closeProjectDetail();
         } else if (state.expandedCardId) {
-            toggleCard(state.expandedCardId);
+            toggleCard(state.expandedCardId, true);
         }
     }
 });
@@ -953,7 +969,7 @@ function navigateCarousel(direction) {
 // JS only takes over once the gesture is confirmed as horizontal.
 function handleTouchStart(e) {
     if (window.innerWidth > 950) return;
-    if (state.isDropdownOpen || state.isOverlayOpen) return;
+    if (state.isDropdownOpen || state.isOverlayOpen || state.expandedCardId) return;
     
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) return;
@@ -1059,7 +1075,7 @@ function handleTouchEnd(e) {
 // Mouse handlers (for desktop testing)
 function handleMouseDown(e) {
     if (window.innerWidth > 950) return;
-    if (state.isDropdownOpen || state.isOverlayOpen) return;
+    if (state.isDropdownOpen || state.isOverlayOpen || state.expandedCardId) return;
     
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) return;
