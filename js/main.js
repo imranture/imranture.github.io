@@ -124,7 +124,7 @@ const SKILLS_CARDS = [
     {
         id: "research",
         title: "Research Analysis",
-        icon: "fa-solid fa-magnifying-glass-chart",
+        icon: "fa-solid fa-magnifying-glass",
         description: "I identify gaps, ambiguities, and hidden issues through systematic analysis and collaborative discovery.",
         approach: "Stakeholder interviews, process mapping, exploratory data analysis. I trace workflows and validate assumptions before defining the actual problem.",
         tools: "Python (Pandas, NumPy, Matplotlib), R, SQL (BigQuery, PostgreSQL), Tableau",
@@ -154,7 +154,7 @@ const SKILLS_CARDS = [
     {
         id: "testing",
         title: "Solution Testing",
-        icon: "fa-solid fa-vial-circle-check",
+        icon: "fa-solid fa-flask",
         description: "I validate, compare, and refine solutions until they are ready for real-world use.",
         approach: "A/B testing, statistical validation, cross-validation for ML models, edge case testing, user feedback loops. I check how solutions behave under actual use conditions.",
         tools: "Python (SciPy, Statsmodels), chi-square tests, t-tests, reliability metrics",
@@ -489,7 +489,9 @@ function renderSkillCards() {
             <div class="skill-card-inner">
                 <div class="skill-card-front">
                     <div class="skill-card-front-content">
-                        <i class="${card.icon} skill-card-icon"></i>
+                        <div class="skill-card-icon-wrapper">
+                            <i class="${card.icon} skill-card-icon"></i>
+                        </div>
                         <h3 class="skill-card-title">${formatCardTitle(card.title)}</h3>
                     </div>
                 </div>
