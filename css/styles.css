@@ -279,6 +279,7 @@ p {
 /* Center Content Panel */
 .center-panel {
     padding: var(--space-6);
+    padding-top: var(--space-8); /* Increased top padding */
     max-width: 800px;
     margin: 0 auto;
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -329,7 +330,7 @@ p {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: var(--space-2);
-    margin-top: var(--space-4);
+    margin-top: var(--space-6); /* Increased from space-4 */
     letter-spacing: 0.1em;
 }
 
