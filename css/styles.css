@@ -171,11 +171,11 @@ p {
 /* Subtle Grid Background Effect
    Creates a fixed-position decorative grid overlay behind all content */
 .bg-grid {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     z-index: 0;
     background-image:
         linear-gradient(to right, var(--bg-grid-color) 1px, transparent 1px),
@@ -188,7 +188,7 @@ p {
 .layout-container {
     width: 100%;
     min-height: 100vh;
-    padding: var(--space-3) var(--space-5);
+    padding: var(--space-3) var(--space-5) 0 var(--space-5);
     z-index: 10;
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -242,27 +242,31 @@ p {
 }
 
 .nav-btn {
-    background: var(--accent-dim);
-    border: 1px solid var(--accent);
-    color: var(--accent);
+    /* Solid gradient by default */
+    background: linear-gradient(135deg, var(--name-gradient-start), var(--name-gradient-end)) padding-box,
+                linear-gradient(135deg, var(--name-gradient-start), var(--name-gradient-end)) border-box;
+    border: 1px solid transparent;
+    color: var(--bg-dark); /* Dark text for contrast against the bright gradient */
     font-family: var(--font-sans);
     font-size: 1rem;
+    font-weight: 600; /* Slightly bolder looks better on solid buttons */
     cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    justify-content: flex-end;
-    margin-bottom: var(--space-3);
-    border-radius: 6px;
+    transition: all 0.4s ease;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(96, 165, 250, 0.2); /* Subtle glow by default */
 }
 
 .nav-btn:hover {
-    background: var(--accent);
-    color: var(--bg-dark);
-    border-color: var(--accent);
-    transform: translateY(-2px);
+    /* Hollows out to a gradient border on hover */
+    background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
+                linear-gradient(135deg, var(--name-gradient-start), var(--name-gradient-end)) border-box;
+    color: var(--text-main); /* Light text for the dark background */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(96, 165, 250, 0.35); /* Stronger glow on hover */
 }
 
 /* Main Content Area */
@@ -690,6 +694,13 @@ body.theme-light .dropdown-item:hover {
 /* Skills Card Deck
    Container for skill cards with 3D perspective for depth effect */
 .card-deck {
+    --card-width: 18rem;
+    --card-height: 14rem;
+    --spread-1: -30rem;
+    --spread-2: -15rem;
+    --spread-4: 15rem;
+    --spread-5: 30rem;
+
     position: relative;
     height: 18rem;
     display: flex;
@@ -702,14 +713,36 @@ body.theme-light .dropdown-item:hover {
     z-index: 1;
 }
 
+@media (max-width: 1350px) {
+    .card-deck {
+        --card-width: 16rem;
+        --card-height: 13rem;
+        --spread-1: -26rem;
+        --spread-2: -13rem;
+        --spread-4: 13rem;
+        --spread-5: 26rem;
+    }
+}
+
+@media (max-width: 1150px) {
+    .card-deck {
+        --card-width: 14rem;
+        --card-height: 12rem;
+        --spread-1: -22rem;
+        --spread-2: -11rem;
+        --spread-4: 11rem;
+        --spread-5: 22rem;
+    }
+}
+
 .card-deck.hidden {
     display: none !important;
 }
 
 .skill-card {
     position: absolute;
-    width: 18rem;
-    height: 14rem;
+    width: var(--card-width);
+    height: var(--card-height);
     background: transparent;
     border: none;
     border-radius: 1rem;
@@ -840,31 +873,31 @@ body.theme-light .dropdown-item:hover {
 .skill-card[data-pattern="pattern-research"] .skill-card-front::after,
 .skill-card[data-pattern="pattern-research"] .skill-card-back::after {
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="4" cy="4" r="1.5" fill="rgba(255,255,255,0.15)"/><circle cx="14" cy="14" r="1.5" fill="rgba(255,255,255,0.15)"/><circle cx="4" cy="14" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="14" cy="4" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
-    animation: floatCircular 15s linear infinite;
+    /* animation: floatCircular 15s linear infinite; */
 }
 
 .skill-card[data-pattern="pattern-planning"] .skill-card-front::after,
 .skill-card[data-pattern="pattern-planning"] .skill-card-back::after {
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><rect x="0" y="0" width="8" height="8" fill="rgba(255,255,255,0.12)"/><rect x="10" y="10" width="8" height="8" fill="rgba(255,255,255,0.12)"/></svg>');
-    animation: pulseGrid 15s linear infinite;
+    /* animation: pulseGrid 15s linear infinite; */
 }
 
 .skill-card[data-pattern="pattern-development"] .skill-card-front::after,
 .skill-card[data-pattern="pattern-development"] .skill-card-back::after {
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><line x1="0" y1="20" x2="20" y2="0" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line x1="-5" y1="5" x2="5" y2="-5" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line x1="15" y1="25" x2="25" y2="15" stroke="rgba(255,255,255,0.15)" stroke-width="2"/></svg>');
-    animation: iterateUpDown 18s linear infinite;
+    /* animation: iterateUpDown 18s linear infinite; */
 }
 
 .skill-card[data-pattern="pattern-testing"] .skill-card-front::after,
 .skill-card[data-pattern="pattern-testing"] .skill-card-back::after {
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20"><path d="M0 10 Q10 5, 20 10 T40 10" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/><path d="M0 15 Q10 12, 20 15 T40 15" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/></svg>');
-    animation: oceanWaves 15s linear infinite;
+    /* animation: oceanWaves 15s linear infinite; */
 }
 
 .skill-card[data-pattern="pattern-optimization"] .skill-card-front::after,
 .skill-card[data-pattern="pattern-optimization"] .skill-card-back::after {
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><line x1="5" y1="2" x2="5" y2="8" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/><line x1="2" y1="5" x2="8" y2="5" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/><line x1="15" y1="12" x2="15" y2="18" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/><line x1="12" y1="15" x2="18" y2="15" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/></svg>');
-    animation: optimizeBackForth 20s linear infinite;
+    /* animation: optimizeBackForth 20s linear infinite; */
 }
 
 /* Accessibility: Respect user's motion preferences */
@@ -1083,12 +1116,12 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 /* Card positions - fanned out deck layout (desktop only)
    Each card offset horizontally with slight rotation for visual depth */
 .skill-card:nth-child(1) {
-    transform: translateX(-30rem) translateY(1rem) rotate(-8deg) scale(1);
+    transform: translateX(var(--spread-1)) translateY(1rem) rotate(-8deg) scale(1);
     z-index: 1;
 }
 
 .skill-card:nth-child(2) {
-    transform: translateX(-15rem) translateY(0rem) rotate(-4deg) scale(1);
+    transform: translateX(var(--spread-2)) translateY(0rem) rotate(-4deg) scale(1);
     z-index: 2;
 }
 
@@ -1098,12 +1131,12 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 }
 
 .skill-card:nth-child(4) {
-    transform: translateX(15rem) translateY(0rem) rotate(4deg) scale(1);
+    transform: translateX(var(--spread-4)) translateY(0rem) rotate(4deg) scale(1);
     z-index: 4;
 }
 
 .skill-card:nth-child(5) {
-    transform: translateX(30rem) translateY(1rem) rotate(8deg) scale(1);
+    transform: translateX(var(--spread-5)) translateY(1rem) rotate(8deg) scale(1);
     z-index: 5;
 }
 
@@ -1119,11 +1152,11 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 /* Keep original position transforms on hover (only on non-touch devices) */
 @media (hover: hover) and (pointer: fine) {
     .skill-card:nth-child(1):hover:not(.expanded) {
-        transform: translateX(-30rem) translateY(0) rotate(-8deg) scale(1.02);
+        transform: translateX(var(--spread-1)) translateY(0) rotate(-8deg) scale(1.02);
     }
 
     .skill-card:nth-child(2):hover:not(.expanded) {
-        transform: translateX(-15rem) translateY(-0.5rem) rotate(-4deg) scale(1.02);
+        transform: translateX(var(--spread-2)) translateY(-0.5rem) rotate(-4deg) scale(1.02);
     }
 
     .skill-card:nth-child(3):hover:not(.expanded) {
@@ -1131,11 +1164,11 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
     }
 
     .skill-card:nth-child(4):hover:not(.expanded) {
-        transform: translateX(15rem) translateY(-0.5rem) rotate(4deg) scale(1.02);
+        transform: translateX(var(--spread-4)) translateY(-0.5rem) rotate(4deg) scale(1.02);
     }
 
     .skill-card:nth-child(5):hover:not(.expanded) {
-        transform: translateX(30rem) translateY(0) rotate(8deg) scale(1.02);
+        transform: translateX(var(--spread-5)) translateY(0) rotate(8deg) scale(1.02);
     }
 }
 
@@ -1313,68 +1346,8 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 }
 
 /* Tablet Card Deck (481-768px) - Reduced Overlap */
-/* Responsive card deck for medium screens (951px - 1350px) */
-@media (min-width: 951px) and (max-width: 1350px) {
-    /* Increase card size to use more vertical space */
-    .skill-card {
-        width: clamp(17rem, 22vw, 24rem);
-        height: clamp(16rem, 20vw, 20rem);
-        padding: clamp(1.5rem, 2.5vw, 2.25rem);
-    }
-
-    /* Adjust font sizes for better readability at these card sizes */
-    .skill-card-title {
-        font-size: 1.4rem;
-        line-height: 1.2;
-    }
-
-    .skill-card-description {
-        font-size: 1rem;
-        line-height: 1.5;
-    }
-
-    /* Better spread with proper alignment for medium screens */
-    .skill-card:nth-child(1) {
-        transform: translateX(clamp(-26rem, -24vw, -22rem)) translateY(0rem) rotate(-6deg) scale(1);
-    }
-    
-    .skill-card:nth-child(2) {
-        transform: translateX(clamp(-14rem, -12vw, -11rem)) translateY(-0.3rem) rotate(-3deg) scale(1);
-    }
-    
-    .skill-card:nth-child(3) {
-        transform: translateX(0) translateY(0) rotate(0deg) scale(1);
-    }
-    
-    .skill-card:nth-child(4) {
-        transform: translateX(clamp(11rem, 12vw, 14rem)) translateY(-0.3rem) rotate(3deg) scale(1);
-    }
-    
-    .skill-card:nth-child(5) {
-        transform: translateX(clamp(22rem, 24vw, 26rem)) translateY(0rem) rotate(6deg) scale(1);
-    }
-
-    /* Hover states for responsive cards */
-    .skill-card:nth-child(1):hover:not(.expanded) {
-        transform: translateX(clamp(-26rem, -24vw, -22rem)) translateY(-0.4rem) rotate(-6deg) scale(1.02);
-    }
-
-    .skill-card:nth-child(2):hover:not(.expanded) {
-        transform: translateX(clamp(-14rem, -12vw, -11rem)) translateY(-0.7rem) rotate(-3deg) scale(1.02);
-    }
-
-    .skill-card:nth-child(3):hover:not(.expanded) {
-        transform: translateX(0) translateY(-1rem) rotate(0deg) scale(1.03);
-    }
-
-    .skill-card:nth-child(4):hover:not(.expanded) {
-        transform: translateX(clamp(11rem, 12vw, 14rem)) translateY(-0.7rem) rotate(3deg) scale(1.02);
-    }
-
-    .skill-card:nth-child(5):hover:not(.expanded) {
-        transform: translateX(clamp(22rem, 24vw, 26rem)) translateY(-0.4rem) rotate(6deg) scale(1.02);
-    }
-
+/* Responsive card deck for medium screens (981px - 1350px) */
+@media (min-width: 981px) and (max-width: 1350px) {
     .skill-card.expanded {
         width: 80vw !important;
         height: 65vh !important;
@@ -1383,14 +1356,14 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 
     /* Footer: sits with margin from bottom on medium screens */
     .site-footer {
-        padding-bottom: 1rem;
+        padding-bottom: 0;
     }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
     .layout-container {
         height: 100vh;
-        padding: var(--space-4);
+        padding: var(--space-4) var(--space-4) 0 var(--space-4);
     }
 
     .site-header {
@@ -1457,11 +1430,17 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 /* Mobile Responsiveness (Tablet only, NOT small mobile) */
 /* Mobile/Tablet Responsiveness - Stack Deck Layout
    Cards arranged in vertical stack with active card on top, swipeable */
-@media (max-width: 950px) {
-    /* Allow scrolling on mobile, align content from top not center */
-    html,
+@media (max-width: 980px) {
+    /* Allow scrolling on mobile natively, align content from top not center */
+    html {
+        height: 100%;
+        overflow-y: visible;
+        overflow-x: hidden;
+    }
     body {
-        overflow-y: auto;
+        min-height: 100%;
+        height: auto;
+        overflow-y: visible;
         overflow-x: hidden;
     }
 
@@ -1502,6 +1481,7 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
     .main-content {
         padding-top: 0;
         overflow: visible;
+        gap: 0;
     }
 
     .center-panel {
@@ -1544,7 +1524,7 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 
     /* Move theme toggle to subtle floating button in top-right */
     .theme-toggle {
-        position: fixed;
+        position: absolute;
         top: 1.5rem;
         right: 1.5rem;
         width: 2.5rem;
@@ -1583,8 +1563,8 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
         display: flex;
         justify-content: center;
         padding: 0 var(--space-3);
-        margin-top: var(--space-1);
-        margin-bottom: var(--space-1);
+        margin-top: calc(var(--space-4) * 1.5);
+        margin-bottom: calc(var(--space-6) * 1.5);
     }
 
     .mobile-projects-btn {
@@ -1646,7 +1626,7 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
         display: flex;
         align-items: flex-start;
         justify-content: center;
-        margin-top: var(--space-3);
+        margin-top: 0;
         margin-bottom: var(--space-6);
         margin-left: var(--space-3);
         margin-right: var(--space-3);
@@ -1667,7 +1647,7 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
         padding: 0 !important;
         transform: translateX(-50%) scale(0.985) !important;
         transform-style: flat !important;
-        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
         opacity: 0;
         pointer-events: none;
     }
@@ -1705,7 +1685,7 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
         transform: translateX(calc(-50% + 3rem)) translateY(2rem) scale(0.85) !important;
         opacity: 0 !important;
         pointer-events: none !important;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
         z-index: 1 !important;
     }
 
@@ -1845,7 +1825,7 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 /* Site Footer - Copyright */
 .site-footer {
     text-align: center;
-    padding-bottom: 1rem;
+    padding-bottom: 0;
 }
 
 .site-footer p {
