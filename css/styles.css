@@ -1324,45 +1324,36 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
     transform: translate(-50%, -50%) rotate(0deg) scale(1) !important;
     width: min(45rem, 90vw) !important;
     height: auto !important;
-    max-height: 85vh !important;
+    max-height: min(38rem, 85vh) !important;
     z-index: 1000 !important;
     box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.8);
     padding: 0 !important; /* padding is on front/back faces */
     filter: none !important;
     opacity: 1 !important;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
     overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .skill-card.expanded .skill-card-inner {
     transform: rotateY(180deg);
     height: auto;
-    max-height: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
+}
+
+.skill-card.expanded .skill-card-front {
+    display: none;
 }
 
 .skill-card.expanded .skill-card-back {
     position: relative;
     height: auto;
-    max-height: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
 }
 
 .skill-card.expanded .skill-card-back-scroll {
     height: auto;
-    max-height: 100%;
-    flex: 1;
-    min-height: 0;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
+    max-height: none;
+    overflow: visible;
 }
 
 .skill-card.collapsing {
