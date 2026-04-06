@@ -905,7 +905,9 @@ body.theme-light .dropdown-item:hover {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
 }
 
 .skill-card-front::before,
