@@ -1332,11 +1332,14 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
     opacity: 1 !important;
     display: flex;
     flex-direction: column;
+    overflow: hidden !important;
+    overscroll-behavior: contain;
 }
 
 .skill-card.expanded .skill-card-inner {
     transform: rotateY(180deg);
     height: auto;
+    max-height: 100%;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -1346,6 +1349,7 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 .skill-card.expanded .skill-card-back {
     position: relative;
     height: auto;
+    max-height: 100%;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -1354,8 +1358,11 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 
 .skill-card.expanded .skill-card-back-scroll {
     height: auto;
+    max-height: 100%;
     flex: 1;
     min-height: 0;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .skill-card.collapsing {

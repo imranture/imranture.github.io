@@ -712,6 +712,7 @@ function toggleCard(cardId, forceCollapse = false) {
         clickedCard.style.transform = targetTransform;
         
         backdrop.classList.remove('active');
+        document.body.style.overflow = '';
         
         // Wait for animation, then move back to deck and cleanup
         setTimeout(() => {
@@ -838,6 +839,7 @@ function toggleCard(cardId, forceCollapse = false) {
         // Add expanding class and show backdrop
         clickedCard.classList.add('expanding');
         backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
         
         // After a brief moment, add expanded class for animation
         requestAnimationFrame(() => {
@@ -873,6 +875,9 @@ function resetToIntro() {
     closeDropdown();
     if (state.isOverlayOpen) {
         closeProjectDetail();
+    }
+    if (state.expandedCardId) {
+        toggleCard(state.expandedCardId, true);
     }
     transitionContent(() => renderIntro());
 }
