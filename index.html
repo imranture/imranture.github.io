@@ -205,7 +205,7 @@
                 <img src="/image/imranture.png" alt="Imran Ture" class="profile-pic">
             </div>
             <nav class="site-nav" role="navigation" aria-label="Main navigation">
-                <button id="btn-projects" class="nav-btn" aria-label="View all projects"><i class="fas fa-layer-group" aria-hidden="true"></i> Projects</button>
+                <button id="btn-projects" class="nav-btn" aria-label="View the portfolio"><i class="fas fa-layer-group" aria-hidden="true"></i> Portfolio</button>
             </nav>
         </header>
 
@@ -216,17 +216,24 @@
                 <!-- Content will be injected by JavaScript -->
             </div>
 
-            <!-- Mobile-only Projects button (shown before card deck on mobile) -->
-            <div class="mobile-projects-section">
-                <button id="btn-projects-mobile" class="nav-btn mobile-projects-btn" aria-label="View all projects">
-                    <i class="fas fa-layer-group" aria-hidden="true"></i> Projects
-                </button>
+            <div class="swipe-hint">
+                <span class="swipe-icon-container">
+                    <i class="fas fa-arrows-left-right arrows"></i>
+                    <i class="fas fa-hand-pointer hand"></i>
+                </span>
+                Tap or swipe to explore my expertise
             </div>
-
             <!-- Skills Card Deck: Interactive cards showing areas of expertise -->
             <section id="card-deck" class="card-deck" aria-label="Skills and expertise">
                 <!-- Cards will be injected by JavaScript -->
             </section>
+
+            <!-- Mobile-only Portfolio button -->
+            <div class="mobile-projects-section">
+                <button id="btn-projects-mobile" class="nav-btn mobile-projects-btn" aria-label="View the portfolio">
+                    <i class="fas fa-layer-group" aria-hidden="true"></i> Portfolio
+                </button>
+            </div>
         </main>
 
         <!-- Projects Dropdown: Overlay menu listing all portfolio projects -->

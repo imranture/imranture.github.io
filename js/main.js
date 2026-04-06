@@ -123,52 +123,52 @@ const PROJECTS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : {
 const SKILLS_CARDS = [
     {
         id: "research",
-        title: "Research Analysis",
+        title: "Problem Finder",
         icon: "fa-solid fa-magnifying-glass",
-        description: "I identify gaps, ambiguities, and hidden issues through systematic analysis and collaborative discovery.",
-        approach: "Stakeholder interviews, process mapping, exploratory data analysis. I trace workflows and validate assumptions before defining the actual problem.",
-        tools: "Python (Pandas, NumPy, Matplotlib), R, SQL (BigQuery, PostgreSQL), Tableau",
+        description: "I uncover what's actually going on before jumping to solutions - finding gaps, misalignments, and opportunities others miss.",
+        approach: "Stakeholder interviews, process mapping, exploratory data analysis, LLM-powered pattern discovery across unstructured data, assumption validation",
+        tools: ["Python (Pandas, NumPy)", "SQL (BigQuery, PostgreSQL)", "R", "Tableau", "Power BI", "LLMs"],
         color: "#8B5CF6",
         pattern: "pattern-research"
     },
     {
         id: "planning",
-        title: "Strategic Planning",
+        title: "Strategy Architect",
         icon: "fa-solid fa-chess-knight",
-        description: "I turn messy ideas into structured plans with clear steps and dependencies.",
-        approach: "Scope breakdowns, dependency mapping, decision matrices, feasibility analysis. I use process modeling and cost-benefit analysis to compare options and define priorities.",
-        tools: "Python, Excel, process modeling software, simulation tools",
+        description: "I turn ambiguous ideas into structured plans with clear priorities, dependencies, and trade-offs.",
+        approach: "Scope breakdowns, dependency mapping, feasibility analysis, cost-benefit modeling, AI-assisted documentation and prototyping",
+        tools: ["Python", "Excel", "Process Modeling", "Simulation Tools", "AI-assisted Documentation"],
         color: "#0EA5E9",
         pattern: "pattern-planning"
     },
     {
         id: "development",
-        title: "System Development",
+        title: "AI Developer ",
         icon: "fa-solid fa-code",
-        description: "I build prototypes, models, and tools that take ideas out of discussion and into working systems.",
-        approach: "Rapid prototyping, iterative development, building working systems that can be tested and improved through real use.",
-        tools: "Python (scikit-learn, TensorFlow, PyTorch), SQL (PostgreSQL, BigQuery), LLMs (OpenAI API, LangChain), Flask, Django",
+        description: "I build working prototypes and production tools - including AI-powered agents and pipelines - that move ideas from conversation to real impact.",
+        approach: "Rapid prototyping, iterative development, API design, LLM and ML model integration, autonomous agent development",
+        tools: ["Python (scikit-learn, TensorFlow, PyTorch)", "FastAPI", "Flask", "OpenAI & Gemini APIs", "LangChain", "SQL", "Docker"],
         color: "#F43F5E",
         pattern: "pattern-development"
     },
     {
         id: "testing",
-        title: "Solution Testing",
+        title: "Solution Tester",
         icon: "fa-solid fa-flask",
-        description: "I validate, compare, and refine solutions until they are ready for real-world use.",
-        approach: "A/B testing, statistical validation, cross-validation for ML models, edge case testing, user feedback loops. I check how solutions behave under actual use conditions.",
-        tools: "Python (SciPy, Statsmodels), chi-square tests, t-tests, reliability metrics",
+        description: "I make sure solutions actually work - under real conditions, not just in demos.",
+        approach: "A/B testing, statistical validation, ML model cross-validation, edge case analysis, user feedback loops, benchmarking",
+        tools: ["Python (SciPy, Statsmodels)", "Hypothesis Testing", "Model Evaluation", "Reliability Analysis"],
         color: "#10B981",
         pattern: "pattern-testing"
     },
     {
         id: "optimization",
-        title: "Workflow Optimization",
+        title: "Process Optimizer",
         icon: "fa-solid fa-gauge-high",
-        description: "I find bottlenecks and implement targeted improvements to eliminate waste and optimize processes.",
-        approach: "Process analysis, workflow mapping, optimization models for complex scheduling and allocation problems.",
-        tools: "Python (PuLP, Gurobi for MILP), automation scripts, process modeling",
-        color: "#FB923C",
+        description: "I find bottlenecks and replace manual effort with scalable, intelligent solutions.",
+        approach: "Mathematical optimization, scheduling and allocation modeling, AI-driven workflow automation, autonomous agents for repetitive tasks",
+        tools: ["Python (PuLP, Gurobi)", "LLM-based Agents", "Automation Pipelines", "Process Modeling"],
+        color: "#fd8d82",
         pattern: "pattern-optimization"
     }
 ];
@@ -186,6 +186,7 @@ const state = {
     // Mobile stack state (single focused card + top peeks)
     activeCardIndex: 0,
     isSwiping: false,
+    hasDragged: false,
     swipeStartX: 0,
     swipeStartY: 0
 };
@@ -496,13 +497,21 @@ function renderSkillCards() {
                     </div>
                 </div>
                 <div class="skill-card-back">
-                    <h3 class="skill-card-title">${card.title}</h3>
-                    <p class="skill-card-description">${card.description}</p>
-                    <div class="skill-card-approach">
-                        <strong>Approach:</strong> ${card.approach}
-                    </div>
-                    <div class="skill-card-tools">
-                        <strong>Tools:</strong> ${card.tools}
+                    <div class="skill-card-back-scroll">
+                        <h3 class="skill-card-title">${card.title}</h3>
+                        <div class="skill-card-back-content">
+                            <p class="skill-card-description">${card.description}</p>
+                            <div class="skill-card-approach">
+                                <div class="section-label">Approach</div>
+                                <p>${card.approach}</p>
+                            </div>
+                            <div class="skill-card-tools">
+                                <div class="section-label">Tools</div>
+                                <div class="tools-badges">
+                                    ${card.tools.map(tool => `<span class="tool-badge">${tool}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -519,11 +528,17 @@ function renderSkillCards() {
 
     // Add click event listeners (for both desktop and mobile)
     document.querySelectorAll('.skill-card').forEach(card => {
-        card.addEventListener('click', () => toggleCard(card.dataset.cardId));
+        card.addEventListener('click', (e) => {
+            if (state.hasDragged) {
+                e.preventDefault();
+                return;
+            }
+            toggleCard(card.dataset.cardId);
+        });
     });
 
     // Initialize mobile stack classes after injection
-    if (window.innerWidth <= 950) {
+    if (window.innerWidth <= 980) {
         // Clamp active index if card count changes
         state.activeCardIndex = Math.min(state.activeCardIndex, SKILLS_CARDS.length - 1);
         updateCardPositions();
@@ -625,7 +640,7 @@ function toggleCard(cardId, forceCollapse = false) {
     }
     
     // On mobile/tablet: clicking a stacked card brings it to focus
-    if (window.innerWidth <= 950) {
+    if (window.innerWidth <= 980) {
         // If card is in the deck, check if it's the active one
         if (cardDeck && cardDeck.contains(clickedCard)) {
             const deckCards = Array.from(cardDeck.querySelectorAll('.skill-card'));
@@ -942,7 +957,7 @@ document.addEventListener('keydown', (e) => {
 // ========================================
 
 function updateCardPositions() {
-    if (window.innerWidth > 950) return; // Only on mobile/tablet
+    if (window.innerWidth > 980) return; // Only on mobile/tablet
 
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) return;
@@ -975,7 +990,8 @@ function navigateCarousel(direction) {
 // touch-action: pan-y on .skill-card lets the browser own vertical scrolling;
 // JS only takes over once the gesture is confirmed as horizontal.
 function handleTouchStart(e) {
-    if (window.innerWidth > 950) return;
+    state.hasDragged = false;
+    if (window.innerWidth > 980) return;
     if (state.isDropdownOpen || state.isOverlayOpen || state.expandedCardId) return;
     
     const cardDeck = document.getElementById('card-deck');
@@ -1001,7 +1017,7 @@ function handleTouchStart(e) {
 }
 
 function handleTouchMove(e) {
-    if (!state.isSwiping || window.innerWidth > 950) return;
+    if (!state.isSwiping || window.innerWidth > 980) return;
     
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) return;
@@ -1012,6 +1028,12 @@ function handleTouchMove(e) {
     
     const diffX = e.touches[0].clientX - state.swipeStartX;
     const diffY = e.touches[0].clientY - state.swipeStartY;
+    
+    if (Math.abs(diffX) > 5 || Math.abs(diffY) > 5) {
+        state.hasDragged = true;
+    }
+    
+    if (!state.hasDragged) return;
     
     // Vertical gesture — browser's touch-action: pan-y handles the scroll; we bail out
     if (Math.abs(diffY) > Math.abs(diffX)) {
@@ -1034,7 +1056,7 @@ function handleTouchMove(e) {
 }
 
 function handleTouchEnd(e) {
-    if (window.innerWidth > 950) return;
+    if (window.innerWidth > 980) return;
     
     if (!state.isSwiping) return;
     
@@ -1064,13 +1086,14 @@ function handleTouchEnd(e) {
         // Card thrown far enough - animate to back of deck
         activeCard.classList.add('moving-to-back');
         
+        // Advance to next card immediately for smoother feel
+        state.activeCardIndex = (state.activeCardIndex + 1) % cards.length;
+        updateCardPositions();
+        
         setTimeout(() => {
-            // Circular navigation: wraps around to first card after last
-            state.activeCardIndex = (state.activeCardIndex + 1) % cards.length;
             activeCard.classList.remove('moving-to-back');
             activeCard.style.removeProperty('transform');
-            updateCardPositions();
-        }, 400);
+        }, 300);
     } else {
         // Not thrown far enough - snap back to front position
         activeCard.style.removeProperty('transform');
@@ -1081,7 +1104,8 @@ function handleTouchEnd(e) {
 
 // Mouse handlers (for desktop testing)
 function handleMouseDown(e) {
-    if (window.innerWidth > 950) return;
+    state.hasDragged = false;
+    if (window.innerWidth > 980) return;
     if (state.isDropdownOpen || state.isOverlayOpen || state.expandedCardId) return;
     
     const cardDeck = document.getElementById('card-deck');
@@ -1103,13 +1127,12 @@ function handleMouseDown(e) {
     state.isSwiping = true;
     state.swipeStartX = e.clientX;
     state.swipeStartY = e.clientY;
-    activeCard.classList.add('swiping');
     e.preventDefault();
     e.stopPropagation();
 }
 
 function handleMouseMove(e) {
-    if (!state.isSwiping || window.innerWidth > 950) return;
+    if (!state.isSwiping || window.innerWidth > 980) return;
     
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) return;
@@ -1119,6 +1142,17 @@ function handleMouseMove(e) {
     if (!activeCard) return;
     
     const diffX = e.clientX - state.swipeStartX;
+    const diffY = e.clientY - state.swipeStartY;
+    
+    if (Math.abs(diffX) > 5 || Math.abs(diffY) > 5) {
+        state.hasDragged = true;
+    }
+    
+    if (!state.hasDragged) return;
+    
+    if (!activeCard.classList.contains('swiping')) {
+        activeCard.classList.add('swiping');
+    }
     
     e.preventDefault();
     const rotation = diffX * 0.08;
@@ -1129,7 +1163,7 @@ function handleMouseMove(e) {
 }
 
 function handleMouseUp(e) {
-    if (!state.isSwiping || window.innerWidth > 950) return;
+    if (!state.isSwiping || window.innerWidth > 980) return;
     
     const cardDeck = document.getElementById('card-deck');
     if (!cardDeck) {
@@ -1155,13 +1189,14 @@ function handleMouseUp(e) {
         // Card thrown far enough - move to back of deck
         activeCard.classList.add('moving-to-back');
         
+        // Advance to next card immediately for smoother feel
+        state.activeCardIndex = (state.activeCardIndex + 1) % cards.length;
+        updateCardPositions();
+        
         setTimeout(() => {
-            // Advance to next card (circular)
-            state.activeCardIndex = (state.activeCardIndex + 1) % cards.length;
             activeCard.classList.remove('moving-to-back');
             activeCard.style.removeProperty('transform');
-            updateCardPositions();
-        }, 400);
+        }, 300);
     } else {
         // Not thrown far enough - snap back to front
         activeCard.style.removeProperty('transform');
@@ -1178,7 +1213,7 @@ function handleResize() {
     const currentWidth = window.innerWidth;
     
     // Check if we crossed the 951px or 1350px boundaries
-    const crossedLowerBoundary = (previousWidth <= 950 && currentWidth >= 951) || (previousWidth >= 951 && currentWidth <= 950);
+    const crossedLowerBoundary = (previousWidth <= 980 && currentWidth >= 981) || (previousWidth >= 981 && currentWidth <= 980);
     const crossedUpperBoundary = (previousWidth <= 1350 && currentWidth >= 1351) || (previousWidth >= 1351 && currentWidth <= 1350);
     const crossedTaglineBoundary = (previousWidth <= 1200 && currentWidth >= 1201) || (previousWidth >= 1201 && currentWidth <= 1200);
     
@@ -1192,7 +1227,7 @@ function handleResize() {
         renderIntro();
     }
     
-    if (currentWidth <= 950) {
+    if (currentWidth <= 980) {
         updateCardPositions();
     }
     
@@ -1247,7 +1282,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', handleResize);
     
     // Initialize mobile/tablet card stack
-    if (window.innerWidth <= 950) {
+    if (window.innerWidth <= 980) {
         updateCardPositions();
     }
 
