@@ -905,9 +905,7 @@ body.theme-light .dropdown-item:hover {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
+    overflow: hidden;
 }
 
 .skill-card-front::before,
@@ -1067,6 +1065,11 @@ body.theme-light .dropdown-item:hover {
     flex-direction: column;
     gap: 1.5rem;
     width: 100%;
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .skill-card-description {
@@ -1324,21 +1327,25 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
     transform: translate(-50%, -50%) rotate(0deg) scale(1) !important;
     width: min(45rem, 90vw) !important;
     height: auto !important;
-    max-height: min(38rem, 85vh) !important;
+    max-height: 85vh !important;
     z-index: 1000 !important;
     box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.8);
     padding: 0 !important; /* padding is on front/back faces */
     filter: none !important;
     opacity: 1 !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden !important;
+    display: flex;
+    flex-direction: column;
 }
 
 .skill-card.expanded .skill-card-inner {
     transform: rotateY(180deg);
     height: auto;
+    max-height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
 }
 
 .skill-card.expanded .skill-card-front {
@@ -1348,12 +1355,30 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
 .skill-card.expanded .skill-card-back {
     position: relative;
     height: auto;
+    max-height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
 }
 
 .skill-card.expanded .skill-card-back-scroll {
     height: auto;
-    max-height: none;
-    overflow: visible;
+    max-height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.skill-card.expanded .skill-card-back-content {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0;
+    margin-bottom: 1rem;
 }
 
 .skill-card.collapsing {
