@@ -168,7 +168,7 @@ const SKILLS_CARDS = [
         description: "I find bottlenecks and replace manual effort with scalable, intelligent solutions.",
         approach: "Mathematical optimization, scheduling and allocation modeling, AI-driven workflow automation, autonomous agents for repetitive tasks",
         tools: ["Python (PuLP, Gurobi)", "LLM-based Agents", "Automation Pipelines", "Process Modeling"],
-        color: "#fd8d82",
+        color: "#ffb762",
         pattern: "pattern-optimization"
     }
 ];
