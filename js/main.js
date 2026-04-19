@@ -23,151 +23,56 @@ const INTRO = {
 };
 
 // Projects data loaded from centralized data file (data/projects.js)
-const PROJECTS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : {
-    'e4-timestamper': {
-        title: 'E4 TimeStamper: Web App for Automatic Timestamping and Analysis of Empatica E4 Data',
-        primary_image: '/image/e4-timestamper.png',
-        secondary_image: null,
-        links: [
-            { url: 'https://e4timestamper.netlify.app/', text: 'App' },
-            { url: 'https://github.com/imranture/E4-TimeStamper', text: 'GitHub' }
-        ],
-        tags: ['Software Development', 'Time Series Analysis', 'Physiological Signals', 'Empatica E4'],
-        description: 'E4 TimeStamper is a user-friendly web application designed to help researchers add timestamps to physiological signal data collected from Empatica E4 wristbands. The tool enables seamless file extraction and precise timestamping, customizable by timezone and preferred date & time format. Widely adopted by researchers worldwide, E4 TimeStamper is now a web-based tool, having previously been available for both Windows and Mac operating systems.'
-    },
-    'emotion-recognition': {
-        title: 'Deep Emotion Recognition using Wearable Sensors',
-        primary_image: '/image/model-accuracy.png',
-        secondary_image: null,
-        links: [],
-        tags: ['Deep Learning', 'Machine Learning', 'Emotion Recognition', 'Physiological Signals', 'LSTM', 'CNN', 'Empatica E4'],
-        description: 'Emotion recognition is an emerging interdisciplinary field that integrates methodologies from affective computing, sentiment analysis, signal processing, and machine learning. This project focuses on classifying emotions such as amusement and stress using physiological signals like heart rate and skin conductivity, collected via wearables. To build the model, a hybrid approach was employed that combines Convolutional Neural Networks (CNN) and Long Short-Term Memory (LSTM) networks. The model achieved an accuracy rate of 92% under a 5-fold cross-validation setting using grid search and Bayesian optimization for hyperparameter tuning.'
-    },
-    'python-for-openintro': {
-        title: 'Python Implementation of OpenIntro Statistics',
-        primary_image: '/image/openintro-python-official-page.png',
-        secondary_image: '/image/openintro-python-labs.png',
-        links: [
-            { url: 'https://www.imranture.com/labs/os/', text: 'Labs' },
-            { url: 'https://openintro.info/stat/labs.php?stat_lab_software=Python%20(beta)', text: 'OpenIntro' }
-        ],
-        tags: ['Statistics', 'Python'],
-        description: 'We developed the Python labs for OpenIntro Statistics, an open-source textbook for introductory statistics used at many universities (from Community Colleges to the Ivy League) around the world, to promote the understanding and application of statistical data analysis using Python. The labs are officially listed on the OpenIntro Statistics website.'
-    },
-    'bbl-physiodb': {
-        title: 'BBL-PhysioDB: Data Hub for Entrepreneurship Assessment and Development Workshop',
-        primary_image: '/image/bbl-physiodb.png',
-        secondary_image: '/image/rmit-bbl.jpg',
-        links: [],
-        tags: ['Database Management', 'SQL', 'PostgreSQL', 'Django'],
-        description: 'BBL-PhysioDB is a robust database, developed with Django and PostgreSQL, for the Entrepreneurship Assessment and Development Workshop studies conducted at RMIT\'s Behavioural Business Lab (BBL). The database can effectively manage data collected from over 150 participants, including entrepreneurs, artists, and professionals with diverse backgrounds. It has the capability to store extensive data collected through multiple lab experiment sessions, including physiological signal data recorded through E4 wristbands from Empatica, along with 200+ questionnaire responses providing demographic information and insights into participants\' entrepreneurial engagement.'
-    },
-    'marketing-ab': {
-        title: 'Measuring the Impact of Ads on Campaign Success',
-        primary_image: '/image/conversion-rates-by-ad-exposure.png',
-        secondary_image: '/image/conversion-rates-by-day-hour.png',
-        links: [
-            { url: 'https://www.kaggle.com/code/imranture/measuring-the-impact-of-ads-on-campaign-success', text: 'Kaggle' }
-        ],
-        tags: ['A/B Testing', 'Chi-Square', 'Mann–Whitney U test'],
-        description: 'The report presents a detailed A/B testing analysis to understand how ad exposure and timing impact user conversions. By examining data across different days, times, and levels of ad exposure, key insights are uncovered for optimizing marketing strategies. The analysis identifies the best days and times to run campaigns and an optimal ad exposure range, balancing the maximization of conversions while minimizing ad fatigue. The findings highlight the significant role of targeted ads in driving campaign success.'
-    },
-    // 'forecasting-translation': {
-    //     title: 'Translating Forecasting: Principles and Practice',
-    //     primary_image: '/image/fpp3.png',
-    //     secondary_image: null,
-    //     links: [],
-    //     tags: ['Forecasting', 'R', 'RStudio'],
-    //     description: 'The initiative involves translating the popular textbook "Forecasting: Principles and Practice" to broaden the accessibility and understanding of forecasting principles among Turkish speakers. Alongside this effort, a suite of documents has been developed to facilitate the collaborative process among translation teams, ensuring efficient workflows and high-quality educational outcomes.'
-    // },
-    'melbourne-property-sales': {
-        title: 'Melbourne Property Sales: Visual Exploration of Housing Market Dynamics',
-        primary_image: '/image/melbourne-property-sales.png',
-        secondary_image: null,
-        links: [
-            { url: 'https://public.tableau.com/app/profile/imranture/viz/MelbournePropertySales_17051684571690/Dashboard', text: 'Tableau Dashboard' }
-        ],
-        tags: ['Data Visualization', 'Tableau'],
-        description: 'Melbourne Property Sales is an interactive Tableau dashboard with a detailed visual overview of the city\'s real estate trends, based on historical sales data. The dashboard offers a range of visualizations, including average property prices over time, distributions of key property features, and regional price comparisons for various housing types. These visualizations highlight patterns in the Melbourne housing market dynamics, such as seasonal pricing trends and the common characteristics of sold properties.'
-    },
-    'early-warning-system': {
-        title: 'Advancing Water Safety: Early Warning System to Monitor and Evaluate Drinking Water Quality',
-        primary_image: '/image/early-warning-system.png',
-        secondary_image: null,
-        links: [],
-        tags: ['Anomaly Detection', 'Statistical Quality Control'],
-        description: 'An early warning system was developed to enhance the safety and quality of drinking water in Türkiye by identifying hazardous contaminants. Utilizing a hybrid approach that integrates various statistical methods like Z-score analysis, moving averages, control charts, and weighted voting, the system provides real-time monitoring and detects unexpected levels of temperature, pH, total organic carbon, conductivity, oxidation-reduction potential, free chlorine, and dissolved oxygen. The multi-tiered approach facilitates early intervention for minor deviations while enabling immediate action for more severe anomalies.'
-    },
-    'pdf4u': {
-        title: 'pdf4u: Web-Based PDF Management Toolkit App',
-        primary_image: '/image/pdf4u.png',
-        secondary_image: null,
-        links: [
-            { url: 'https://pdf4u.onrender.com/', text: 'App' }
-        ],
-        tags: ['Web Development', 'HTML', 'CSS', 'JavaScript', 'Flask'],
-        description: 'pdf4u is a versatile web-based PDF management toolkit app designed to handle a wide range of PDF operations, including merging, splitting, rotating, and extracting pages from PDF files. Developed using Flask for the backend, the application provides a user-friendly interface built with HTML, CSS, and JavaScript. Users can easily upload and manipulate files using an intuitive drag-and-drop feature. The toolkit is designed for extensibility, with additional functionalities like converting images to PDFs and more in development.'
-    },
-    'durcalc': {
-        title: 'DurCalc: Hassle-Free Calculation of Date and Time Durations',
-        primary_image: '/image/durcalc.png',
-        secondary_image: null,
-        links: [
-            { url: 'https://github.com/imranture/durcalc', text: 'GitHub' }
-        ],
-        tags: ['Web Development'],
-        description: 'DurCalc is a web app designed to effortlessly calculate the duration between dates and/or times. With its user-friendly interface and intuitive functionality, DurCalc streamlines the process and calculates durations without any fuss.'
-    }
-};
+const PROJECTS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : {};
 
 const SKILLS_CARDS = [
     {
         id: "research",
-        title: "Problem Finder",
+        title: "Understand",
         icon: "fa-solid fa-magnifying-glass",
-        description: "I uncover what's actually going on before jumping to solutions - finding gaps, misalignments, and opportunities others miss.",
-        approach: "Stakeholder interviews, process mapping, exploratory data analysis, LLM-powered pattern discovery across unstructured data, assumption validation",
-        tools: ["Python (Pandas, NumPy)", "SQL (BigQuery, PostgreSQL)", "R", "Tableau", "Power BI", "LLMs"],
+        description: "I start by figuring out what the problem actually is — talking to the people doing the work and digging through data to see where the real gaps are.",
+        approach: "Stakeholder interviews, current-state observation, exploratory data analysis, pattern discovery in real workflows",
+        tools: ["Ad-hoc SQL exploration", "Python (pandas, Jupyter)", "Whiteboarding & process sketching (Miro)"],
         color: "#8B5CF6",
         pattern: "pattern-research"
     },
     {
         id: "planning",
-        title: "Strategy Architect",
+        title: "Design",
         icon: "fa-solid fa-chess-knight",
-        description: "I turn ambiguous ideas into structured plans with clear priorities, dependencies, and trade-offs.",
-        approach: "Scope breakdowns, dependency mapping, feasibility analysis, cost-benefit modeling, AI-assisted documentation and prototyping",
-        tools: ["Python", "Excel", "Process Modeling", "Simulation Tools", "AI-assisted Documentation"],
+        description: "I turn ambiguous ideas into specs, prototypes, and plans with clear priorities and trade-offs — so stakeholders can react to something concrete before development starts.",
+        approach: "Future-state process design, specs and requirements, clickable prototypes, dependency mapping, feasibility analysis",
+        tools: ["Cursor & Claude Code (AI-assisted specs)", "Firebase Studio (prototypes)", "Balsamiq (wireframes)", "Mermaid (process & dependency diagrams)"],
         color: "#0EA5E9",
         pattern: "pattern-planning"
     },
     {
         id: "development",
-        title: "AI Developer ",
+        title: "Build",
         icon: "fa-solid fa-code",
-        description: "I build working prototypes and production tools - including AI-powered agents and pipelines - that move ideas from conversation to real impact.",
-        approach: "Rapid prototyping, iterative development, API design, LLM and ML model integration, autonomous agent development",
-        tools: ["Python (scikit-learn, TensorFlow, PyTorch)", "FastAPI", "Flask", "OpenAI & Gemini APIs", "LangChain", "SQL", "Docker"],
+        description: "I build the working thing — from rapid prototypes to production pipelines and AI agents. Comfortable across the stack: data, backend services, and LLM integration.",
+        approach: "Rapid prototyping, production pipeline engineering, API design, LLM integration, structured prompt design & grounding",
+        tools: ["Python (FastAPI, production services)", "Production SQL & BigQuery", "Google Gemini API", "Google Cloud Run"],
         color: "#F43F5E",
         pattern: "pattern-development"
     },
     {
         id: "testing",
-        title: "Solution Tester",
+        title: "Validate",
         icon: "fa-solid fa-flask",
-        description: "I make sure solutions actually work - under real conditions, not just in demos.",
-        approach: "A/B testing, statistical validation, ML model cross-validation, edge case analysis, user feedback loops, benchmarking",
-        tools: ["Python (SciPy, Statsmodels)", "Hypothesis Testing", "Model Evaluation", "Reliability Analysis"],
+        description: "I check whether the thing actually holds up — under real conditions, with real users. Pilots, statistical validation, edge-case probing, and honest feedback loops.",
+        approach: "Running pilots with real users, comparing model outputs to ground truth, probing edge cases, gathering and acting on feedback",
+        tools: ["Python (SciPy, statsmodels)", "SQL output verification (BigQuery)", "Cross-validation (scikit-learn)"],
         color: "#10B981",
         pattern: "pattern-testing"
     },
     {
         id: "optimization",
-        title: "Process Optimizer",
+        title: "Improve",
         icon: "fa-solid fa-gauge-high",
-        description: "I find bottlenecks and replace manual effort with scalable, intelligent solutions.",
-        approach: "Mathematical optimization, scheduling and allocation modeling, AI-driven workflow automation, autonomous agents for repetitive tasks",
-        tools: ["Python (PuLP, Gurobi)", "LLM-based Agents", "Automation Pipelines", "Process Modeling"],
+        description: "Once something is running, I look for bottlenecks, repetitive manual work, and places where smarter automation replaces brute effort.",
+        approach: "Bottleneck analysis, mathematical optimization, scheduling and allocation modeling, workflow automation, replacing manual steps with smarter systems",
+        tools: ["Automation scripting (Python + scheduled jobs)", "Process simulation (Python)", "PuLP & OR-Tools (MILP solvers)"],
         color: "#ffb762",
         pattern: "pattern-optimization"
     }
@@ -217,10 +122,12 @@ function copyEmail(evt) {
         feedback.textContent = 'Copied!';
         emailLink.appendChild(feedback);
         emailLink.style.color = 'var(--accent)';
+        emailLink.classList.add('copying');
         
         setTimeout(() => {
             feedback.remove();
             emailLink.style.color = '';
+            emailLink.classList.remove('copying');
         }, 1200);
     }).catch(() => {
         console.error('Failed to copy email');
@@ -452,9 +359,10 @@ function renderProjectsList() {
     const dropdownContent = dropdown.querySelector('.dropdown-content');
     if (!dropdownContent) return;
     
-    const projectsHTML = Object.keys(PROJECTS).map(projectId => {
+    const projectsHTML = Object.keys(PROJECTS).map((projectId, index) => {
         const project = PROJECTS[projectId];
         return `<button class="dropdown-item" 
+                        style="animation-delay: ${(index + 1) * 0.05}s"
                         onclick="selectProject('${projectId}')" 
                         role="menuitem"
                         aria-label="View ${project.title} project">${project.title}</button>`;

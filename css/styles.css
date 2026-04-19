@@ -1490,6 +1490,30 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
     pointer-events: none;
 }
 
+/* Social Links Hover Tooltips (Desktop only) */
+@media (hover: hover) and (min-width: 981px) {
+    .social-links-fixed a::after {
+        content: attr(aria-label);
+        position: absolute;
+        left: 2rem;
+        white-space: nowrap;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--accent);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .social-links-fixed a:hover::after {
+        opacity: 1;
+    }
+    
+    .social-links-fixed a.copying::after {
+        opacity: 0 !important;
+    }
+}
+
 /* Utility Classes */
 .hidden {
     display: none !important;
