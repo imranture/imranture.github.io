@@ -187,11 +187,11 @@ p {
 /* Layout Container */
 .layout-container {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     padding: var(--space-3) var(--space-5) 0 var(--space-5);
     z-index: 10;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 1fr auto;
     gap: 2rem;
     position: relative;
     overflow: hidden;
@@ -276,8 +276,10 @@ p {
     overflow: visible; /* Changed from hidden so fanned cards don't get clipped at the bottom */
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
-    padding-top: calc(var(--space-8) * 2); /* Significantly increased top padding */
+    justify-content: center;
+    gap: max(2vh, 1.5rem);
+    padding-top: max(4vh, 4rem);
+    min-height: 0; /* Prevents grid blowout, ensuring footer is always visible */
 }
 
 /* Center Content Panel */
@@ -796,8 +798,12 @@ body.project-page {
         --spread-2: -11rem;
         --spread-4: 11rem;
         --spread-5: 22rem;
+        transform: scale(0.9);
+        transform-origin: top center;
+        margin-bottom: 0;
     }
 }
+
 
 .card-deck.hidden {
     display: none !important;
@@ -2051,7 +2057,7 @@ body.project-page::-webkit-scrollbar-thumb:hover {
 @media (min-width: 981px) and (max-height: 880px) {
     /* Use vh (viewport height) units so spacing acts like a spring */
     .main-content {
-        padding-top: 6vh; 
+        padding-top: max(4vh, 5rem); 
         gap: 3vh;
     }
     
@@ -2066,24 +2072,19 @@ body.project-page::-webkit-scrollbar-thumb:hover {
     .intro-message {
         margin-bottom: 2vh;
     }
-    
-    /* Moderately shrink the cards */
+
+    /* Scale the entire deck down proportionally */
     .card-deck {
-        --card-width: 15rem;
-        --card-height: 11.5rem;
-        --spread-1: -24rem;
-        --spread-2: -12rem;
-        --spread-4: 12rem;
-        --spread-5: 24rem;
-        height: 14rem;
-        margin-bottom: 0;
+        transform: scale(0.85);
+        transform-origin: top center;
+        margin-bottom: -1rem;
     }
 }
 
 @media (min-width: 981px) and (max-height: 760px) {
     /* Compress even tighter for very short screens */
     .main-content {
-        padding-top: 2vh;
+        padding-top: max(2vh, 4rem);
         gap: 2vh;
     }
     
@@ -2100,16 +2101,11 @@ body.project-page::-webkit-scrollbar-thumb:hover {
         font-size: clamp(1.6rem, 3vw, 2rem);
     }
 
-    /* Shrink the cards more to ensure they don't cut off */
+    /* Scale the entire deck down proportionally more */
     .card-deck {
-        --card-width: 13rem;
-        --card-height: 10rem;
-        --spread-1: -20rem;
-        --spread-2: -10rem;
-        --spread-4: 10rem;
-        --spread-5: 20rem;
-        height: 12rem;
-        margin-bottom: 0;
+        transform: scale(0.7);
+        transform-origin: top center;
+        margin-bottom: -3rem;
     }
 }
 
