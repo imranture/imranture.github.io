@@ -10,7 +10,7 @@ const PROJECTS_DATA = {
         secondary_image: null,
         links: [],
         tags: ['C#', '.NET', 'Google BigQuery', 'Gemini LLM', 'Data Pipeline', 'AI'],
-        description: 'An automated daily pipeline built for LC Waikiki\'s merchandising and planning teams that transforms unstructured store-visit emails, mobile app feedback, and video reports into ~400 structured signals per day. Replacing a scattered manual Excel workflow, the C#/.NET enterprise orchestrator uses Google Gemini and BigQuery to extract product performance, size/color gaps, and unmet customer demand. The system features strict data quality enforcement with auto-reply capabilities for missing information and maintains high resilience with automated alerting and audit trails.'
+        description: 'An automated daily pipeline built for LC Waikiki\'s merchandising and planning teams that transforms unstructured store-visit emails, mobile app feedback, and video reports into ~300 structured signals per day. Replacing a scattered manual Excel workflow, the C#/.NET enterprise orchestrator uses Google Gemini and BigQuery to extract product performance, size/color gaps, and unmet customer demand. The system features strict data quality enforcement with auto-reply capabilities for missing information and maintains high resilience with automated alerting and audit trails.'
     },
     'lcw-gembagpt-chatbot': {
         title: 'LCW GembaGPT Chatbot Agent: Conversational AI for Retail Insights',
@@ -18,7 +18,7 @@ const PROJECTS_DATA = {
         secondary_image: null,
         links: [],
         tags: ['Python', 'FastAPI', 'Google BigQuery', 'Gemini API', 'Conversational AI', 'CQRS'],
-        description: 'A conversational AI assistant developed for LC Waikiki that enables operations, planning, and merchandising teams to query store-visit insights using natural language. Built as a FastAPI microservice with a CQRS layer, the agent translates plain-language questions into SQL, executes them against BigQuery, and returns structured, grounded answers in ~15 seconds. By backing every insight with executed SQL results rather than model memory, the system ensures minimal hallucination risk while surfacing critical data on product performance and customer demand.'
+        description: 'A conversational AI assistant developed for LC Waikiki that enables operations, planning, and merchandising teams to query store-visit insights using natural language. Built as a FastAPI microservice with a CQRS layer, the agent translates plain-language questions into SQL, executes them against BigQuery, and returns structured, grounded answers in seconds. By backing every insight with executed SQL results rather than model memory, the system ensures minimal hallucination risk while surfacing critical data on product performance and customer demand.'
     },
     'e4-timestamper': {
         title: 'E4 TimeStamper: Web App for Automatic Timestamping and Analysis of Empatica E4 Data',
