@@ -5,20 +5,20 @@
 
 const PROJECTS_DATA = {
     'lcw-gembagpt-pipeline': {
-        title: 'LCW GembaGPT Pipeline: Automated Store-Visit Intelligence',
+        title: 'LCW GembaGPT Pipeline: LLM-Powered Store Insights Across 60 Countries',
         primary_image: '/image/lcw-gembagpt-pipeline.png',
         secondary_image: null,
         links: [],
         tags: ['C#', '.NET', 'Google BigQuery', 'Gemini LLM', 'Data Pipeline', 'AI'],
-        description: 'An automated daily pipeline built for LC Waikiki\'s merchandising and planning teams that transforms unstructured store-visit emails, mobile app feedback, and video reports into ~300 structured signals per day. Replacing a scattered manual Excel workflow, the C#/.NET enterprise orchestrator uses Google Gemini and BigQuery to extract product performance, size/color gaps, and unmet customer demand. The system features strict data quality enforcement with auto-reply capabilities for missing information and maintains high resilience with automated alerting and audit trails.'
+        description: 'LC Waikiki has 1,200+ stores across nearly 60 countries, and receives daily feedback on what\'s selling, what\'s missing from shelves, and what customers are asking for through emails, mobile apps, and videos. Merchandising and planning teams had been copying this manually into spreadsheets with no reliable way to act on it at scale.<br><br>To fix this scattered manual workflow, we built an end-to-end automated pipeline — a C#/.NET enterprise orchestrator backed by Google Gemini and BigQuery — that ingests this raw feedback and extracts about 300 structured product intelligence signals daily. If a report can\'t be processed, the system automatically identifies the gap and emails the sender a correction request.'
     },
     'lcw-gembagpt-chatbot': {
-        title: 'LCW GembaGPT Chatbot Agent: Conversational AI for Retail Insights',
+        title: 'LCW GembaGPT Chatbot: Text-to-SQL Agent for Reliable Store Insights',
         primary_image: '/image/lcw-gembagpt-chatbot.png',
         secondary_image: null,
         links: [],
         tags: ['Python', 'FastAPI', 'Google BigQuery', 'Gemini API', 'Conversational AI', 'CQRS'],
-        description: 'A conversational AI assistant developed for LC Waikiki that enables operations, planning, and merchandising teams to query store-visit insights using natural language. Built as a FastAPI microservice with a CQRS layer, the agent translates plain-language questions into SQL, executes them against BigQuery, and returns structured, grounded answers in seconds. By backing every insight with executed SQL results rather than model memory, the system ensures minimal hallucination risk while surfacing critical data on product performance and customer demand.'
+        description: 'LC Waikiki\'s merchandising and planning teams were sitting on a growing archive of daily store-visit data, but it was scattered across systems with no easy way to see the full picture — trends, signals, or gaps. This made data-driven decisions on product performance, stock availability, and customer demand slow and unreliable.<br><br>To give these teams the answers they need in seconds, we built a conversational AI assistant — a Python/FastAPI service backed by Google Gemini and BigQuery — that lets business users ask questions in plain language and get structured, data-backed answers instantly. Every response is grounded against actual database records, eliminating the risk of AI hallucination and ensuring teams can act on what they see.'
     },
     'e4-timestamper': {
         title: 'E4 TimeStamper: Web App for Automatic Timestamping and Analysis of Empatica E4 Data',
