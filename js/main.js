@@ -31,8 +31,8 @@ const SKILLS_CARDS = [
         title: "Understand",
         icon: "fa-solid fa-magnifying-glass",
         description: "I start by figuring out what the problem actually is — talking to the people doing the work and digging through data to see where the real gaps are.",
-        approach: "Stakeholder interviews, current-state observation, exploratory data analysis, pattern discovery in real workflows",
-        tools: ["Ad-hoc SQL exploration", "Python (pandas, Jupyter)", "Whiteboarding & process sketching (Miro)"],
+        approach: "Data mining, exploratory data analysis, stakeholder interviews, pattern discovery studies",
+        tools: ["BigQuery (Ad-hoc SQL)", "Python (NumPy, Pandas, SciPy, Jupyter)", "Whiteboarding & process sketching (Miro)"],
         color: "#8B5CF6",
         pattern: "pattern-research"
     },
@@ -41,8 +41,8 @@ const SKILLS_CARDS = [
         title: "Design",
         icon: "fa-solid fa-chess-knight",
         description: "I turn ambiguous ideas into specs, prototypes, and plans with clear priorities and trade-offs — so stakeholders can react to something concrete before development starts.",
-        approach: "Future-state process design, specs and requirements, clickable prototypes, dependency mapping, feasibility analysis",
-        tools: ["Cursor & Claude Code (AI-assisted specs)", "Firebase Studio (prototypes)", "Balsamiq (wireframes)", "Mermaid (process & dependency diagrams)"],
+        approach: "Data architecture design, AI-assisted specs, process design, working prototypes, feasibility analysis",
+        tools: ["Cursor & Claude Code", "Data Modeling (BigQuery)", "Prototyping (Firebase Studio)", "Wireframing (Balsamiq)", "Process diagrams (Mermaid)"],
         color: "#0EA5E9",
         pattern: "pattern-planning"
     },
@@ -51,8 +51,8 @@ const SKILLS_CARDS = [
         title: "Build",
         icon: "fa-solid fa-code",
         description: "I build the working thing — from rapid prototypes to production pipelines and AI agents. Comfortable across the stack: data, backend services, and LLM integration.",
-        approach: "Rapid prototyping, production pipeline engineering, API design, LLM integration, structured prompt design & grounding",
-        tools: ["Python (FastAPI, production services)", "Production SQL & BigQuery", "Google Gemini API", "Google Cloud Run"],
+        approach: "Building ETL pipelines, LLM integration, structured prompt design, text-to-SQL assistants, AI agents, API design, and production backend services",
+        tools: ["Python (FastAPI, Django, Streamlit)", "SQL & BigQuery", "Google Cloud", "Cursor & Claude Code"],
         color: "#F43F5E",
         pattern: "pattern-development"
     },
@@ -71,7 +71,7 @@ const SKILLS_CARDS = [
         title: "Improve",
         icon: "fa-solid fa-gauge-high",
         description: "Once something is running, I look for bottlenecks, repetitive manual work, and places where smarter automation replaces brute effort.",
-        approach: "Bottleneck analysis, mathematical optimization, scheduling and allocation modeling, workflow automation, replacing manual steps with smarter systems",
+        approach: "Mathematical optimization, ETL automation, scheduling and allocation modeling, workflow automation, bottleneck analysis",
         tools: ["Automation scripting (Python + scheduled jobs)", "Process simulation (Python)", "PuLP & OR-Tools (MILP solvers)"],
         color: "#ffb762",
         pattern: "pattern-optimization"
