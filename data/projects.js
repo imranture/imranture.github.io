@@ -20,6 +20,16 @@ const PROJECTS_DATA = {
         tags: ['Python', 'FastAPI', 'Google BigQuery', 'Gemini API', 'Conversational AI', 'CQRS'],
         description: 'LC Waikiki\'s merchandising and planning teams were sitting on a growing archive of daily store-visit data, but it was scattered across systems with no easy way to see the full picture — trends, signals, or gaps. This made data-driven decisions on product performance, stock availability, and customer demand slow and unreliable.<br><br>To give these teams the answers they need in seconds, we built a conversational AI assistant — a Python/FastAPI service backed by Google Gemini and BigQuery — that lets business users ask questions in plain language and get structured, data-backed answers instantly. Every response is grounded against actual database records, eliminating the risk of AI hallucination and ensuring teams can act on what they see.'
     },
+    'pia-price-intelligence': {
+    title: 'PIA: Automated Price Intelligence Dashboard for Turkish Fashion Retail',
+    primary_image: '/image/pia-price-tracker-for-turkish-fashion-retail.png',
+    secondary_image: null,
+    links: [
+        { url: 'https://pia-price-tracker.vercel.app', text: 'Dashboard' },
+    ],
+    tags: ['Python', 'Playwright', 'Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'GitHub Actions', 'Vercel'],
+    description: 'Turkish fashion retailers frequently adjust prices across thousands of SKUs — making it difficult to tell whether a displayed discount reflects a genuine price drop or simply an inflated original price.<br><br>To investigate this, I built PIA (Price Intelligence App) — an end-to-end automated pipeline that scrapes publicly listed prices and product data across 7 categories daily using Python and Playwright, stores every price snapshot in a Supabase PostgreSQL database, and surfaces the data through a deployed Next.js dashboard. Discounts are calculated against each product\'s 30-day price high rather than the store-reported original price, exposing artificial markups that would otherwise go unnoticed.<br><br>The dashboard tracks 1,800+ products across three stores, with real-time filtering by store and category, a price history chart per product, and analytics including discount coverage, price segment distribution, and category depth comparisons. The scraper runs automatically every morning via GitHub Actions and the dashboard is hosted on Vercel.'
+    },
     'e4-timestamper': {
         title: 'E4 TimeStamper: Web App for Automatic Timestamping and Analysis of Empatica E4 Data',
         primary_image: '/image/e4-timestamper.png',
