@@ -255,14 +255,6 @@
              aria-labelledby="project-detail-title">
             <div class="overlay-backdrop" aria-hidden="true"></div>
             
-            <!-- Navigation Arrows (Outside content) -->
-            <button class="project-nav-btn prev-btn" id="project-prev" aria-label="Previous project">
-                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-            </button>
-            <button class="project-nav-btn next-btn" id="project-next" aria-label="Next project">
-                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-            </button>
-
             <div class="overlay-content">
                 <button class="overlay-close" id="overlay-close" aria-label="Close project details">
                     <i class="fa-solid fa-times" aria-hidden="true"></i>
@@ -270,24 +262,21 @@
                 <div id="project-detail-content" class="project-detail-content">
                     <!-- Project details will be injected by JavaScript -->
                 </div>
-                <div class="project-thumbnail-strip-container">
+                
+                <!-- Mobile Horizontal Strip (Inside content) -->
+                <div class="project-thumbnail-strip-container" id="mobile-thumbnail-strip-container">
                     <h4 class="thumbnail-strip-title">More Projects</h4>
                     <div class="thumbnail-strip-wrapper">
-                        <!-- Left Scroll Button -->
-                        <button class="strip-scroll-btn strip-scroll-left" id="strip-scroll-left" aria-label="Scroll left">
-                            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-                        </button>
-                        
                         <div id="project-thumbnail-strip" class="project-thumbnail-strip">
                             <!-- Thumbnails injected by JS -->
                         </div>
-                        
-                        <!-- Right Scroll Button -->
-                        <button class="strip-scroll-btn strip-scroll-right" id="strip-scroll-right" aria-label="Scroll right">
-                            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-                        </button>
                     </div>
                 </div>
+            </div>
+
+            <!-- Desktop Floating Sidebar (Moved AFTER overlay-content to ensure it renders on top) -->
+            <div class="desktop-floating-sidebar" id="desktop-floating-sidebar">
+                <!-- Thumbnails injected by JS -->
             </div>
         </div>
 

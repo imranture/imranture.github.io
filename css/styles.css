@@ -537,6 +537,8 @@ body.project-page {
     z-index: 1005;
     transform: scale(0.95);
     transition: transform 0.3s ease;
+    /* Force a new stacking context so children don't bleed out */
+    isolation: isolate;
 }
 
 .project-detail-overlay.active .overlay-content {
@@ -701,165 +703,235 @@ body.theme-light .project-nav-btn:hover {
     opacity: 0.95;
 }
 
-/* Project Thumbnail Strip */
-.project-thumbnail-strip-container {
-    padding: var(--space-4) var(--space-6);
-    background: var(--bg-card-hover);
-    border-top: 1px solid var(--border-color);
-    border-radius: 0 0 12px 12px;
-    margin-top: var(--space-4);
-}
-
-.thumbnail-strip-title {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    margin-bottom: var(--space-3);
-    font-weight: 600;
-}
-
-.thumbnail-strip-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.project-thumbnail-strip {
-    display: flex;
-    gap: var(--space-3);
-    overflow-x: auto;
-    padding-bottom: var(--space-2);
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-}
-
-.project-thumbnail-strip::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-}
-
-/* Strip Scroll Buttons */
-.strip-scroll-btn {
+/* Desktop Floating Sidebar */
+.desktop-floating-sidebar {
     position: absolute;
-    z-index: 2;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--text-main);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: all 0.2s ease;
-    /* Move them up slightly to account for the padding-bottom on the strip */
-    top: calc(50% - 4px); 
+    right: 3rem;
+    top: 50%;
     transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    /* Extremely high z-index to guarantee it sits above the modal */
+    z-index: 99999; 
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: visible; /* Attempt to allow horizontal overflow */
+    padding: 20px 15px 20px 200px; /* Huge left padding so tooltips don't get clipped by overflow-y */
+    scrollbar-width: none; /* Hide scrollbar for cleaner look */
+    -ms-overflow-style: none;
+    pointer-events: none; /* Let clicks pass through the huge empty padding to the modal below */
 }
 
-.strip-scroll-btn:hover {
-    background: var(--accent);
-    color: var(--bg-dark);
-    border-color: var(--accent);
-    transform: translateY(-50%) scale(1.1);
+.desktop-floating-sidebar::-webkit-scrollbar {
+    display: none;
 }
 
-/* Light mode adjustments for strip scroll buttons */
-body.theme-light .strip-scroll-btn {
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: #334155;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-body.theme-light .strip-scroll-btn:hover {
-    background: var(--accent);
-    color: #ffffff;
-    border-color: var(--accent);
-}
-
-.strip-scroll-left {
-    left: -16px;
-}
-
-.strip-scroll-right {
-    right: -16px;
-}
-
-.thumbnail-item {
-    flex: 0 0 auto;
-    width: 120px;
-    height: 80px;
-    border-radius: 8px;
+.sidebar-thumbnail-item {
+    width: 110px;
+    height: 75px;
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: all 0.2s ease;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy spring animation */
+    flex-shrink: 0;
+    opacity: 0.4;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     position: relative;
+    transform-origin: center right; /* Scale from the right edge */
+    filter: grayscale(80%) contrast(1.2); /* Make inactive ones look muted */
+    pointer-events: auto; /* Re-enable clicks on the thumbnails themselves */
 }
 
-@media (max-width: 768px) {
-    .project-thumbnail-strip-container {
-        padding: var(--space-3) var(--space-4);
-        border-radius: 0; /* Modal often takes full width on mobile */
-    }
-    
-    .thumbnail-item {
-        width: 100px;
-        height: 66px;
-    }
-    
-    .strip-scroll-btn {
-        display: none;
-    }
-}
-
-.thumbnail-item img {
+.sidebar-thumbnail-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.6;
-    transition: opacity 0.2s ease, transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
-.thumbnail-item:hover img {
+.sidebar-thumbnail-item:hover {
+    opacity: 0.9;
+    transform: scale(1.15) translateX(-10px); /* Pop out to the left */
+    filter: grayscale(0%) contrast(1);
+    box-shadow: -5px 10px 25px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.sidebar-thumbnail-item:hover img {
+    transform: scale(1.1);
+}
+
+.sidebar-thumbnail-item.active {
     opacity: 1;
-    transform: scale(1.05);
-}
-
-.thumbnail-item.active {
     border-color: var(--accent);
+    transform: scale(1.2) translateX(-15px); /* Active item pops out the most */
+    filter: grayscale(0%) contrast(1);
+    box-shadow: -8px 15px 30px rgba(14, 165, 233, 0.2); /* Subtle glow matching accent */
+    z-index: 5;
 }
 
-.thumbnail-item.active img {
-    opacity: 1;
-}
-
-.thumbnail-item::after {
+/* Tooltip for sidebar thumbnails */
+.sidebar-thumbnail-item::after {
     content: attr(title);
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
     color: white;
-    font-size: 0.65rem;
-    padding: 4px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 15px 6px 6px 6px;
     text-align: center;
     transform: translateY(100%);
-    transition: transform 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    pointer-events: none;
 }
 
-.thumbnail-item:hover::after {
+.sidebar-thumbnail-item:hover::after,
+.sidebar-thumbnail-item.active::after {
     transform: translateY(0);
+}
+
+/* Adjust modal width on desktop to make room for sidebar */
+@media (min-width: 1200px) {
+    .overlay-content {
+        max-width: 900px; /* Restore original width */
+        margin: 0; /* Ensure it stays perfectly centered */
+    }
+    
+    /* Hide the mobile strip on desktop */
+    #mobile-thumbnail-strip-container {
+        display: none;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 981px) {
+    .overlay-content {
+        max-width: 800px; /* Shrink modal slightly on medium screens */
+        margin: 0; /* Ensure it stays perfectly centered */
+    }
+
+    .desktop-floating-sidebar {
+        right: 1rem;
+    }
+    .sidebar-thumbnail-item {
+        width: 90px;
+        height: 60px;
+    }
+    
+    /* Hide the mobile strip on tablet landscape */
+    #mobile-thumbnail-strip-container {
+        display: none;
+    }
+}
+
+@media (max-width: 980px) {
+    .desktop-floating-sidebar {
+        display: none; /* Hide sidebar on mobile/tablet */
+    }
+    
+    .project-thumbnail-strip-container {
+        display: block; /* Show horizontal strip on mobile/tablet */
+        padding: var(--space-3) var(--space-4);
+        background: var(--bg-card-hover);
+        border-top: 1px solid var(--border-color);
+        margin-top: var(--space-4);
+    }
+    
+    .thumbnail-strip-title {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        margin-bottom: var(--space-3);
+        font-weight: 600;
+    }
+
+    .thumbnail-strip-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .project-thumbnail-strip {
+        display: flex;
+        gap: var(--space-3);
+        overflow-x: auto;
+        padding-bottom: var(--space-2);
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+    }
+
+    .project-thumbnail-strip::-webkit-scrollbar {
+        display: none;
+    }
+
+    .thumbnail-item {
+        flex: 0 0 auto;
+        width: 100px;
+        height: 66px;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+
+    .thumbnail-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.6;
+        transition: opacity 0.2s ease, transform 0.3s ease;
+    }
+
+    .thumbnail-item:hover img {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    .thumbnail-item.active {
+        border-color: var(--accent);
+    }
+
+    .thumbnail-item.active img {
+        opacity: 1;
+    }
+    
+    .thumbnail-item::after {
+        content: attr(title);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        font-size: 0.65rem;
+        padding: 4px;
+        text-align: center;
+        transform: translateY(100%);
+        transition: transform 0.2s ease;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .thumbnail-item:hover::after {
+        transform: translateY(0);
+    }
+    
+    .strip-scroll-btn {
+        display: none;
+    }
 }
 
 /* Image Modal (Lightbox) */
@@ -1082,6 +1154,20 @@ body.theme-light .strip-scroll-btn:hover {
     align-items: center;
     gap: var(--space-3);
     z-index: 3;
+}
+
+.skill-card-number {
+    position: absolute !important;
+    top: 1rem;
+    left: 1.5rem;
+    font-family: 'Caveat', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.25);
+    transform: rotate(-15deg);
+    z-index: 2;
+    pointer-events: none;
+    line-height: 1;
 }
 
 .skill-card-icon-wrapper {
@@ -1387,6 +1473,10 @@ body.theme-light .skill-card-back .skill-card-title {
     font-weight: 700;
     display: inline;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+body.theme-light .skill-card-number {
+    color: rgba(255, 255, 255, 0.4);
 }
 
 body.theme-light .skill-card-back-content {

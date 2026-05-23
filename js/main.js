@@ -350,38 +350,70 @@ function renderProjectDetail(projectId) {
 }
 
 /**
- * Renders the thumbnail strip at the bottom of the project modal
+ * Renders the thumbnail strip at the bottom of the project modal (mobile)
+ * and the floating sidebar (desktop)
  * @param {string} activeProjectId - The currently open project
  */
 function renderThumbnailStrip(activeProjectId) {
+    // 1. Render Mobile Horizontal Strip
     const stripContainer = document.getElementById('project-thumbnail-strip');
-    if (!stripContainer) return;
+    if (stripContainer) {
+        const thumbnailsHTML = Object.keys(PROJECTS).map(projectId => {
+            const project = PROJECTS[projectId];
+            const isActive = projectId === activeProjectId ? 'active' : '';
+            
+            return `
+                <div class="thumbnail-item ${isActive}" 
+                     title="${project.title}" 
+                     onclick="switchProjectFromThumbnail('${projectId}')"
+                     role="button" 
+                     aria-label="View ${project.title}">
+                    <img src="${project.primary_image}" alt="${project.title} thumbnail" loading="lazy">
+                </div>
+            `;
+        }).join('');
 
-    const thumbnailsHTML = Object.keys(PROJECTS).map(projectId => {
-        const project = PROJECTS[projectId];
-        const isActive = projectId === activeProjectId ? 'active' : '';
-        
-        return `
-            <div class="thumbnail-item ${isActive}" 
-                 title="${project.title}" 
-                 onclick="switchProjectFromThumbnail('${projectId}')"
-                 role="button" 
-                 aria-label="View ${project.title}">
-                <img src="${project.primary_image}" alt="${project.title} thumbnail" loading="lazy">
-            </div>
-        `;
-    }).join('');
+        stripContainer.innerHTML = thumbnailsHTML;
 
-    stripContainer.innerHTML = thumbnailsHTML;
+        // Auto-scroll the strip so the active thumbnail is visible
+        setTimeout(() => {
+            const activeThumb = stripContainer.querySelector('.active');
+            if (activeThumb) {
+                const scrollLeft = activeThumb.offsetLeft - (stripContainer.clientWidth / 2) + (activeThumb.clientWidth / 2);
+                stripContainer.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+            }
+        }, 50);
+    }
 
-    // Auto-scroll the strip so the active thumbnail is visible
-    setTimeout(() => {
-        const activeThumb = stripContainer.querySelector('.active');
-        if (activeThumb) {
-            const scrollLeft = activeThumb.offsetLeft - (stripContainer.clientWidth / 2) + (activeThumb.clientWidth / 2);
-            stripContainer.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-        }
-    }, 50);
+    // 2. Render Desktop Floating Sidebar
+    const sidebarContainer = document.getElementById('desktop-floating-sidebar');
+    if (sidebarContainer) {
+        const sidebarHTML = Object.keys(PROJECTS).map(projectId => {
+            const project = PROJECTS[projectId];
+            const isActive = projectId === activeProjectId ? 'active' : '';
+            
+            return `
+                <div class="sidebar-thumbnail-item ${isActive}" 
+                     title="${project.title}" 
+                     onclick="switchProjectFromThumbnail('${projectId}')"
+                     role="button" 
+                     aria-label="View ${project.title}">
+                    <img src="${project.primary_image}" alt="${project.title} thumbnail" loading="lazy">
+                </div>
+            `;
+        }).join('');
+
+        sidebarContainer.innerHTML = sidebarHTML;
+
+        // Auto-scroll the sidebar so the active thumbnail is visible
+        setTimeout(() => {
+            const activeThumb = sidebarContainer.querySelector('.active');
+            if (activeThumb) {
+                const scrollTop = activeThumb.offsetTop - (sidebarContainer.clientHeight / 2) + (activeThumb.clientHeight / 2);
+                sidebarContainer.scrollTo({ top: scrollTop, behavior: 'smooth' });
+            }
+        }, 50);
+    }
 }
 
 /**
@@ -467,7 +499,7 @@ function formatCardTitle(title) {
 function renderSkillCards() {
     const cardDeck = document.getElementById('card-deck');
     
-    const cardsHTML = SKILLS_CARDS.map(card => `
+    const cardsHTML = SKILLS_CARDS.map((card, index) => `
         <article class="skill-card" 
                  data-card-id="${card.id}" 
                  data-pattern="${card.pattern}" 
@@ -477,6 +509,7 @@ function renderSkillCards() {
                  aria-label="${card.title}">
             <div class="skill-card-inner">
                 <div class="skill-card-front">
+                    <div class="skill-card-number">${index + 1}</div>
                     <div class="skill-card-front-content">
                         <div class="skill-card-icon-wrapper">
                             <i class="${card.icon} skill-card-icon"></i>
@@ -1276,7 +1309,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prevBtn) prevBtn.addEventListener('click', () => navigateProject('prev'));
     if (nextBtn) nextBtn.addEventListener('click', () => navigateProject('next'));
 
-    // Thumbnail strip scroll buttons
+    // Thumbnail strip scroll buttons (Mobile/Tablet only now)
     const stripContainer = document.getElementById('project-thumbnail-strip');
     const scrollLeftBtn = document.getElementById('strip-scroll-left');
     const scrollRightBtn = document.getElementById('strip-scroll-right');
