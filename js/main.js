@@ -350,6 +350,86 @@ function renderProjectDetail(projectId) {
 }
 
 /**
+ * Renders the thumbnail strip at the bottom of the project modal
+ * @param {string} activeProjectId - The currently open project
+ */
+function renderThumbnailStrip(activeProjectId) {
+    const stripContainer = document.getElementById('project-thumbnail-strip');
+    if (!stripContainer) return;
+
+    const thumbnailsHTML = Object.keys(PROJECTS).map(projectId => {
+        const project = PROJECTS[projectId];
+        const isActive = projectId === activeProjectId ? 'active' : '';
+        
+        return `
+            <div class="thumbnail-item ${isActive}" 
+                 title="${project.title}" 
+                 onclick="switchProjectFromThumbnail('${projectId}')"
+                 role="button" 
+                 aria-label="View ${project.title}">
+                <img src="${project.primary_image}" alt="${project.title} thumbnail" loading="lazy">
+            </div>
+        `;
+    }).join('');
+
+    stripContainer.innerHTML = thumbnailsHTML;
+
+    // Auto-scroll the strip so the active thumbnail is visible
+    setTimeout(() => {
+        const activeThumb = stripContainer.querySelector('.active');
+        if (activeThumb) {
+            const scrollLeft = activeThumb.offsetLeft - (stripContainer.clientWidth / 2) + (activeThumb.clientWidth / 2);
+            stripContainer.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        }
+    }, 50);
+}
+
+/**
+ * Handles clicking a thumbnail
+ * @param {string} projectId - Unique project identifier
+ */
+function switchProjectFromThumbnail(projectId) {
+    if (state.currentProjectId === projectId) return;
+    
+    state.currentProjectId = projectId;
+    renderProjectDetail(projectId);
+    renderThumbnailStrip(projectId);
+    
+    const overlayContent = document.querySelector('.overlay-content');
+    if (overlayContent) {
+        overlayContent.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+/**
+ * Navigates to the next or previous project
+ * @param {string} direction - 'next' or 'prev'
+ */
+function navigateProject(direction) {
+    if (!state.isOverlayOpen || !state.currentProjectId) return;
+    
+    const projectIds = Object.keys(PROJECTS);
+    const currentIndex = projectIds.indexOf(state.currentProjectId);
+    if (currentIndex === -1) return;
+
+    let newIndex;
+    if (direction === 'next') {
+        newIndex = (currentIndex + 1) % projectIds.length;
+    } else {
+        newIndex = (currentIndex - 1 + projectIds.length) % projectIds.length;
+    }
+
+    const nextProjectId = projectIds[newIndex];
+    
+    state.currentProjectId = nextProjectId;
+    renderProjectDetail(nextProjectId);
+    renderThumbnailStrip(nextProjectId);
+    
+    const overlayContent = document.querySelector('.overlay-content');
+    if (overlayContent) overlayContent.scrollTop = 0;
+}
+
+/**
  * Renders the list of projects in the dropdown menu
  */
 function renderProjectsList() {
@@ -471,7 +551,10 @@ function selectProject(projectId) {
  * @param {string} projectId - Unique project identifier
  */
 function openProjectDetail(projectId) {
+    state.currentProjectId = projectId;
     renderProjectDetail(projectId);
+    renderThumbnailStrip(projectId);
+    
     const overlay = document.getElementById('project-detail-overlay');
     const overlayContent = overlay.querySelector('.overlay-content');
     
@@ -862,6 +945,12 @@ document.addEventListener('keydown', (e) => {
             toggleCard(state.expandedCardId, true);
         }
     }
+    
+    // Arrow key navigation when modal is open
+    if (state.isOverlayOpen) {
+        if (e.key === 'ArrowRight') navigateProject('next');
+        if (e.key === 'ArrowLeft') navigateProject('prev');
+    }
 });
 
 
@@ -1182,6 +1271,29 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('overlay-close').addEventListener('click', closeProjectDetail);
     document.getElementById('projects-dropdown-backdrop').addEventListener('click', closeDropdown);
 
+    const prevBtn = document.getElementById('project-prev');
+    const nextBtn = document.getElementById('project-next');
+    if (prevBtn) prevBtn.addEventListener('click', () => navigateProject('prev'));
+    if (nextBtn) nextBtn.addEventListener('click', () => navigateProject('next'));
+
+    // Thumbnail strip scroll buttons
+    const stripContainer = document.getElementById('project-thumbnail-strip');
+    const scrollLeftBtn = document.getElementById('strip-scroll-left');
+    const scrollRightBtn = document.getElementById('strip-scroll-right');
+
+    if (scrollLeftBtn && scrollRightBtn && stripContainer) {
+        // Scroll amount (roughly 2-3 thumbnails)
+        const scrollAmount = 300; 
+
+        scrollLeftBtn.addEventListener('click', () => {
+            stripContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            stripContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+    }
+
     // Mobile/tablet: setup swipe handlers for both touch and mouse
     document.addEventListener('touchstart', handleTouchStart, { passive: false });
     document.addEventListener('touchmove', handleTouchMove, { passive: false });
@@ -1203,4 +1315,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.selectProject = selectProject;
     window.openProjectDetail = openProjectDetail;
     window.toggleCard = toggleCard;
+    window.switchProjectFromThumbnail = switchProjectFromThumbnail;
+    window.navigateProject = navigateProject;
 });

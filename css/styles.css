@@ -567,6 +567,64 @@ body.project-page {
     transform: rotate(90deg);
 }
 
+/* Project Navigation Arrows */
+.project-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1006;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.2rem;
+    backdrop-filter: blur(4px);
+}
+
+.project-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Light mode adjustments for navigation arrows */
+body.theme-light .project-nav-btn {
+    /* The backdrop in light mode is still dark rgba(0,0,0,0.8), 
+       so we need light-colored buttons, not dark ones! */
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.theme-light .project-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Position relative to the viewport/overlay since they are outside the content box */
+.prev-btn { left: 2rem; }
+.next-btn { right: 2rem; }
+
+@media (max-width: 1100px) {
+    .prev-btn { left: 1rem; }
+    .next-btn { right: 1rem; }
+}
+
+@media (max-width: 768px) {
+    .project-nav-btn {
+        display: none; /* Hide floating arrows on mobile to save screen space */
+    }
+}
+
 .project-detail-content {
     max-width: 850px;
     margin: 0 auto;
@@ -641,6 +699,167 @@ body.project-page {
 
 .project-detail-images img:hover {
     opacity: 0.95;
+}
+
+/* Project Thumbnail Strip */
+.project-thumbnail-strip-container {
+    padding: var(--space-4) var(--space-6);
+    background: var(--bg-card-hover);
+    border-top: 1px solid var(--border-color);
+    border-radius: 0 0 12px 12px;
+    margin-top: var(--space-4);
+}
+
+.thumbnail-strip-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-3);
+    font-weight: 600;
+}
+
+.thumbnail-strip-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.project-thumbnail-strip {
+    display: flex;
+    gap: var(--space-3);
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+}
+
+.project-thumbnail-strip::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+/* Strip Scroll Buttons */
+.strip-scroll-btn {
+    position: absolute;
+    z-index: 2;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-main);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+    /* Move them up slightly to account for the padding-bottom on the strip */
+    top: calc(50% - 4px); 
+    transform: translateY(-50%);
+}
+
+.strip-scroll-btn:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+    border-color: var(--accent);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Light mode adjustments for strip scroll buttons */
+body.theme-light .strip-scroll-btn {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #334155;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body.theme-light .strip-scroll-btn:hover {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+}
+
+.strip-scroll-left {
+    left: -16px;
+}
+
+.strip-scroll-right {
+    right: -16px;
+}
+
+.thumbnail-item {
+    flex: 0 0 auto;
+    width: 120px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .project-thumbnail-strip-container {
+        padding: var(--space-3) var(--space-4);
+        border-radius: 0; /* Modal often takes full width on mobile */
+    }
+    
+    .thumbnail-item {
+        width: 100px;
+        height: 66px;
+    }
+    
+    .strip-scroll-btn {
+        display: none;
+    }
+}
+
+.thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.3s ease;
+}
+
+.thumbnail-item:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.thumbnail-item.active {
+    border-color: var(--accent);
+}
+
+.thumbnail-item.active img {
+    opacity: 1;
+}
+
+.thumbnail-item::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 0.65rem;
+    padding: 4px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.thumbnail-item:hover::after {
+    transform: translateY(0);
 }
 
 /* Image Modal (Lightbox) */
