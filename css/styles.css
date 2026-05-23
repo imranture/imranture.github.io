@@ -1170,6 +1170,26 @@ body.theme-light .project-nav-btn:hover {
     line-height: 1;
 }
 
+.skill-card-number-back {
+    position: absolute !important;
+    top: 1rem;
+    right: 7rem;
+    font-family: 'Caveat', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.25);
+    transform: rotate(-15deg);
+    z-index: 10;
+    pointer-events: none;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s;
+}
+
+.skill-card.expanded .skill-card-number-back {
+    opacity: 1;
+}
+
 .skill-card-icon-wrapper {
     width: 4rem;
     height: 4rem;
@@ -1475,7 +1495,8 @@ body.theme-light .skill-card-back .skill-card-title {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-body.theme-light .skill-card-number {
+body.theme-light .skill-card-number,
+body.theme-light .skill-card-number-back {
     color: rgba(255, 255, 255, 0.4);
 }
 

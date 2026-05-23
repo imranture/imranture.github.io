@@ -518,6 +518,7 @@ function renderSkillCards() {
                     </div>
                 </div>
                 <div class="skill-card-back">
+                    <div class="skill-card-number-back">${index + 1}</div>
                     <div class="skill-card-back-scroll">
                         <h3 class="skill-card-title">${card.title}</h3>
                         <div class="skill-card-back-content">
