@@ -2019,6 +2019,7 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
     .center-panel {
         padding: var(--space-3);
         margin-top: 0;
+        min-height: 300px;
     }
 
     .intro-message {
