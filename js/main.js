@@ -1303,6 +1303,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
     document.getElementById('overlay-close').addEventListener('click', closeProjectDetail);
+    
+    // Add Share button event listener
+    const shareBtn = document.getElementById('overlay-share');
+    if (shareBtn) {
+        shareBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const projectId = state.currentProjectId;
+            if (!projectId) return;
+            
+            const url = window.location.origin + '/project.html?id=' + projectId;
+            
+            navigator.clipboard.writeText(url).then(() => {
+                // Remove existing feedback if any
+                const existingFeedback = shareBtn.querySelector('.copied-feedback');
+                if (existingFeedback) existingFeedback.remove();
+
+                const feedback = document.createElement('span');
+                feedback.className = 'copied-feedback';
+                feedback.textContent = 'Copied!';
+                
+                shareBtn.appendChild(feedback);
+                shareBtn.style.color = 'var(--accent)';
+                shareBtn.classList.add('copying');
+                
+                setTimeout(() => {
+                    feedback.remove();
+                    shareBtn.style.color = '';
+                    shareBtn.classList.remove('copying');
+                }, 1200);
+            }).catch(err => {
+                console.error('Failed to copy link: ', err);
+            });
+        });
+    }
+
     document.getElementById('projects-dropdown-backdrop').addEventListener('click', closeDropdown);
 
     const prevBtn = document.getElementById('project-prev');

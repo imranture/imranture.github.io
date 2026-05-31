@@ -288,9 +288,14 @@
             <div class="overlay-backdrop" aria-hidden="true"></div>
             
             <div class="overlay-content">
-                <button class="overlay-close" id="overlay-close" aria-label="Close project details">
-                    <i class="fa-solid fa-times" aria-hidden="true"></i>
-                </button>
+                <div style="display: flex; position: absolute; right: var(--space-4); top: var(--space-4); z-index: 100; gap: 0.5rem;">
+                    <button class="overlay-close" id="overlay-share" aria-label="Share project details" title="Copy Link" style="position: relative; right: auto; top: auto;">
+                        <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+                    </button>
+                    <button class="overlay-close" id="overlay-close" aria-label="Close project details" style="position: relative; right: auto; top: auto;">
+                        <i class="fa-solid fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
                 <div id="project-detail-content" class="project-detail-content">
                     <!-- Project details will be injected by JavaScript -->
                 </div>
