@@ -73,22 +73,19 @@
 
         <!-- HEADER -->
         <header class="site-header">
-            <a href="/index.html#projects" class="logo" aria-label="Back to Projects"
-                style="text-decoration: none; display: flex; align-items: center; gap: var(--space-2);">
-                <i class="fa-solid fa-arrow-left"></i> <span
-                    style="font-size: 1rem; font-family: var(--font-sans);">Back</span>
+            <a href="/index.html" class="site-name" aria-label="Back to Home">
+                <img src="/image/imranture.png" alt="Imran Ture" class="profile-pic">
             </a>
-            <nav class="site-nav" style="display: flex; align-items: center;">
+            <nav class="site-nav">
                 <!-- Theme Toggle -->
-                <button onclick="toggleTheme()" id="btn-theme" class="theme-toggle" aria-label="Toggle Theme"
-                    style="margin-right: 0;">
+                <button onclick="toggleTheme()" id="btn-theme" class="theme-toggle" aria-label="Toggle Theme">
                     <i class="fa-solid fa-sun" id="theme-icon"></i>
                 </button>
             </nav>
         </header>
 
         <!-- MAIN CONTENT -->
-        <main id="main-content" style="overflow-y: auto; padding: var(--space-6) 0; height: 100%;">
+        <main id="main-content" class="project-main-content">
             <!-- Project content injected by JS -->
             <div id="project-content"></div>
         </main>

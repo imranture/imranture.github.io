@@ -151,12 +151,6 @@ function injectProjectSchema(projectId, projectData) {
 
     const project = PROJECTS[projectId];
 
-    // Update back button to link to correct anchor on homepage
-    const backBtn = document.querySelector('a[aria-label="Back to Projects"]');
-    if (backBtn) {
-        backBtn.href = `/index.html#projects-${projectId}`;
-    }
-
     // Handle invalid project ID
     if (!project) {
         container.innerHTML = `

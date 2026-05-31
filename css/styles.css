@@ -563,11 +563,14 @@ body.theme-light .dropdown-item:hover {
 .overlay-close:hover {
     background: var(--accent);
     color: var(--bg-dark);
-    transform: rotate(90deg);
 }
 
-#overlay-share:hover {
-    transform: scale(1.05);
+.overlay-close i {
+    transition: transform 0.2s ease;
+}
+
+.overlay-close:hover i {
+    transform: rotate(90deg);
 }
 
 #overlay-share .copied-feedback {
@@ -638,6 +641,18 @@ body.theme-light .project-nav-btn:hover {
 @media (max-width: 768px) {
     .project-nav-btn {
         display: none; /* Hide floating arrows on mobile to save screen space */
+    }
+}
+
+.project-main-content {
+    overflow-y: auto;
+    padding: calc(var(--space-6) + 4.5rem) 0 var(--space-6) 0;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .project-main-content {
+        padding-top: var(--space-4);
     }
 }
 
@@ -1793,6 +1808,25 @@ body.theme-light .skill-card[data-pattern="pattern-optimization"] .skill-card-ba
     transform: rotate(180deg);
 }
 
+body.project-page .theme-toggle {
+    position: static;
+    margin-right: 2.5rem;
+    background: transparent;
+    width: auto;
+    height: auto;
+    opacity: 1;
+}
+
+body.project-page .theme-toggle:hover {
+    background: transparent;
+}
+
+@media (min-width: 981px) {
+    body.project-page .theme-toggle {
+        margin-right: 3.5rem;
+    }
+}
+
 /* Social Links (Bottom Left) */
 .social-links-fixed {
     position: fixed;
@@ -2333,6 +2367,22 @@ body.project-page::-webkit-scrollbar-thumb {
 .overlay-content::-webkit-scrollbar-thumb:hover,
 body.project-page::-webkit-scrollbar-thumb:hover {
     background: var(--accent);
+}
+
+@media (max-width: 768px) {
+    body.project-page .site-header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    body.project-page .site-header .site-nav {
+        display: flex;
+    }
+
+    body.project-page .site-header .profile-pic {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
 }
 
 /* Pattern Animations: Continuous one-direction movement (less distracting) */
