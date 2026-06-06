@@ -209,7 +209,20 @@ function renderSocialLinks() {
         }
     }).join('');
     
-    socialLinksContainer.innerHTML = socialsHTML;
+    const aboutMeHTML = `<a href="#" id="btn-about-me" aria-label="About Me">
+                <i class="fa-solid fa-user"></i>
+            </a>`;
+    
+    socialLinksContainer.innerHTML = aboutMeHTML + socialsHTML;
+    
+    // Add event listener for About Me
+    const aboutMeBtn = document.getElementById('btn-about-me');
+    if (aboutMeBtn) {
+        aboutMeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleAboutMe();
+        });
+    }
     
     // Add email copy functionality
     const emailLink = socialLinksContainer.querySelector('.email-link');
@@ -258,10 +271,22 @@ function adjustTaglineDots() {
 function renderIntro() {
     const centerPanel = document.getElementById('center-panel');
     const cardDeck = document.getElementById('card-deck');
+    const swipeHint = document.querySelector('.swipe-hint');
+    const mobileProjectsSection = document.querySelector('.mobile-projects-section');
     
     // Show card deck on intro page (works on all screen sizes)
     if (cardDeck) {
         cardDeck.classList.remove('hidden');
+    }
+
+    // Show swipe hint on intro page
+    if (swipeHint) {
+        swipeHint.classList.remove('hidden');
+    }
+
+    // Show mobile projects section on intro page
+    if (mobileProjectsSection) {
+        mobileProjectsSection.classList.remove('hidden');
     }
 
     // Format tagline: each word in its own span, dots in separate spans
@@ -905,6 +930,68 @@ function resetToIntro() {
         toggleCard(state.expandedCardId, true);
     }
     transitionContent(() => renderIntro());
+}
+
+/**
+ * Toggles the About Me view
+ */
+function toggleAboutMe() {
+    if (state.currentView === 'about') return;
+    
+    // Close dropdown and project details if open
+    closeDropdown();
+    if (state.isOverlayOpen) {
+        closeProjectDetail();
+    }
+    if (state.expandedCardId) {
+        toggleCard(state.expandedCardId, true);
+    }
+    
+    transitionContent(() => renderAboutMe());
+}
+
+/**
+ * Renders the About Me section in the center panel
+ */
+function renderAboutMe() {
+    const centerPanel = document.getElementById('center-panel');
+    const cardDeck = document.getElementById('card-deck');
+    const swipeHint = document.querySelector('.swipe-hint');
+    const mobileProjectsSection = document.querySelector('.mobile-projects-section');
+    
+    // Hide card deck, swipe hint, and mobile projects section on About Me page
+    if (cardDeck) {
+        cardDeck.classList.add('hidden');
+    }
+    if (swipeHint) {
+        swipeHint.classList.add('hidden');
+    }
+    if (mobileProjectsSection) {
+        mobileProjectsSection.classList.add('hidden');
+    }
+
+    centerPanel.innerHTML = `
+        <article class="intro-content">
+            <div class="about-me-content" style="text-align: left; margin-top: 2rem;">
+                <!-- Placeholder for future content -->
+                <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">Let me tell you something about myself...</p>
+                <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">I've spent more than a decade working across two sides — analyst and developer — and the work I like best is where they meet: taking a question that started in someone's head and turning it into a system they can rely on.</p>
+                <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">I was a late talker as a child. I spent a long time learning to translate what was in my head into something another person could understand, and that habit turned out to be exactly what this kind of work rewards. Most of what I build sits between people who speak in business terms and systems that speak in code — and I'm at home on both sides of that translation.</p>
+<p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">These days that mostly means AI pipelines and agents that turn messy data into decisions people actually use — but the through-line has always been the same: understand the real problem first, then build the thing that solves it.</p>
+                <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">Want to work together, or just talk? Don't hesitate to reach out by email or on LinkedIn.</p>
+                <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">- Imran</p>
+                </div>
+            
+            <div class="mobile-about-back-btn" style="margin-top: 5rem; text-align: center;">
+                <button class="nav-btn" onclick="resetToIntro()" aria-label="Go Back">
+                    <i class="fa-solid fa-reply"></i> Go Back
+                </button>
+            </div>
+        </article>
+    `;
+
+    state.currentView = 'about';
+    state.currentProjectId = null;
 }
 
 // ========================================

@@ -1903,6 +1903,13 @@ body.project-page .theme-toggle:hover {
     display: none !important;
 }
 
+/* Hide mobile about back button on desktop */
+@media (min-width: 981px) {
+    .mobile-about-back-btn {
+        display: none !important;
+    }
+}
+
 /* Tablet/Medium Screens */
 @media (max-width: 1200px) {
     .projects-dropdown {
