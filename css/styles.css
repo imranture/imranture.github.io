@@ -875,6 +875,18 @@ body.theme-light .project-nav-btn:hover {
 }
 
 @media (max-width: 980px) {
+    .about-me-content {
+        /* Change from justify to left for better readability on narrow screens */
+        text-align: left; 
+    }
+    .about-me-content p {
+        /* Optionally make the text slightly larger or smaller on mobile */
+        font-size: 1rem; 
+        
+        /* Give a bit more breathing room between lines for mobile reading */
+        line-height: 1.8; 
+    }
+    
     .desktop-floating-sidebar {
         display: none; /* Hide sidebar on mobile/tablet */
     }
