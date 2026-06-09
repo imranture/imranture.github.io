@@ -909,6 +909,13 @@ function transitionContent(callback) {
     
     setTimeout(() => {
         callback();
+        
+        // Scroll to the top of the page when the new content is loaded
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
         centerPanel.classList.remove('fade-out');
         centerPanel.classList.add('fade-in');
         
