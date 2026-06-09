@@ -209,7 +209,7 @@ function renderSocialLinks() {
         }
     }).join('');
     
-    const aboutMeHTML = `<a href="#" id="btn-about-me" aria-label="About Me">
+    const aboutMeHTML = `<a href="#" id="btn-about-me" aria-label="About">
                 <i class="fa-solid fa-user"></i>
             </a>`;
     
@@ -971,15 +971,14 @@ function renderAboutMe() {
     }
 
     centerPanel.innerHTML = `
-        <article class="intro-content">
-            <div class="about-me-content" style="text-align: left; margin-top: 2rem;">
+        <article class="intro-content about-me-article">
+            <div class="about-me-content">
                 <!-- Placeholder for future content -->
-                <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">Let me tell you something about myself...</p>
-                <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">I've spent more than a decade working across two sides — analyst and developer — and the work I like best is where they meet: taking a question that started in someone's head and turning it into a system they can rely on.</p>
-                <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">I was a late talker as a child. I spent a long time learning to translate what was in my head into something another person could understand, and that habit turned out to be exactly what this kind of work rewards. Most of what I build sits between people who speak in business terms and systems that speak in code — and I'm at home on both sides of that translation.</p>
-<p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">These days that mostly means AI pipelines and agents that turn messy data into decisions people actually use — but the through-line has always been the same: understand the real problem first, then build the thing that solves it.</p>
-                <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">Want to work together, or just talk? Don't hesitate to reach out by email or on LinkedIn.</p>
-                <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7;">- Imran</p>
+                <p>Beyond the resume...</p>
+                <p>Almost from birth, I've lived across different countries, cultures, and languages. That mix taught me to listen before I assume I'm right. But it came with its own challenges. I ended up as a late talker. It took me a long time to find words that landed, to turn what was in my head into something someone else could understand.  Looking back, that's where I first started doing the thing I still do for a living: carrying meaning from one side of a gap to the other.</p>
+                <p>Now I've spent more than a decade working across two sides — analyst and developer — and the work I like best is where they meet: taking a question that started in someone's head and turning it into a system they can rely on. Most of what I build sits between people who speak in business terms and systems that speak in code, and I'm at home on both sides of that translation. These days that mostly means AI pipelines and agents that turn messy data into decisions people actually use — but the through-line has always been the same: understand the real problem first, then build the thing that solves it.</p>
+<p>Want to work together, or just talk?<br>Don't hesitate to reach out by email or connect on LinkedIn.</p>
+                <p>- Imran</p>
                 </div>
             
             <div class="mobile-about-back-btn" style="margin-top: 5rem; text-align: center;">
