@@ -5,7 +5,7 @@
 
 const PROJECTS_DATA = {
     'lcw-gembagpt-pipeline': {
-        title: 'GembaGPT Pipeline: LLM-Structured Store Feedback Across 60 Countries',
+        title: 'Gemba AI Pipeline: LLM-Structured Store Feedback Across 60 Countries',
         subtitle: 'Turning Scattered Store-Floor Feedback into Structured Demand Signals',
         primary_image: '/image/lcw-gembagpt-pipeline.png',
         secondary_image: null,
@@ -39,7 +39,7 @@ const PROJECTS_DATA = {
         ]
     },
     'lcw-gembagpt-chatbot': {
-        title: 'GembaGPT Chatbot: A Grounded Text-to-SQL Agent for Store Insights',
+        title: 'Gemba AI Chatbot: A Grounded Text-to-SQL Agent for Store Insights',
         subtitle: 'Turning Natural-Language Questions into Grounded, Real-Time Store Insights',
         primary_image: '/image/lcw-gembagpt-chatbot.png',
         secondary_image: null,
