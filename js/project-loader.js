@@ -5,102 +5,7 @@
  */
 
 // Projects data loaded from centralized data file (data/projects.js)
-const PROJECTS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : {
-    'e4-timestamper': {
-        title: 'E4 TimeStamper: Web App for Automatic Timestamping and Analysis of Empatica E4 Data',
-        primary_image: '/image/e4-timestamper.png',
-        secondary_image: null,
-        links: [
-            { url: 'https://e4timestamper.netlify.app/', text: 'App' },
-            { url: 'https://github.com/imranture/E4-TimeStamper', text: 'GitHub' }
-        ],
-        tags: ['Software Development', 'Time Series Analysis', 'Physiological Signals', 'Empatica E4'],
-        description: 'E4 TimeStamper is a user-friendly web application designed to help researchers add timestamps to physiological signal data collected from Empatica E4 wristbands. The tool enables seamless file extraction and precise timestamping, customizable by timezone and preferred date &amp; time format. Widely adopted by researchers worldwide, E4 TimeStamper is now a web-based tool, having previously been available for both Windows and Mac operating systems.'
-    },
-    'emotion-recognition': {
-        title: 'Deep Emotion Recognition using Wearable Sensors',
-        primary_image: '/image/model-accuracy.png',
-        secondary_image: null,
-        links: [],
-        tags: ['Deep Learning', 'Machine Learning', 'Emotion Recognition', 'Physiological Signals', 'LSTM', 'CNN', 'Empatica E4'],
-        description: 'Emotion recognition is an emerging interdisciplinary field that integrates methodologies from affective computing, sentiment analysis, signal processing, and machine learning. This project focuses on classifying emotions such as amusement and stress using physiological signals like heart rate and skin conductivity, collected via wearables. To build the model, a hybrid approach was employed that combines Convolutional Neural Networks (CNN) and Long Short-Term Memory (LSTM) networks. The model achieved an accuracy rate of 92% under a 5-fold cross-validation setting using grid search and Bayesian optimization for hyperparameter tuning.'
-    },
-    'python-for-openintro': {
-        title: 'Python Implementation of OpenIntro Statistics',
-        primary_image: '/image/openintro-python-official-page.png',
-        secondary_image: '/image/openintro-python-labs.png',
-        links: [
-            { url: 'https://www.imranture.com/labs/os/', text: 'Labs' },
-            { url: 'https://openintro.info/stat/labs.php?stat_lab_software=Python%20(beta)', text: 'OpenIntro' }
-        ],
-        tags: ['Statistics', 'Python'],
-        description: 'We developed the Python labs for OpenIntro Statistics, an open-source textbook for introductory statistics used at many universities (from Community Colleges to the Ivy League) around the world, to promote the understanding and application of statistical data analysis using Python. The labs are officially listed on the OpenIntro Statistics website.'
-    },
-    'bbl-physiodb': {
-        title: 'BBL-PhysioDB: Data Hub for Entrepreneurship Assessment and Development Workshop',
-        primary_image: '/image/bbl-physiodb.png',
-        secondary_image: '/image/rmit-bbl.jpg',
-        links: [],
-        tags: ['Database Management', 'SQL', 'PostgreSQL', 'Django'],
-        description: 'BBL-PhysioDB is a robust database, developed with Django and PostgreSQL, for the Entrepreneurship Assessment and Development Workshop studies conducted at RMIT\'s Behavioural Business Lab (BBL). The database can effectively manage data collected from over 150 participants, including entrepreneurs, artists, and professionals with diverse backgrounds. It has the capability to store extensive data collected through multiple lab experiment sessions, including physiological signal data recorded through E4 wristbands from Empatica, along with 200+ questionnaire responses providing demographic information and insights into participants\' entrepreneurial engagement.'
-    },
-    'marketing-ab': {
-        title: 'Measuring the Impact of Ads on Campaign Success',
-        primary_image: '/image/conversion-rates-by-ad-exposure.png',
-        secondary_image: '/image/conversion-rates-by-day-hour.png',
-        links: [
-            { url: 'https://www.kaggle.com/code/imranture/measuring-the-impact-of-ads-on-campaign-success', text: 'Kaggle' }
-        ],
-        tags: ['A/B Testing', 'Chi-Square', 'Mann–Whitney U test'],
-        description: 'The report presents a detailed A/B testing analysis to understand how ad exposure and timing impact user conversions. By examining data across different days, times, and levels of ad exposure, key insights are uncovered for optimizing marketing strategies. The analysis identifies the best days and times to run campaigns and an optimal ad exposure range, balancing the maximization of conversions while minimizing ad fatigue. The findings highlight the significant role of targeted ads in driving campaign success.'
-    },
-    // 'forecasting-translation': {
-    //     title: 'Translating Forecasting: Principles and Practice',
-    //     primary_image: '/image/fpp3.png',
-    //     secondary_image: null,
-    //     links: [],
-    //     tags: ['Forecasting', 'R', 'RStudio'],
-    //     description: 'The initiative involves translating the popular textbook "Forecasting: Principles and Practice" to broaden the accessibility and understanding of forecasting principles among Turkish speakers. Alongside this effort, a suite of documents has been developed to facilitate the collaborative process among translation teams, ensuring efficient workflows and high-quality educational outcomes.'
-    // },
-    'melbourne-property-sales': {
-        title: 'Melbourne Property Sales: Visual Exploration of Housing Market Dynamics',
-        primary_image: '/image/melbourne-property-sales.png',
-        secondary_image: null,
-        links: [
-            { url: 'https://public.tableau.com/app/profile/imranture/viz/MelbournePropertySales_17051684571690/Dashboard', text: 'Tableau Dashboard' }
-        ],
-        tags: ['Data Visualization', 'Tableau'],
-        description: 'Melbourne Property Sales is an interactive Tableau dashboard with a detailed visual overview of the city\'s real estate trends, based on historical sales data. The dashboard offers a range of visualizations, including average property prices over time, distributions of key property features, and regional price comparisons for various housing types. These visualizations highlight patterns in the Melbourne housing market dynamics, such as seasonal pricing trends and the common characteristics of sold properties.'
-    },
-    'early-warning-system': {
-        title: 'Advancing Water Safety: Early Warning System to Monitor and Evaluate Drinking Water Quality',
-        primary_image: '/image/early-warning-system.png',
-        secondary_image: null,
-        links: [],
-        tags: ['Anomaly Detection', 'Statistical Quality Control'],
-        description: 'An early warning system was developed to enhance the safety and quality of drinking water in Türkiye by identifying hazardous contaminants. Utilizing a hybrid approach that integrates various statistical methods like Z-score analysis, moving averages, control charts, and weighted voting, the system provides real-time monitoring and detects unexpected levels of temperature, pH, total organic carbon, conductivity, oxidation-reduction potential, free chlorine, and dissolved oxygen. The multi-tiered approach facilitates early intervention for minor deviations while enabling immediate action for more severe anomalies.'
-    },
-    'pdf4u': {
-        title: 'pdf4u: Web-Based PDF Management Toolkit App',
-        primary_image: '/image/pdf4u.png',
-        secondary_image: null,
-        links: [
-            { url: 'https://pdf4u.onrender.com/', text: 'App' }
-        ],
-        tags: ['Web Development', 'HTML', 'CSS', 'JavaScript', 'Flask'],
-        description: 'pdf4u is a versatile web-based PDF management toolkit app designed to handle a wide range of PDF operations, including merging, splitting, rotating, and extracting pages from PDF files. Developed using Flask for the backend, the application provides a user-friendly interface built with HTML, CSS, and JavaScript. Users can easily upload and manipulate files using an intuitive drag-and-drop feature. The toolkit is designed for extensibility, with additional functionalities like converting images to PDFs and more in development.'
-    },
-    'durcalc': {
-        title: 'DurCalc: Hassle-Free Calculation of Date and Time Durations',
-        primary_image: '/image/durcalc.png',
-        secondary_image: null,
-        links: [
-            { url: 'https://github.com/imranture/durcalc', text: 'GitHub' }
-        ],
-        tags: ['Web Development'],
-        description: 'DurCalc is a web app designed to effortlessly calculate the duration between dates and/or times. With its user-friendly interface and intuitive functionality, DurCalc streamlines the process and calculates durations without any fuss.'
-    }
-};
+const PROJECTS = typeof PROJECTS_DATA !== 'undefined' ? PROJECTS_DATA : {};
 
 /**
  * Generates Schema.org structured data for a project
@@ -139,6 +44,50 @@ function injectProjectSchema(projectId, projectData) {
     document.head.appendChild(schemaScript);
 }
 
+/**
+ * Renders the Type/Domain/Focus metadata line, using icons instead of text labels
+ * @param {Object} meta - { type, domain, focus }
+ * @returns {string} HTML, or empty string if meta is absent
+ */
+function renderProjectMeta(meta) {
+    if (!meta) return '';
+    const pairs = [
+        ['🏷️', 'Type', meta.type],
+        ['🏢', 'Domain', meta.domain],
+        ['🎯', 'Focus', meta.focus]
+    ];
+    return `
+        <p class="project-detail-meta">
+            ${pairs.map(([icon, label, value]) => `<span class="project-detail-meta-pair" aria-label="${label}: ${value}"><span class="project-detail-meta-icon" aria-hidden="true">${icon}</span> ${value}</span>`).join('<span class="project-detail-meta-divider">/</span>')}
+        </p>`;
+}
+
+/**
+ * Renders the Problem/Approach/etc. section list
+ * @param {Array} sections - [{ heading, body?, checklist?, image? }]
+ * @returns {string} HTML, or empty string if sections are absent
+ */
+function renderProjectSections(sections) {
+    if (!sections || sections.length === 0) return '';
+    return sections.map(section => `
+        <section class="project-detail-section">
+            <h2 class="project-detail-section-heading">${section.heading}</h2>
+            ${section.body ? `<p class="project-detail-description">${section.body}</p>` : ''}
+            ${section.checklist ? `
+            <ul class="project-detail-checklist">
+                ${section.checklist.map(item => `
+                <li class="project-detail-checklist-item">
+                    <span class="project-detail-checklist-icon"></span>
+                    <span><span class="project-detail-checklist-title">${item.title}:</span> <span class="project-detail-checklist-desc">${item.description}</span></span>
+                </li>`).join('')}
+            </ul>` : ''}
+            ${section.image ? `
+            <div class="project-detail-images">
+                <img src="${section.image}" alt="${section.heading} diagram" loading="lazy">
+            </div>` : ''}
+        </section>`).join('');
+}
+
 // IIFE (Immediately Invoked Function Expression)
 // Runs as soon as script loads since DOM is ready (script at end of body)
 (function loadProject() {
@@ -172,6 +121,9 @@ function injectProjectSchema(projectId, projectData) {
     container.innerHTML = `
         <div class="project-detail-content">
             <h1 class="project-detail-title">${project.title}</h1>
+            ${project.subtitle ? `<p class="project-detail-subtitle">${project.subtitle}</p>` : ''}
+
+            ${renderProjectMeta(project.meta)}
 
             ${hasLinks ? `
             <div class="project-detail-links">
@@ -185,17 +137,19 @@ function injectProjectSchema(projectId, projectData) {
             <p class="project-detail-description">${project.description}</p>
 
             <div class="project-detail-images">
-                <img src="${project.primary_image}" 
-                     alt="${project.title} - Project screenshot" 
+                <img src="${project.primary_image}"
+                     alt="${project.title} - Project screenshot"
                      loading="lazy"
                      width="800"
                      height="600">
-                ${project.secondary_image ? `<img src="${project.secondary_image}" 
-                                                 alt="${project.title} - Additional screenshot" 
+                ${project.secondary_image ? `<img src="${project.secondary_image}"
+                                                 alt="${project.title} - Additional screenshot"
                                                  loading="lazy"
                                                  width="800"
                                                  height="600">` : ''}
             </div>
+
+            ${renderProjectSections(project.sections)}
 
             <div class="project-detail-tags">
                 ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
