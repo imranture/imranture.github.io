@@ -17,7 +17,7 @@ meta: {
     domain: 'Retail Merchandising & Planning',
     focus: 'BigQuery-Native Multimodal Extraction'
 },
-description: 'A pipeline that reads what people report from the store floor — what\'s selling, what\'s missing, what customers are asking for — across 1,200+ stores in nearly 60 countries, and turns it into structured data merchandising and planning teams can query. Reports arrive as free text with photos attached, and the pipeline reads both, producing 1,300+ demand signals a day from material that used to be read by hand.',
+description: 'A pipeline that reads what people report from the store floor — what\'s selling, what\'s missing, what customers are asking for — across 1,300+ stores in nearly 60 countries, and turns it into structured data merchandising and planning teams can query. Reports arrive as free text with photos attached, and the pipeline reads both, producing 2,500+ demand signals a day from material that used to be read by hand.',
     sections: [
         {
             heading: 'Problem',
@@ -32,7 +32,7 @@ description: 'A pipeline that reads what people report from the store floor — 
             body: 'Each report moves through persisted, resumable stages. <strong>Structure</strong> pulls one or more distinct pieces of feedback out of each raw report, filtering out irrelevant text — like email signatures and reply-chain clutter — that would otherwise get mistaken for real feedback. <strong>Hierarchy</strong> maps free-text product mentions onto the merchandising taxonomy. <strong>Context</strong> classifies the sentiment and topic of each item, such as high demand, a stock gap, or a quality complaint. <strong>Range</strong> validates product attributes like color and material against a bilingual reference list. A final consolidation step then joins everything against store and product master data and writes the finished record. Because every stage\'s output is persisted, a failed or interrupted run resumes exactly where it left off instead of reprocessing from scratch.',
             checklist: [
                 { title: 'Multichannel ingestion', description: 'Text and photos are pulled from three channels — emails, an in-house mobile app, and video walkthroughs.'},                
-                { title: 'LLM-native structuring', description: 'Extraction and classification run as LLM calls inside BigQuery itself, turning free-text reports into 1,300+ structured demand signals daily.' },
+                { title: 'LLM-native structuring', description: 'Extraction and classification run as LLM calls inside BigQuery itself, turning free-text reports into 2,500+ structured demand signals daily.' },
                 { title: 'Validation safety net', description: 'A second pass cross-checks the LLM\'s taxonomy and hierarchy choices against canonical reference tables, silently reverting to the trusted value whenever the model\'s answer doesn\'t match.' },
                 { title: 'Correction loop', description: 'Reports missing a required field — location, date, product, or observation — trigger an automatic reply asking the sender for it, framed to staff as data-quality feedback rather than a rejection.' },
                 { title: 'Rollout and enablement', description: 'Training material shipped alongside the system taught employees the reporting convention across nearly 60 countries, so data quality was designed for at the source rather than patched downstream.' }
