@@ -1,22 +1,16 @@
 /**
- * Google Analytics 4 - shared across all pages.
- * Loads immediately so visitors who never scroll or click are still counted.
+ * GoatCounter - shared across all pages.
+ * Cookieless and stores only aggregate data, so no consent banner is needed.
  *
- * Pages that set their own title from JS (project.html) declare
- * window.GA_MANUAL_PAGEVIEW = true and send the page_view themselves once
- * the real title is known, so projects don't report under a generic title.
+ * The recorded path is location.pathname + location.search, which is what makes
+ * project pages report per project (/project.html?id=pdf4u). Do not add a
+ * <link rel="canonical"> to project.html: GoatCounter prefers a same-domain
+ * canonical over the real URL, and every project would collapse into one row.
  */
 (function () {
-    const GA_ID = 'G-773DZQ4QLB';
-
     const script = document.createElement('script');
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    script.src = 'https://gc.zgo.at/count.js';
     script.async = true;
+    script.dataset.goatcounter = 'https://imranture.goatcounter.com/count';
     document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', GA_ID, { send_page_view: !window.GA_MANUAL_PAGEVIEW });
 })();

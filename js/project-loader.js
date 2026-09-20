@@ -160,14 +160,16 @@ function renderProjectSections(sections) {
     initImageZoom();
 })();
 
-// Report the pageview now that document.title holds the real project name.
-// project.html suppresses the automatic one via window.GA_MANUAL_PAGEVIEW.
-// gtag is absent when a content blocker blocks analytics.js.
-if (window.gtag) {
-    gtag('event', 'page_view', {
-        page_title: document.title,
-        page_location: window.location.href
-    });
+// project.html sets no_onload so the generic title is never counted. count.js
+// loads from another origin and may arrive before or after this script, so
+// count now if it is ready, otherwise hand it the title and let it count itself.
+if (window.goatcounter) {
+    if (window.goatcounter.count) {
+        window.goatcounter.count({ title: document.title });
+    } else {
+        window.goatcounter.title = document.title;
+        window.goatcounter.no_onload = false;
+    }
 }
 
 /**
