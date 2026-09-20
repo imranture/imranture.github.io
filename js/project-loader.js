@@ -160,6 +160,16 @@ function renderProjectSections(sections) {
     initImageZoom();
 })();
 
+// Report the pageview now that document.title holds the real project name.
+// project.html suppresses the automatic one via window.GA_MANUAL_PAGEVIEW.
+// gtag is absent when a content blocker blocks analytics.js.
+if (window.gtag) {
+    gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href
+    });
+}
+
 /**
  * Initialize image zoom functionality for project images
  * Adds click handlers to open images in a modal lightbox
