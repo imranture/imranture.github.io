@@ -77,7 +77,7 @@ description: 'A pipeline that reads what people report from the store floor — 
                 { title: 'Observe-and-retry loop', description: 'The agent inspects each tool response and retries once on an empty answer or server error before surfacing a failure.' },
                 { title: 'Layered CQRS pipeline', description: 'Routers, query handlers, and infrastructure clients stay cleanly separated, keeping API surface, agent logic, and external calls independently changeable.' },
                 { title: 'Real-time progress streaming', description: 'Server-Sent Events push progress as the agent works, so longer queries never leave the user facing a blank screen.' },
-                { title: 'Interaction logging', description: 'Every question, answer, generated SQL, and timing lands in ClickHouse, making output quality reviewable rather than anecdotal.' }
+                // { title: 'Interaction logging', description: 'Every question, answer, generated SQL, and timing lands in ClickHouse, making output quality reviewable rather than anecdotal.' }
             ]
         }
     ]
