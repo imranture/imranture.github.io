@@ -20,6 +20,16 @@
     <meta name="msvalidate.01" content="46FE9E61D7DE98B7E1F76C5633C2BA5B">
     <link rel="canonical" href="https://www.imranture.com/">
 
+    <script>
+        // No GPU acceleration (software rendering): every animation frame redraws the
+        // whole screen on the CPU, so turn animations off (see html.no-gpu in styles.css)
+        try {
+            var gl = document.createElement('canvas').getContext('webgl', { failIfMajorPerformanceCaveat: true });
+            if (!gl) document.documentElement.classList.add('no-gpu');
+            else if (gl.getExtension('WEBGL_lose_context')) gl.getExtension('WEBGL_lose_context').loseContext();
+        } catch (e) {}
+    </script>
+
     <!-- GoatCounter -->
     <script src="/js/analytics.js" async></script>
 
