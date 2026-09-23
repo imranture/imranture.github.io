@@ -139,7 +139,9 @@
     <!-- Preload Critical Resources -->
     <link rel="preload" href="/css/styles.min.css" as="style">
     <link rel="preload" href="/js/main.min.js" as="script">
-    <link rel="preload" href="/image/imranture.png" as="image">
+    <link rel="preload" as="image" href="/image/imranture-256.webp"
+        imagesrcset="/image/imranture-256.webp 256w, /image/imranture-384.webp 384w"
+        imagesizes="(max-width: 980px) 8rem, 4.5rem">
     <link rel="preload" href="/fonts/Caveat-Bold-digits.woff2" as="font" type="font/woff2" crossorigin>
     
     <link
@@ -213,7 +215,10 @@
         <!-- HEADER -->
         <header class="site-header">
             <div class="site-name" id="site-name">
-                <img src="/image/imranture.png" alt="Imran Ture" class="profile-pic">
+                <img src="/image/imranture-256.webp"
+                     srcset="/image/imranture-256.webp 256w, /image/imranture-384.webp 384w"
+                     sizes="(max-width: 980px) 8rem, 4.5rem"
+                     alt="Imran Ture" class="profile-pic">
             </div>
             <nav class="site-nav" role="navigation" aria-label="Main navigation">
                 <button id="btn-projects" class="nav-btn" aria-label="View the portfolio"><i class="fas fa-layer-group" aria-hidden="true"></i> Portfolio</button>
@@ -269,7 +274,8 @@
              class="project-detail-overlay"
              role="dialog"
              aria-modal="true"
-             aria-labelledby="project-detail-title">
+             aria-labelledby="project-detail-title"
+             aria-label="Project details">
             <div class="overlay-backdrop" aria-hidden="true"></div>
             
             <div class="overlay-content">
