@@ -28,14 +28,12 @@
     <!-- Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <!-- Icons: Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com/license/free (CC BY 4.0), inlined as SVG -->
 
     <style>
         /* Design System - Matching Main Site */
@@ -267,11 +265,27 @@
         }
 
         .theme-toggle #theme-icon {
+            display: inline-block;
+            line-height: 1;
             transition: transform 0.5s ease;
         }
 
         .theme-toggle:active #theme-icon {
             transform: rotate(180deg);
+        }
+
+        body.theme-light .theme-icon .icon-sun,
+        body:not(.theme-light) .theme-icon .icon-moon {
+            display: none;
+        }
+
+        /* Inline SVG icons: sized and aligned like the Font Awesome glyphs they replace */
+        .icon {
+            display: inline-block;
+            height: 1em;
+            width: auto;
+            overflow: visible;
+            vertical-align: -0.125em;
         }
 
         /* Header */
@@ -375,7 +389,7 @@
             <!-- Action Buttons -->
             <div class="btn-group">
                 <a href="/" class="btn btn-primary">
-                    <i class="fas fa-home"></i>
+                    <svg class="icon" viewBox="0 0 576 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M575.8 255.5C575.8 273.5 560.8 287.6 543.8 287.6H511.8L512.5 447.7C512.5 450.5 512.3 453.1 512 455.8V472C512 494.1 494.1 512 472 512H456C454.9 512 453.8 511.1 452.7 511.9C451.3 511.1 449.9 512 448.5 512H392C369.9 512 352 494.1 352 472V384C352 366.3 337.7 352 320 352H256C238.3 352 224 366.3 224 384V472C224 494.1 206.1 512 184 512H128.1C126.6 512 125.1 511.9 123.6 511.8C122.4 511.9 121.2 512 120 512H104C81.91 512 64 494.1 64 472V360C64 359.1 64.03 358.1 64.09 357.2V287.6H32.05C14.02 287.6 0 273.5 0 255.5C0 246.5 3.004 238.5 10.01 231.5L266.4 8.016C273.4 1.002 281.4 0 288.4 0C295.4 0 303.4 2.004 309.5 7.014L564.8 231.5C572.8 238.5 576.9 246.5 575.8 255.5L575.8 255.5z"/></svg>
                     Go Home
                 </a>
             </div>
@@ -384,7 +398,7 @@
 
     <!-- Theme Toggle -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light theme">
-        <i class="fa-solid fa-sun" id="theme-icon" aria-hidden="true"></i>
+        <span id="theme-icon" class="theme-icon" aria-hidden="true"><svg class="icon icon-sun" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg><svg class="icon icon-moon" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg></span>
     </button>
 
    
@@ -392,18 +406,9 @@
     <script>
         // Theme Toggle Functionality
         function toggleTheme() {
+            // The sun/moon icon follows body.theme-light in CSS
             const isLight = document.body.classList.toggle('theme-light');
-            const icon = document.getElementById('theme-icon');
-
-            if (isLight) {
-                localStorage.setItem('theme', 'light');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            } else {
-                localStorage.setItem('theme', 'dark');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
         }
 
         // Initialize theme
@@ -411,9 +416,6 @@
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 document.body.classList.add('theme-light');
-                const icon = document.getElementById('theme-icon');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
             }
         }
 
