@@ -14,7 +14,8 @@ const ROOT = path.join(__dirname, '..');
 const SITE = 'https://www.imranture.com';
 
 // Pages outside data/projects.js that belong in the sitemap
-const STATIC_PAGES = ['/', '/labs/os/', '/labs/ml/', '/labs/py/'];
+// (/labs/ml/ and /labs/py/ are left out while they're unfinished and noindex)
+const STATIC_PAGES = ['/', '/labs/os/'];
 
 // data/projects.js is a browser script declaring a global, not a module
 const PROJECTS = vm.runInNewContext(
