@@ -1,6 +1,6 @@
 /**
  * Projects Data - Centralized source of truth for portfolio projects
- * This file is loaded before main.js and project-loader.js
+ * This file is loaded before main.js and read by scripts/build-project-pages.js
  */
 
 const PROJECTS_DATA = {

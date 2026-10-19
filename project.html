@@ -4,74 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project - Imran Ture</title>
-    <meta name="description"
-        content="Explore selected projects in data analytics, machine learning, and software development by Imran Ture.">
+    <title>Redirecting... - Imran Ture</title>
 
-    <!-- GoatCounter - counted by project-loader.js once the project title is set -->
-    <script>window.goatcounter = { no_onload: true };</script>
-    <script src="/js/analytics.js" async></script>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon.png">
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/css/styles.min.css">
-    <!-- Icons: Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com/license/free (CC BY 4.0), inlined as SVG -->
-
-    <!-- Preconnects -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-
-    <!-- Scripts -->
-    <!-- project-loader.js is loaded at end of body -->
+    <!-- Projects moved from /project.html?id=<id> to /projects/<id>/. GitHub Pages can't
+         redirect on a query string, so old links are forwarded here. -->
+    <script>
+        var id = new URLSearchParams(location.search).get('id');
+        location.replace(id && /^[a-z0-9-]+$/.test(id) ? '/projects/' + id + '/' : '/');
+    </script>
 </head>
 
-<body class="project-page">
-    <script>
-        // Apply theme immediately to prevent flashing
-        if (localStorage.getItem('theme') === 'light') {
-            document.body.classList.add('theme-light');
-        }
-
-        // Theme Toggle Logic (the sun/moon icon follows body.theme-light in CSS)
-        function toggleTheme() {
-            const isLight = document.body.classList.toggle('theme-light');
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        }
-    </script>
-
-    <!-- Subtle Grid Background -->
-    <div class="bg-grid"></div>
-
-    <div class="layout-container">
-
-        <!-- HEADER -->
-        <header class="site-header">
-            <a href="/index.html" class="site-name" aria-label="Back to Home">
-                <img src="/image/imranture-256.webp" alt="Imran Ture" class="profile-pic">
-            </a>
-            <nav class="site-nav">
-                <!-- Theme Toggle -->
-                <button onclick="toggleTheme()" id="btn-theme" class="theme-toggle" aria-label="Toggle Theme">
-                    <span id="theme-icon" class="theme-icon" aria-hidden="true"><svg class="icon icon-sun" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg><svg class="icon icon-moon" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg></span>
-                </button>
-            </nav>
-        </header>
-
-        <!-- MAIN CONTENT -->
-        <main id="main-content" class="project-main-content">
-            <!-- Project content injected by JS -->
-            <div id="project-content"></div>
-        </main>
-    </div>
-
-    <!-- Data & Scripts: Load data first, then loader -->
-    <script src="/data/projects.js"></script>
-    <script src="/js/project-loader.js"></script>
+<body>
+    <p>This page has moved. <a href="/">Go to the homepage</a>.</p>
 </body>
 
 </html>
