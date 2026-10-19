@@ -2,10 +2,9 @@
  * GoatCounter - shared across all pages.
  * Cookieless and stores only aggregate data, so no consent banner is needed.
  *
- * The recorded path is location.pathname + location.search, which is what makes
- * project pages report per project (/project.html?id=pdf4u). Do not add a
- * <link rel="canonical"> to project.html: GoatCounter prefers a same-domain
- * canonical over the real URL, and every project would collapse into one row.
+ * GoatCounter records a same-domain <link rel="canonical"> over the real URL, so
+ * every page's canonical must be its own path. Project pages each canonicalise
+ * to /projects/<id>/, which is also the path the homepage overlay counts under.
  */
 (function () {
     const script = document.createElement('script');
