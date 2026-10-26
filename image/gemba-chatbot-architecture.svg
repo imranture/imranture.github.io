@@ -1,4 +1,4 @@
-<svg viewBox="0 0 1000 890" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The agent loop behind the chatbot. A question posted to the streaming endpoint is dispatched as a CQRS query, logged to ClickHouse and resolved against conversation history in MongoDB. The agent orchestrator injects the domain glossary and correctness rules, calls Google's managed Data Analytics Agent as its NL-to-SQL tool, observes the result and retries once on a transient failure, and streams progress back to the browser over Server-Sent Events.">
+<svg viewBox="0 0 1000 890" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The agent loop behind the chatbot. A question posted to the streaming endpoint is dispatched as a CQRS query, logged to ClickHouse with its SQL, answer and timing, and resolved against conversation history in MongoDB. The agent orchestrator grounds it in system instructions, table and column descriptions, verified queries, a domain glossary and correctness rules, calls Google's managed Data Analytics Agent as its NL-to-SQL tool, observes the result and retries once on a transient failure, and streams progress back to the browser over Server-Sent Events. Generated SQL runs read-only, against curated tables, with a cap on data scanned, and a regression test set of real questions is re-run after every context change.">
   <defs>
     <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#38bdf8"/>
@@ -46,7 +46,7 @@
   <!-- ClickHouse -->
   <rect x="40" y="262" width="220" height="60" rx="8" fill="#241f33" stroke="#a78bfa" stroke-width="1.5"/>
   <text x="150" y="287" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="600">ClickHouse client</text>
-  <text x="150" y="305" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">query + timing log</text>
+  <text x="150" y="305" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">question · SQL · answer · timing</text>
 
   <!-- Handler -> ClickHouse -->
   <line x1="388" y1="292" x2="264" y2="292" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
@@ -62,15 +62,18 @@
   <line x1="736" y1="300" x2="614" y2="300" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
   <text x="674" y="274" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="10.5">load / save history</text>
 
-  <!-- Domain glossary + rules -->
-  <rect x="40" y="400" width="240" height="76" rx="8" fill="#16241f" stroke="#34d399" stroke-width="1.5"/>
-  <text x="160" y="425" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="600">Domain glossary + rules</text>
-  <text x="160" y="444" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">business terms → columns</text>
-  <text x="160" y="461" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">Turkish casing · padded text · nulls</text>
+  <!-- Grounding context -->
+  <rect x="24" y="378" width="266" height="122" rx="8" fill="#16241f" stroke="#34d399" stroke-width="1.5"/>
+  <text x="157" y="401" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="600">Grounding context</text>
+  <text x="157" y="420" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">system instructions</text>
+  <text x="157" y="436" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">table + column descriptions</text>
+  <text x="157" y="452" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">verified queries (question → SQL)</text>
+  <text x="157" y="468" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">glossary: business terms → columns</text>
+  <text x="157" y="484" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">rules: Turkish casing · padded text · nulls</text>
 
   <!-- Glossary -> orchestrator -->
-  <line x1="284" y1="438" x2="386" y2="438" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowEmerald)"/>
-  <text x="335" y="428" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="10.5">injected per request</text>
+  <line x1="294" y1="438" x2="386" y2="438" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowEmerald)"/>
+  <text x="340" y="428" text-anchor="middle" fill="#34d399" font-family="sans-serif" font-size="10.5">grounds every call</text>
 
   <!-- Agent orchestrator -->
   <rect x="390" y="400" width="220" height="76" rx="8" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/>
@@ -108,6 +111,20 @@
   <rect x="380" y="716" width="240" height="64" rx="8" fill="#1f2937" stroke="#38bdf8" stroke-width="1.5"/>
   <text x="500" y="741" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="14" font-weight="600">BigQuery</text>
   <text x="500" y="760" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">Gemba feedback + sales tables</text>
+
+  <!-- Regression test set -> grounding context -->
+  <rect x="24" y="700" width="266" height="76" rx="8" fill="#241f33" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="157" y="725" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="600">Regression test set</text>
+  <text x="157" y="744" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">real questions with known answers</text>
+  <text x="157" y="761" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">re-run after every context change</text>
+  <line x1="157" y1="698" x2="157" y2="504" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowSlate)"/>
+  <text x="167" y="604" text-anchor="start" fill="#a78bfa" font-family="sans-serif" font-size="10.5">checks each change</text>
+
+  <!-- Query guardrails -> BigQuery -->
+  <rect x="690" y="716" width="270" height="64" rx="8" fill="#2a1f24" stroke="#f87171" stroke-width="1.5"/>
+  <text x="825" y="741" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="600">Query guardrails</text>
+  <text x="825" y="760" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="11">read-only · curated tables · scan cap</text>
+  <line x1="688" y1="748" x2="624" y2="748" stroke="#f87171" stroke-width="1.5" marker-end="url(#arrowSlate)"/>
 
   <!-- Caption -->
   <text x="500" y="843" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="600">The agent loop, from question to grounded answer</text>
