@@ -84,6 +84,7 @@ description: 'A pipeline that reads what people report from the store floor — 
 },
     'pia-price-intelligence': {
     title: 'PIA: Automated Price Intelligence Dashboard for Turkish Fashion Retail',
+    type: 'Price Intelligence Dashboard',
     primary_image: '/image/pia-price-tracker-for-turkish-fashion-retail.png',
     secondary_image: null,
     links: [
@@ -94,6 +95,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'e4-timestamper': {
         title: 'E4 TimeStamper: Timestamping Wearable Sensor Data for Researchers',
+        type: 'Research Web Application',
         primary_image: '/image/e4-timestamper.png',
         secondary_image: null,
         links: [
@@ -105,6 +107,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'emotion-recognition': {
         title: 'Deep Emotion Recognition using Wearable Sensors',
+        type: 'Deep Learning Classifier',
         primary_image: '/image/model-accuracy.png',
         secondary_image: null,
         links: [],
@@ -113,6 +116,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'python-for-openintro': {
         title: 'Python Implementation of OpenIntro Statistics',
+        type: 'Open-Source Statistics Labs',
         primary_image: '/image/openintro-python-official-page.png',
         secondary_image: '/image/openintro-python-labs.png',
         links: [
@@ -124,6 +128,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'bbl-physiodb': {
         title: 'BBL-PhysioDB: Research Database for Multi-Session Entrepreneurship Studies',
+        type: 'Research Database',
         primary_image: '/image/bbl-physiodb.png',
         secondary_image: '/image/rmit-bbl.jpg',
         links: [],
@@ -132,6 +137,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'marketing-ab': {
         title: 'Measuring the Impact of Ads on Campaign Success',
+        type: 'A/B Testing Analysis',
         primary_image: '/image/conversion-rates-by-ad-exposure.png',
         secondary_image: '/image/conversion-rates-by-day-hour.png',
         links: [
@@ -142,6 +148,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'melbourne-property-sales': {
         title: 'Melbourne Property Sales: Visual Exploration of Housing Market Dynamics',
+        type: 'Interactive Tableau Dashboard',
         primary_image: '/image/melbourne-property-sales.png',
         secondary_image: null,
         links: [
@@ -152,6 +159,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'early-warning-system': {
         title: 'Early Warning System to Monitor and Evaluate Drinking Water Quality',
+        type: 'Water Quality Monitoring System',
         primary_image: '/image/early-warning-system.png',
         secondary_image: null,
         links: [],
@@ -160,6 +168,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'pdf4u': {
         title: 'pdf4u: Web-Based PDF Management Toolkit App',
+        type: 'PDF Toolkit Web App',
         primary_image: '/image/pdf4u.png',
         secondary_image: null,
         links: [
@@ -170,6 +179,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'durcalc': {
         title: 'DurCalc: Hassle-Free Calculation of Date and Time Durations',
+        type: 'Date and Time Calculator App',
         primary_image: '/image/durcalc.png',
         secondary_image: null,
         links: [
