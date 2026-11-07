@@ -95,7 +95,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'e4-timestamper': {
         title: 'E4 TimeStamper: Timestamping Wearable Sensor Data for Researchers',
-        type: 'Research Web Application',
+        type: 'Wearable Sensor Data Timestamper',
         primary_image: '/image/e4-timestamper.png',
         secondary_image: null,
         links: [
@@ -179,7 +179,7 @@ description: 'A pipeline that reads what people report from the store floor — 
     },
     'durcalc': {
         title: 'DurCalc: Hassle-Free Calculation of Date and Time Durations',
-        type: 'Date and Time Calculator App',
+        type: 'Date & Time Calculator App',
         primary_image: '/image/durcalc.png',
         secondary_image: null,
         links: [
