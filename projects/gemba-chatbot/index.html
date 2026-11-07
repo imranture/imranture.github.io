@@ -128,7 +128,7 @@
         </section>
         <section class="project-detail-section">
             <h2 class="project-detail-section-heading">Approach</h2>
-            <p class="project-detail-description">The agent runs a loop rather than a single call. It resolves the incoming question against the conversation so far, grounds it in a glossary that maps this retailer's business vocabulary onto real columns and values, injects explicit correctness rules for the known data-quality traps, calls its NL→SQL tool, and inspects what comes back — retrying once when the result is empty or the call fails, and streaming progress throughout.<br><br>Google's Data Analytics Agent serves as the NL→SQL tool inside that loop. The engineering work is the loop around it: the grounding layer that decides what the tool is asked, the state that makes follow-up questions resolvable, the resilience that handles a bad response, and the transport that keeps a slow query from feeling broken.</p>
+            <p class="project-detail-description">The agent runs a loop rather than a single call. It resolves the incoming question against the conversation so far, grounds it in system instructions, table and column descriptions, verified question-and-SQL examples, and a glossary that maps this retailer's business vocabulary onto real columns and values, injects explicit correctness rules for the known data-quality traps, calls its NL→SQL tool, and inspects what comes back — retrying once when the result is empty or the call fails, and streaming progress throughout.<br><br>Google's Data Analytics Agent serves as the NL→SQL tool inside that loop. The engineering work is the loop around it: the grounding layer that decides what the tool is asked, the state that makes follow-up questions resolvable, the resilience that handles a bad response, and the transport that keeps a slow query from feeling broken.</p>
             
             
         </section>
@@ -140,7 +140,7 @@
                 
                 <li class="project-detail-checklist-item">
                     <span class="project-detail-checklist-icon"></span>
-                    <span><span class="project-detail-checklist-title">Grounding layer:</span> <span class="project-detail-checklist-desc">A domain glossary and explicit correctness rules are injected into every tool call, mapping business vocabulary onto real columns and neutralizing Turkish casing, padded text, and null hierarchies.</span></span>
+                    <span><span class="project-detail-checklist-title">Grounding layer:</span> <span class="project-detail-checklist-desc">System instructions, table and column descriptions, verified question-and-SQL examples, a domain glossary, and explicit correctness rules ground every tool call, mapping business vocabulary onto real columns and neutralizing Turkish casing, padded text, and null hierarchies.</span></span>
                 </li>
                 <li class="project-detail-checklist-item">
                     <span class="project-detail-checklist-icon"></span>
